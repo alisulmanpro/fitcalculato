@@ -1,0 +1,917 @@
+> Landing Page
+
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ultimate Fitness &amp; Health Calculators - FitCalc Directory</title>
+<meta content="Free fitness calculators and health tracking tools. Calculate BMI, BMR, Body Fat, and discover specialized tools like our GLP-1 / Ozempic Calorie Calculator." name="description"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#3c0800",
+                        "primary-fixed": "#dde1ff",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-fixed": "#002113",
+                        "tertiary": "#952200",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-bright": "#f8f9ff",
+                        "error": "#ba1a1a",
+                        "primary-container": "#0052ff",
+                        "secondary": "#006c49",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-surface": "#213145",
+                        "on-surface-variant": "#434656",
+                        "on-primary-fixed-variant": "#0038b6",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eaf1ff",
+                        "secondary-container": "#6cf8bb",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbd2",
+                        "surface-container-low": "#eff4ff",
+                        "outline": "#737688",
+                        "on-primary-fixed": "#001452",
+                        "surface-tint": "#004ced",
+                        "background": "#f8f9ff",
+                        "outline-variant": "#c3c5d9",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-primary-container": "#dfe3ff",
+                        "tertiary-container": "#bf3003",
+                        "on-secondary-container": "#00714d",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "inverse-primary": "#b7c4ff",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "tertiary-fixed-dim": "#ffb4a1",
+                        "surface-container": "#e5eeff",
+                        "primary": "#003ec7",
+                        "surface": "#f8f9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary-container": "#ffddd5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#891e00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "24px",
+                        "base": "8px",
+                        "gutter-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-xl-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-xl-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary">
+<!-- Header (Shared Component) -->
+<header class="bg-surface dark:bg-on-background sticky top-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto shadow-sm dark:shadow-none bg-surface dark:bg-on-background border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-4">
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed" href="#">
+                FitCalc Directory
+            </a>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors duration-200" href="#">
+                Calculators
+            </a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors duration-200" href="#">
+                Health Insights
+            </a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors duration-200" href="#">
+                Providers
+            </a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors duration-200" href="#">
+                About Us
+            </a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64 text-on-surface placeholder:text-outline" placeholder="Search..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors duration-200 font-medium">
+                Join Now
+            </button>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-desktop md:px-margin-desktop px-margin-mobile pt-12 pb-24">
+<!-- Hero Section -->
+<section class="text-center max-w-3xl mx-auto mb-16">
+<h1 class="font-headline-xl text-headline-xl text-on-background mb-6">Ultimate Fitness &amp; Health Calculators to Reach Your Goals</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10">Access a comprehensive directory of clinical-grade tools. From basic BMI to advanced tracking for GLP-1 and Zone 2 training, optimize your health journey today.</p>
+<div class="relative max-w-2xl mx-auto group shadow-lg shadow-surface-variant/50 rounded-full">
+<span class="material-symbols-outlined absolute left-6 top-1/2 -translate-y-1/2 text-primary text-[28px]" data-icon="search" data-weight="fill" style="font-variation-settings: 'FILL' 1;">search</span>
+<input class="w-full pl-16 pr-8 py-5 bg-surface-container-lowest border border-outline-variant rounded-full font-body-lg text-body-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-outline transition-shadow" placeholder="Search calculators..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-full hover:bg-primary-container transition-colors">
+                    Search
+                </button>
+</div>
+</section>
+<!-- Top AdSense Placeholder (728x90) -->
+<div class="w-full max-w-[728px] h-[90px] mx-auto bg-surface-container-low border border-outline-variant rounded-lg flex items-center justify-center mb-16 relative">
+<span class="absolute top-2 right-3 font-label-sm text-label-sm text-outline">Sponsored</span>
+<span class="font-body-md text-body-md text-on-surface-variant">AdSense Placeholder (728x90)</span>
+</div>
+<div class="flex flex-col lg:flex-row gap-gutter-desktop">
+<div class="flex-1">
+<!-- Trending Section -->
+<section class="mb-16">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-secondary" data-icon="trending_up" data-weight="fill" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<h2 class="font-headline-lg text-headline-lg text-on-background">Trending Tools</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-desktop">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 hover:border-primary/40 hover:shadow-md transition-all duration-300 relative group cursor-pointer flex flex-col h-full">
+<div class="absolute top-4 right-4 bg-error-container text-on-error-container px-3 py-1 rounded-full font-label-sm text-label-sm">Trending</div>
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]" data-icon="medication">medication</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-3 flex-1">GLP-1 / Ozempic Calorie &amp; Protein Calculator</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Optimize your macros while on GLP-1 medications to preserve lean muscle.</p>
+<button class="w-full py-2.5 bg-surface-container border border-outline-variant rounded-lg font-label-md text-label-md text-primary group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors">
+                                Use Calculator
+                            </button>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 hover:border-primary/40 hover:shadow-md transition-all duration-300 relative group cursor-pointer flex flex-col h-full">
+<div class="absolute top-4 right-4 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm">New</div>
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]" data-icon="severe_cold">severe_cold</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-3 flex-1">Cold Plunge / Ice Bath Duration Calculator</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Calculate optimal immersion times based on water temperature and experience level.</p>
+<button class="w-full py-2.5 bg-surface-container border border-outline-variant rounded-lg font-label-md text-label-md text-primary group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors">
+                                Use Calculator
+                            </button>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 hover:border-primary/40 hover:shadow-md transition-all duration-300 relative group cursor-pointer flex flex-col h-full">
+<div class="absolute top-4 right-4 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-sm text-label-sm">Popular</div>
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]" data-icon="monitor_heart">monitor_heart</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-3 flex-1">Zone 2 Heart Rate Calculator</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Find your precise aerobic training zone for maximum endurance benefits.</p>
+<button class="w-full py-2.5 bg-surface-container border border-outline-variant rounded-lg font-label-md text-label-md text-primary group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors">
+                                Use Calculator
+                            </button>
+</article>
+</div>
+</section>
+<!-- In-feed AdSense Placeholder -->
+<div class="w-full h-[120px] bg-surface-container-low border border-outline-variant rounded-xl flex items-center justify-center mb-16 relative">
+<span class="absolute top-3 right-4 font-label-sm text-label-sm text-outline">Sponsored</span>
+<span class="font-body-md text-body-md text-on-surface-variant">In-Feed AdSense Placeholder</span>
+</div>
+<!-- All Calculators Section -->
+<section>
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="grid_view" data-weight="fill" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<h2 class="font-headline-lg text-headline-lg text-on-background">All Calculators</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-gutter-desktop">
+<!-- Standard Cards (Loop simulated) -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 hover:border-primary/30 transition-colors flex flex-col">
+<div class="flex items-start gap-4 mb-3">
+<div class="w-10 h-10 bg-surface-container-low rounded flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="scale">scale</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-[18px] leading-[24px]">BMI Calculator</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[14px] leading-[20px]">Determine your Body Mass Index quickly and accurately.</p>
+</article>
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 hover:border-primary/30 transition-colors flex flex-col">
+<div class="flex items-start gap-4 mb-3">
+<div class="w-10 h-10 bg-surface-container-low rounded flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_dining">local_dining</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-[18px] leading-[24px]">Calorie Calculator</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[14px] leading-[20px]">Estimate daily caloric needs for weight loss or maintenance.</p>
+</article>
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 hover:border-primary/30 transition-colors flex flex-col">
+<div class="flex items-start gap-4 mb-3">
+<div class="w-10 h-10 bg-surface-container-low rounded flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="accessibility_new">accessibility_new</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-[18px] leading-[24px]">Body Fat Calculator</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[14px] leading-[20px]">Calculate your body fat percentage using standard body measurements.</p>
+</article>
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 hover:border-primary/30 transition-colors flex flex-col">
+<div class="flex items-start gap-4 mb-3">
+<div class="w-10 h-10 bg-surface-container-low rounded flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_fire_department">local_fire_department</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-[18px] leading-[24px]">BMR Calculator</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[14px] leading-[20px]">Find your Basal Metabolic Rate for fundamental energy expenditure.</p>
+</article>
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 hover:border-primary/30 transition-colors flex flex-col">
+<div class="flex items-start gap-4 mb-3">
+<div class="w-10 h-10 bg-surface-container-low rounded flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="balance">balance</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-[18px] leading-[24px]">Ideal Weight Calculator</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[14px] leading-[20px]">Discover your ideal weight range based on height, gender, and age.</p>
+</article>
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 hover:border-primary/30 transition-colors flex flex-col">
+<div class="flex items-start gap-4 mb-3">
+<div class="w-10 h-10 bg-surface-container-low rounded flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="timer">timer</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-[18px] leading-[24px]">Pace Calculator</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[14px] leading-[20px]">Calculate running pace per mile or kilometer for race goals.</p>
+</article>
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 hover:border-primary/30 transition-colors flex flex-col">
+<div class="flex items-start gap-4 mb-3">
+<div class="w-10 h-10 bg-surface-container-low rounded flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="military_tech">military_tech</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-[18px] leading-[24px]">Army Body Fat Calculator</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[14px] leading-[20px]">Use official US Army standards to assess body composition.</p>
+</article>
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 hover:border-primary/30 transition-colors flex flex-col">
+<div class="flex items-start gap-4 mb-3">
+<div class="w-10 h-10 bg-surface-container-low rounded flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="fitness_center">fitness_center</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-[18px] leading-[24px]">Lean Body Mass Calculator</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[14px] leading-[20px]">Determine your total weight minus your body fat weight.</p>
+</article>
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 hover:border-primary/30 transition-colors flex flex-col">
+<div class="flex items-start gap-4 mb-3">
+<div class="w-10 h-10 bg-surface-container-low rounded flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="health_and_safety">health_and_safety</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-[18px] leading-[24px]">Healthy Weight Calculator</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[14px] leading-[20px]">Find a medically sound weight range for your body type.</p>
+</article>
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 hover:border-primary/30 transition-colors flex flex-col">
+<div class="flex items-start gap-4 mb-3">
+<div class="w-10 h-10 bg-surface-container-low rounded flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="directions_run">directions_run</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-[18px] leading-[24px]">Calories Burned Calculator</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[14px] leading-[20px]">Estimate calories expended across hundreds of different activities.</p>
+</article>
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 hover:border-primary/30 transition-colors flex flex-col">
+<div class="flex items-start gap-4 mb-3">
+<div class="w-10 h-10 bg-surface-container-low rounded flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="sports_gymnastics">sports_gymnastics</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-[18px] leading-[24px]">One Rep Max Calculator</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[14px] leading-[20px]">Calculate your theoretical maximum lift for strength programming.</p>
+</article>
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 hover:border-primary/30 transition-colors flex flex-col">
+<div class="flex items-start gap-4 mb-3">
+<div class="w-10 h-10 bg-surface-container-low rounded flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-[18px] leading-[24px]">Target Heart Rate Calculator</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[14px] leading-[20px]">Find specific training zones based on your resting heart rate.</p>
+</article>
+</div>
+</section>
+</div>
+<!-- Sidebar (Desktop) -->
+<aside class="hidden lg:block w-[300px] shrink-0">
+<div class="sticky top-24">
+<!-- Sidebar AdSense Placeholder (300x600) -->
+<div class="w-[300px] h-[600px] bg-surface-container-low border border-outline-variant rounded-xl flex items-center justify-center relative">
+<span class="absolute top-3 right-4 font-label-sm text-label-sm text-outline">Sponsored</span>
+<span class="font-body-md text-body-md text-on-surface-variant text-center px-4">Sidebar AdSense<br/>Placeholder (300x600)</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-lowest dark:bg-on-background w-full py-12 px-margin-desktop flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto bg-surface-container-lowest dark:bg-on-background border-t border-outline-variant dark:border-outline flat no shadows">
+<div class="flex flex-col gap-4 mb-8 md:mb-0 max-w-md">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">
+                FitCalc Directory
+            </span>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant">
+                We provide clinical-grade, accessible fitness and health calculation tools. Always consult a healthcare professional before making major changes to your routine.
+            </p>
+<span class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant mt-2">
+                © 2024 FitCalc Directory. Clinical precision for your fitness journey.
+            </span>
+</div>
+<nav class="flex flex-wrap gap-6 font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant">
+<a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Terms of Service</a>
+<a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Medical Disclaimer</a>
+<a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Contact Us</a>
+<a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Sitemap</a>
+</nav>
+</footer>
+</body></html>
+
+Zone Tool Page
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zone 2 Heart Rate Calculator: Optimize Your Aerobic Base | FitCalc Directory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#ffdbd2",
+                      "surface-container-low": "#eff4ff",
+                      "on-surface": "#0b1c30",
+                      "outline": "#737688",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#0052ff",
+                      "primary-fixed-dim": "#b7c4ff",
+                      "on-tertiary-fixed": "#3c0800",
+                      "on-tertiary-container": "#ffddd5",
+                      "on-primary-fixed": "#001452",
+                      "on-primary-container": "#dfe3ff",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#0b1c30",
+                      "secondary": "#006c49",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#891e00",
+                      "background": "#f8f9ff",
+                      "primary": "#003ec7",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed-dim": "#4edea3",
+                      "on-secondary-fixed": "#002113",
+                      "on-surface-variant": "#434656",
+                      "surface-tint": "#004ced",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-secondary-container": "#00714d",
+                      "surface-dim": "#cbdbf5",
+                      "tertiary-container": "#bf3003",
+                      "inverse-on-surface": "#eaf1ff",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "surface": "#f8f9ff",
+                      "tertiary": "#952200",
+                      "surface-container": "#e5eeff",
+                      "tertiary-fixed-dim": "#ffb4a1",
+                      "surface-bright": "#f8f9ff",
+                      "inverse-primary": "#b7c4ff",
+                      "secondary-container": "#6cf8bb",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-high": "#dce9ff",
+                      "inverse-surface": "#213145",
+                      "secondary-fixed": "#6ffbbe",
+                      "surface-variant": "#d3e4fe",
+                      "outline-variant": "#c3c5d9",
+                      "on-secondary-fixed-variant": "#005236",
+                      "primary-fixed": "#dde1ff",
+                      "on-primary-fixed-variant": "#0038b6",
+                      "on-error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-desktop": "24px",
+                      "base": "8px",
+                      "margin-desktop": "40px",
+                      "gutter-mobile": "16px",
+                      "container-max": "1280px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-xl-mobile": [
+                              "Inter"
+                      ],
+                      "headline-xl": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl-mobile": [
+                              "30px",
+                              {
+                                      "lineHeight": "36px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-xl": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .material-symbols-outlined.fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased flex flex-col min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="bg-surface border-b border-outline-variant shadow-sm sticky top-0 w-full z-50">
+<div class="px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto flex justify-between items-center">
+<!-- Brand -->
+<a class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2" href="#">
+<span class="material-symbols-outlined fill-icon text-primary">ecg_heart</span>
+                FitCalc Directory
+            </a>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1 font-semibold" href="#">Calculators</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Health Insights</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Providers</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">About Us</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">search</span>
+</button>
+<a class="hidden md:inline-flex items-center justify-center bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg hover:opacity-90 transition-opacity font-semibold" href="#">
+                    Join Now
+                </a>
+<button class="md:hidden flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-gutter-mobile md:gap-gutter-desktop">
+<!-- Left / Center Content Area (spans 8 cols on desktop) -->
+<div class="md:col-span-8 flex flex-col gap-8 md:gap-12">
+<!-- Hero Header Section -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Cardio Calculators</span>
+</div>
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-background">Zone 2 Heart Rate Calculator: Optimize Your Aerobic Base</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Zone 2 training (typically 55-75% of your maximum heart rate) is the foundation of endurance fitness. It builds mitochondrial density, improves fat oxidation, and enhances aerobic capacity without overtaxing your recovery system. Discover your personalized Zone 2 training parameters below.
+                </p>
+</section>
+<!-- AdSense Placement 1: Leaderboard (Responsive) -->
+<div class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-2 flex flex-col items-center justify-center relative overflow-hidden" style="min-height: 90px;">
+<span class="absolute top-2 right-2 font-label-sm text-label-sm text-outline">Sponsored</span>
+<!-- Ad Placeholder Content -->
+<div class="w-[728px] h-[90px] bg-surface-container flex items-center justify-center border border-dashed border-outline-variant text-on-surface-variant font-label-md text-label-md hidden md:flex">
+                    [ AdSense Responsive Leaderboard 728x90 ]
+                </div>
+<div class="w-[320px] h-[50px] bg-surface-container flex items-center justify-center border border-dashed border-outline-variant text-on-surface-variant font-label-md text-label-md md:hidden">
+                    [ AdSense Mobile Banner 320x50 ]
+                </div>
+</div>
+<!-- Bento Grid: Interactive Calculator Area -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+<!-- Calculator Inputs Panel -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-6">
+<div class="flex items-center gap-3 border-b border-outline-variant pb-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">tune</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Physiological Data</h2>
+</div>
+<form class="flex flex-col gap-5">
+<!-- Core Metrics Row -->
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="age">Age</label>
+<input class="w-full bg-surface rounded-lg border-outline-variant text-on-surface font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4" id="age" placeholder="e.g., 35" type="number"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="gender">Gender</label>
+<select class="w-full bg-surface rounded-lg border-outline-variant text-on-surface font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4" id="gender">
+<option>Select</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="resting-hr">Resting HR <span class="text-outline font-normal">(opt)</span></label>
+<div class="relative">
+<input class="w-full bg-surface rounded-lg border-outline-variant text-on-surface font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary h-12 pl-4 pr-12" id="resting-hr" placeholder="e.g., 60" type="number"/>
+<span class="absolute right-4 top-3 text-outline font-label-sm text-label-sm">BPM</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="max-hr">Known Max HR <span class="text-outline font-normal">(opt)</span></label>
+<div class="relative">
+<input class="w-full bg-surface rounded-lg border-outline-variant text-on-surface font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary h-12 pl-4 pr-12" id="max-hr" placeholder="Auto-calc" type="number"/>
+<span class="absolute right-4 top-3 text-outline font-label-sm text-label-sm">BPM</span>
+</div>
+</div>
+</div>
+<!-- Advanced Toggles (Competitor Gap) -->
+<div class="flex flex-col gap-4 bg-surface-container-low p-4 rounded-lg mt-2 border border-outline-variant border-dashed">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">psychology</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Advanced Parameters</span>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Training Experience</label>
+<div class="flex flex-wrap gap-2">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="experience" type="radio"/>
+<div class="px-3 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-colors">Beginner</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="experience" type="radio"/>
+<div class="px-3 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-colors">Intermediate</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="experience" type="radio"/>
+<div class="px-3 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-colors">Advanced</div>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-2 border-t border-outline-variant">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Environmental Load</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center justify-center">
+<input class="peer sr-only" type="checkbox"/>
+<div class="w-10 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Adjust for High Heat/Humidity (+5 BPM)</span>
+</label>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md font-semibold h-12 rounded-lg hover:bg-primary-fixed-variant transition-colors mt-2 shadow-sm flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined">calculate</span>
+                            Calculate My Zones
+                        </button>
+</form>
+</div>
+<!-- Results Display Panel (Glassmorphism inspired) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col gap-6 relative overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute -top-20 -right-20 w-64 h-64 bg-primary-container rounded-full opacity-20 blur-3xl z-0"></div>
+<div class="relative z-10 flex flex-col h-full">
+<h2 class="font-headline-md text-headline-md text-on-surface border-b border-outline-variant pb-4 mb-4">Your Target Results</h2>
+<!-- Primary Result Highlight -->
+<div class="flex flex-col items-center justify-center py-6 bg-surface-container-low rounded-xl border border-primary-fixed mb-6">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2 font-bold">Optimal Zone 2 Range</span>
+<div class="flex items-baseline gap-2 text-primary">
+<span class="font-headline-xl text-[48px] font-bold leading-none tracking-tight">132</span>
+<span class="font-headline-md text-headline-md font-medium text-on-surface-variant">-</span>
+<span class="font-headline-xl text-[48px] font-bold leading-none tracking-tight">145</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant mt-2">Beats Per Minute (BPM)</span>
+</div>
+<!-- Mini Gauge Visual -->
+<div class="w-full flex flex-col gap-2 mb-6">
+<div class="flex justify-between font-label-sm text-label-sm text-outline px-1">
+<span>Rest</span>
+<span>Z2</span>
+<span>Max</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-outline-variant opacity-30" style="width: 50%"></div>
+<div class="h-full bg-secondary" style="width: 25%"></div>
+<div class="h-full bg-outline-variant opacity-30" style="width: 25%"></div>
+</div>
+</div>
+<!-- Actionable Insight -->
+<div class="bg-surface rounded-lg p-4 border border-outline-variant flex gap-4 mt-auto">
+<div class="text-secondary mt-1">
+<span class="material-symbols-outlined">directions_run</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface">The "Talk Test" Benchmark</span>
+<p class="font-body-md text-[14px] leading-snug text-on-surface-variant">At 132-145 BPM, you should be able to hold a full conversation comfortably without gasping for breath. If you can't, you are likely slipping into Zone 3.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AdSense Placement 2: In-content Native -->
+<div class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-4 flex items-center justify-center relative overflow-hidden min-h-[120px] my-4 shadow-sm">
+<span class="absolute top-2 right-2 font-label-sm text-label-sm text-outline">Sponsored</span>
+<div class="w-full h-[90px] bg-surface-container flex items-center justify-center border border-dashed border-outline-variant text-on-surface-variant font-label-md text-label-md">
+                    [ AdSense Native / In-Article Ad ]
+                </div>
+</div>
+<!-- Full Zone Breakdown Table (McMillan 6-Zone Model) -->
+<section class="flex flex-col gap-6">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Comprehensive Heart Rate Zones</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface font-label-md text-label-md border-b border-outline-variant">
+<th class="py-4 px-6 font-semibold">Zone</th>
+<th class="py-4 px-6 font-semibold">Intensity (% Max)</th>
+<th class="py-4 px-6 font-semibold">Target HR (BPM)</th>
+<th class="py-4 px-6 font-semibold">Primary Benefit</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface-variant divide-y divide-outline-variant">
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-outline-variant"></div>
+<span class="font-medium text-on-surface">Zone 1: Recovery</span>
+</div>
+</td>
+<td class="py-4 px-6">50% - 60%</td>
+<td class="py-4 px-6">95 - 114</td>
+<td class="py-4 px-6 text-sm">Active recovery, promoting blood flow.</td>
+</tr>
+<tr class="bg-secondary/10 border-l-4 border-l-secondary hover:bg-secondary/20 transition-colors">
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="font-semibold text-secondary-fixed-variant">Zone 2: Aerobic Base</span>
+</div>
+</td>
+<td class="py-4 px-6 font-medium text-on-surface">60% - 75%</td>
+<td class="py-4 px-6 font-bold text-on-surface">114 - 142</td>
+<td class="py-4 px-6 text-sm font-medium text-on-surface">Fat oxidation, mitochondrial efficiency.</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-[#facc15]"></div> <!-- custom yellow for Z3 -->
+<span class="font-medium text-on-surface">Zone 3: Tempo</span>
+</div>
+</td>
+<td class="py-4 px-6">75% - 80%</td>
+<td class="py-4 px-6">142 - 152</td>
+<td class="py-4 px-6 text-sm">Moderate aerobic capacity, structural endurance.</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-[#fb923c]"></div> <!-- custom orange for Z4 -->
+<span class="font-medium text-on-surface">Zone 4: Threshold</span>
+</div>
+</td>
+<td class="py-4 px-6">80% - 90%</td>
+<td class="py-4 px-6">152 - 171</td>
+<td class="py-4 px-6 text-sm">Lactate threshold improvement.</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<span class="font-medium text-on-surface">Zone 5: VO2 Max</span>
+</div>
+</td>
+<td class="py-4 px-6">90% - 100%</td>
+<td class="py-4 px-6">171 - 190</td>
+<td class="py-4 px-6 text-sm">Maximal oxygen uptake, sprint speed.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- SEO Educational Content -->
+<article class="flex flex-col gap-8 text-on-surface-variant font-body-md text-body-md mt-4">
+<div class="flex flex-col gap-4">
+<h2 class="font-headline-lg text-headline-lg text-on-background">What is Zone 2 Heart Rate Training?</h2>
+<p>
+                        Zone 2 training refers to exercising at a steady, moderate intensity where your body primarily uses fat for fuel rather than carbohydrates. Physiologically, this occurs below your first ventilatory threshold (VT1). For most athletes and individuals, this equates to roughly 60% to 75% of their maximum heart rate.
+                    </p>
+<p>
+                        Unlike high-intensity interval training (HIIT), which relies heavily on the anaerobic energy system, Zone 2 builds the aerobic engine. It stimulates the creation of new mitochondria (mitochondrial biogenesis) and improves the efficiency of existing ones, allowing you to sustain effort longer and recover faster.
+                    </p>
+</div>
+<div class="flex flex-col gap-4 bg-surface-container rounded-xl p-6 border border-outline-variant">
+<h2 class="font-headline-lg text-[24px] text-on-background">How to Calculate Your Zone 2 Range</h2>
+<p>
+                        While the standard "220 minus your age" formula provides a rough estimate of maximum heart rate, it is often inaccurate. Our calculator utilizes more advanced methodologies to provide a precise range:
+                    </p>
+<ul class="list-disc pl-5 flex flex-col gap-2 mt-2">
+<li><strong>Percentage of Max HR:</strong> The traditional approach, calculated as 60-75% of a precisely estimated max HR.</li>
+<li><strong>The Karvonen Formula (Heart Rate Reserve):</strong> This method factors in your resting heart rate (RHR), offering a highly personalized zone. It is calculated as: <em>((Max HR - Resting HR) x Target %) + Resting HR</em>.</li>
+<li><strong>Environmental Adjustments:</strong> Heat and high humidity increase cardiovascular drift, meaning your heart rate is naturally higher at the same effort level. Our tool adjusts for this to keep you in the correct physiological state.</li>
+</ul>
+</div>
+</article>
+<!-- FAQ Section for Long Tail Keywords -->
+<section class="flex flex-col gap-6 mt-4">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Frequently Asked Questions</h2>
+<div class="flex flex-col gap-4">
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-lg [&amp;_summary::-webkit-details-marker]:hidden shadow-sm">
+<summary class="flex cursor-pointer items-center justify-between gap-1.5 p-4 text-on-surface font-label-md text-label-md font-semibold">
+<span>How long should a Zone 2 workout be?</span>
+<span class="shrink-0 transition duration-300 group-open:-rotate-180 text-outline">
+<span class="material-symbols-outlined">expand_more</span>
+</span>
+</summary>
+<div class="px-4 pb-4 font-body-md text-body-md text-on-surface-variant border-t border-outline-variant pt-4 mt-2">
+                            To truly stimulate mitochondrial adaptation, a dedicated Zone 2 session should ideally last between 45 to 90 minutes. Elite athletes may spend hours in this zone, but for general fitness, 45 minutes twice a week provides significant benefits.
+                        </div>
+</details>
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-lg [&amp;_summary::-webkit-details-marker]:hidden shadow-sm">
+<summary class="flex cursor-pointer items-center justify-between gap-1.5 p-4 text-on-surface font-label-md text-label-md font-semibold">
+<span>Why is it so hard to stay in Zone 2?</span>
+<span class="shrink-0 transition duration-300 group-open:-rotate-180 text-outline">
+<span class="material-symbols-outlined">expand_more</span>
+</span>
+</summary>
+<div class="px-4 pb-4 font-body-md text-body-md text-on-surface-variant border-t border-outline-variant pt-4 mt-2">
+                            Most beginners find Zone 2 frustratingly slow, often requiring them to alternate between jogging and walking. This indicates an underdeveloped aerobic base (often called "Aerobic Deficiency Syndrome"). Over time, consistent training in this zone will allow you to run significantly faster while maintaining the same low heart rate.
+                        </div>
+</details>
+</div>
+</section>
+</div>
+<!-- Right Sidebar (spans 4 cols on desktop) -->
+<aside class="md:col-span-4 flex flex-col gap-6">
+<!-- Contextual CTA / Related Content Widget -->
+<div class="bg-primary-container rounded-xl p-6 text-on-primary-container flex flex-col gap-4 shadow-sm border border-primary-fixed">
+<div class="w-12 h-12 bg-on-primary-container text-primary-container rounded-full flex items-center justify-center mb-2">
+<span class="material-symbols-outlined fill-icon">medical_services</span>
+</div>
+<h3 class="font-headline-md text-[20px] font-bold">Need Clinical Guidance?</h3>
+<p class="font-body-md text-[14px] leading-relaxed opacity-90">
+                    If you have underlying cardiovascular conditions, general formulas may not apply. Connect with a certified sports cardiologist or endurance coach in our directory.
+                </p>
+<a class="mt-2 w-full bg-on-primary-container text-primary-container font-label-md text-label-md font-semibold h-10 rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity" href="#">
+                    Find a Specialist
+                </a>
+</div>
+<!-- AdSense Placement 3: Sidebar Skyscraper -->
+<div class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-2 flex flex-col items-center justify-center relative shadow-sm" style="min-height: 600px;">
+<span class="absolute top-2 right-2 font-label-sm text-label-sm text-outline z-10">Sponsored</span>
+<div class="w-full h-full min-h-[600px] bg-surface-container flex items-center justify-center border border-dashed border-outline-variant text-on-surface-variant font-label-md text-label-md">
+<div class="text-center px-4">
+<span class="block mb-2 text-outline">AdSpace</span>
+                        300 x 600<br/>Half Page Ad
+                    </div>
+</div>
+</div>
+<!-- Mini List Widget -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm flex flex-col gap-4">
+<h4 class="font-label-md text-label-md font-bold text-on-surface uppercase tracking-wide border-b border-outline-variant pb-3">Popular Calculators</h4>
+<ul class="flex flex-col gap-3">
+<li><a class="font-body-md text-body-md text-primary hover:underline flex items-center gap-2" href="#"><span class="material-symbols-outlined text-sm">arrow_right</span> VO2 Max Predictor</a></li>
+<li><a class="font-body-md text-body-md text-primary hover:underline flex items-center gap-2" href="#"><span class="material-symbols-outlined text-sm">arrow_right</span> Macros for Endurance</a></li>
+<li><a class="font-body-md text-body-md text-primary hover:underline flex items-center gap-2" href="#"><span class="material-symbols-outlined text-sm">arrow_right</span> Sweat Rate Calculator</a></li>
+</ul>
+</div>
+</aside>
+</main>
+<!-- Footer Area -->
+<footer class="bg-surface-container-lowest dark:bg-on-background border-t border-outline-variant dark:border-outline mt-auto">
+<div class="w-full py-12 px-margin-desktop flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto gap-6 md:gap-0">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed mb-4 md:mb-0 text-center md:text-left flex items-center gap-2 justify-center md:justify-start">
+<span class="material-symbols-outlined fill-icon text-primary">ecg_heart</span>
+                FitCalc Directory
+            </div>
+<nav class="flex flex-wrap justify-center gap-x-6 gap-y-3">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Medical Disclaimer</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Contact Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Sitemap</a>
+</nav>
+<div class="font-label-sm text-label-sm text-on-surface-variant text-center md:text-right mt-6 md:mt-0 w-full md:w-auto">
+                © 2024 FitCalc Directory. Clinical precision for your fitness journey.
+            </div>
+</div>
+</footer>
+</body></html>

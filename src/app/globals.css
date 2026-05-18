@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-inter: "Inter", sans-serif;
+
+  --color-on-tertiary-fixed: #3c0800;
+  --color-surface-container-low: #eff4ff;
+  --color-on-surface: #0b1c30;
+  --color-outline: #737688;
+  --color-error-container: #ffdad6;
+  --color-primary-container: #0052ff;
+  --color-primary-fixed-dim: #b7c4ff;
+  --color-on-tertiary-container: #ffddd5;
+  --color-on-primary-fixed: #001452;
+  --color-on-primary-container: #dfe3ff;
+  --color-on-secondary: #ffffff;
+  --color-on-background: #0b1c30;
+  --color-secondary: #006c49;
+  --color-on-error: #ffffff;
+  --color-on-tertiary-fixed-variant: #891e00;
+  --color-background: #f8f9ff;
+  --color-primary: #003ec7;
+  --color-surface-container-lowest: #ffffff;
+  --color-secondary-fixed-dim: #4edea3;
+  --color-on-secondary-fixed: #002113;
+  --color-on-surface-variant: #434656;
+  --color-surface-tint: #004ced;
+  --color-surface-container-highest: #d3e4fe;
+  --color-on-secondary-container: #00714d;
+  --color-surface-dim: #cbdbf5;
+  --color-tertiary-container: #bf3003;
+  --color-inverse-on-surface: #eaf1ff;
+  --color-error: #ba1a1a;
+  --color-on-primary: #ffffff;
+  --color-surface: #f8f9ff;
+  --color-tertiary: #952200;
+  --color-surface-container: #e5eeff;
+  --color-tertiary-fixed-dim: #ffb4a1;
+  --color-surface-bright: #f8f9ff;
+  --color-inverse-primary: #b7c4ff;
+  --color-secondary-container: #6cf8bb;
+  --color-on-tertiary: #ffffff;
+  --color-surface-container-high: #dce9ff;
+  --color-inverse-surface: #213145;
+  --color-secondary-fixed: #6ffbbe;
+  --color-surface-variant: #d3e4fe;
+  --color-outline-variant: #c3c5d9;
+  --color-on-secondary-fixed-variant: #005236;
+  --color-primary-fixed: #dde1ff;
+  --color-on-primary-fixed-variant: #0038b6;
+  --color-on-error-container: #93000a;
+
+  --spacing-gutter-desktop: 24px;
+  --spacing-base: 8px;
+  --spacing-margin-desktop: 40px;
+  --spacing-gutter-mobile: 16px;
+  --spacing-container-max: 1280px;
+  --spacing-margin-mobile: 20px;
+
+  --font-label-sm: "Inter", sans-serif;
+  --font-label-md: "Inter", sans-serif;
+  --font-headline-md: "Inter", sans-serif;
+  --font-body-lg: "Inter", sans-serif;
+  --font-headline-xl-mobile: "Inter", sans-serif;
+  --font-headline-xl: "Inter", sans-serif;
+  --font-headline-lg: "Inter", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
+  --text-label-md: 14px;
+  --text-label-md--line-height: 20px;
+  --text-label-md--letter-spacing: 0.05em;
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 32px;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-headline-xl-mobile: 30px;
+  --text-headline-xl-mobile--line-height: 36px;
+  --text-headline-xl-mobile--letter-spacing: -0.02em;
+  --text-headline-xl: 40px;
+  --text-headline-xl--line-height: 48px;
+  --text-headline-xl--letter-spacing: -0.02em;
+  --text-headline-lg: 32px;
+  --text-headline-lg--line-height: 40px;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+@utility font-label-sm { font-weight: 600; }
+@utility font-label-md { font-weight: 500; }
+@utility font-headline-md { font-weight: 600; }
+@utility font-body-lg { font-weight: 400; }
+@utility font-headline-xl-mobile { font-weight: 700; }
+@utility font-headline-xl { font-weight: 700; }
+@utility font-headline-lg { font-weight: 600; }
+@utility font-body-md { font-weight: 400; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  font-family: var(--font-body-md);
 }
