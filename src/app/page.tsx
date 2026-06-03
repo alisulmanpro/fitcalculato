@@ -9,26 +9,16 @@ export default function Home() {
       <HeroSection />
       
       {/* Top AdSense Placeholder */}
-      <div className="mb-16">
-        <AdPlaceholder format="leaderboard" />
-      </div>
 
       <div className="flex flex-col lg:flex-row gap-gutter-desktop">
         <div className="flex-1">
-          <TrendingSection />
-          
-          {/* In-feed AdSense Placeholder */}
-          <div className="mb-16">
-            <AdPlaceholder format="inFeed" />
-          </div>
-          
+          <TrendingSection />                
           <CalculatorsGrid />
         </div>
 
         {/* Sidebar (Desktop) */}
         <aside className="hidden lg:block w-[300px] shrink-0">
           <div className="sticky top-24">
-            <AdPlaceholder format="skyscraper" />
           </div>
         </aside>
       </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { MdMonitorHeart } from "react-icons/md";
 
@@ -6,10 +7,19 @@ export default function Footer() {
     <footer className="bg-surface-container-lowest border-t border-outline-variant mt-auto">
       <div className="w-full py-12 px-margin-desktop flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto gap-6 md:gap-0">
         <div className="font-headline-md text-headline-md font-bold text-primary mb-4 md:mb-0 text-center md:text-left flex flex-col items-center gap-2 justify-center md:items-start md:justify-start">
-          <div className="flex items-center gap-2">
-            <MdMonitorHeart className="text-primary text-2xl shrink-0" />
-            FitCalc Directory
-          </div>
+          <Link
+            href="/"
+            className="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2"
+          >
+            <Image
+              src="/logo.svg"
+              alt="FitCalc Directory"
+              width={40}
+              height={40}
+              className="shrink-0"
+            />
+            FitCalculato
+          </Link>
           <p className="font-body-md text-body-md text-on-surface-variant font-normal max-w-md text-center md:text-left mt-2">
             We provide clinical-grade, accessible fitness and health calculation tools. Always consult a healthcare professional before making major changes to your routine.
           </p>
@@ -33,7 +43,7 @@ export default function Footer() {
               Sitemap
             </Link>
           </nav>
-          
+
           <div className="font-label-sm text-label-sm text-on-surface-variant text-center md:text-right mt-2 md:mt-0">
             © 2024 FitCalc Directory. Clinical precision for your fitness journey.
           </div>

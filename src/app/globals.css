@@ -102,3 +102,12 @@ body {
   color: var(--color-on-background);
   font-family: var(--font-body-md);
 }
+
+@layer base {
+  .active {
+  @apply text-primary border-b-2 border-primary;
+  }
+  .active-mobile {
+    @apply text-white bg-primary;
+  }
+}
