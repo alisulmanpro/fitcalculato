@@ -1,5 +1,7 @@
 import ZoneCalculator from '@/components/pages/zone'
 
+import Vo2MaxCalculator from '@/components/pages/vo2max'
+
 type ToolPageProps = Promise<{
   params: {
     slug: string
@@ -13,7 +15,8 @@ export default async function ToolPage(
   const { slug } = await params
 
   const tools = {
-    "zone-two-heart-rate-calculator": ZoneCalculator
+    "zone-two-heart-rate-calculator": ZoneCalculator,
+    "vo2-max-calculator": Vo2MaxCalculator
   }
 
   const ToolPage = tools[

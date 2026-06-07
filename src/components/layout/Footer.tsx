@@ -45,7 +45,7 @@ export default function Footer() {
           </nav>
 
           <div className="font-label-sm text-label-sm text-on-surface-variant text-center md:text-right mt-2 md:mt-0">
-            © 2024 FitCalc Directory. Clinical precision for your fitness journey.
+            © {new Date().getFullYear()} FitCalculato. Clinical precision for your fitness journey.
           </div>
         </div>
       </div>
