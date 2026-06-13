@@ -3,12 +3,12 @@
 import { MdTune, MdPsychology } from "react-icons/md";
 
 interface ZoneCalculatorFormProps {
-  age: number;
-  setAge: (val: number) => void;
+  age: number | '';
+  setAge: (val: number | '') => void;
   gender: string;
   setGender: (val: string) => void;
-  restingHR: number;
-  setRestingHR: (val: number) => void;
+  restingHR: number | '';
+  setRestingHR: (val: number | '') => void;
   knownMaxHR: number | '';
   setKnownMaxHR: (val: number | '') => void;
   experience: 'beginner' | 'intermediate' | 'advanced';
@@ -64,7 +64,7 @@ export default function ZoneCalculatorForm({
               id="age"
               type="number"
               value={age || ''}
-              onChange={(e) => setAge(Math.max(18, parseInt(e.target.value) || 18))}
+              onChange={(e) => setAge(e.target.value === '' ? '' : parseInt(e.target.value))}
             />
           </div>
 
@@ -95,7 +95,7 @@ export default function ZoneCalculatorForm({
                 type="number"
                 placeholder="60"
                 value={restingHR || ''}
-                onChange={(e) => setRestingHR(Math.max(0, parseInt(e.target.value) || 0))}
+                onChange={(e) => setRestingHR(e.target.value === '' ? '' : parseInt(e.target.value))}
               />
               <span className="absolute right-4 top-3 text-outline font-label-sm text-label-sm">BPM</span>
             </div>

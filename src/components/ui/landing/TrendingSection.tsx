@@ -22,7 +22,7 @@ export default function TrendingSection() {
           <h3 className="font-headline-md text-headline-md text-on-background mb-3 flex-1">Zone 2 Heart Rate Calculator</h3>
           <p className="font-body-md text-body-md text-on-surface-variant mb-6">Find your precise aerobic training zone for maximum endurance benefits.</p>
           <button className="w-full py-2.5 bg-surface-container border border-outline-variant rounded-lg font-label-md text-label-md text-primary group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors" onClick={() => router.push("zone-two-heart-rate-calculator")}>
-            Use Calculator
+            Find My Zone 2 Range →
           </button>
         </article>
       </div>

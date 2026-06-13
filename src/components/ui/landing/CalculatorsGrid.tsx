@@ -25,6 +25,9 @@ export default function CalculatorsGrid() {
                 <h3 className="font-headline-md text-headline-md text-on-background text-[18px] leading-gutter-desktop">{calc.title}</h3>
               </div>
               <p className="font-body-md text-body-md text-on-surface-variant text-[14px] leading-margin-mobile">{calc.desc}</p>
+              <button className="mt-auto pt-4 w-full py-2.5 bg-surface-container border border-outline-variant rounded-lg font-label-md text-label-md text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-colors">
+                {calc.cta}
+              </button>
             </article>
           );
         })}

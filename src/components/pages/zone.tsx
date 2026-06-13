@@ -12,9 +12,9 @@ import AdPlaceholder from '@/components/ui/ads/AdPlaceholder';
 
 export default function ZoneCalculator() {
 
-    const [age, setAge] = useState(35);
+    const [age, setAge] = useState<number | ''>('');
     const [gender, setGender] = useState('Male');
-    const [restingHR, setRestingHR] = useState(60);
+    const [restingHR, setRestingHR] = useState<number | ''>('');
     const [knownMaxHR, setKnownMaxHR] = useState<number | ''>('');
     const [lthr, setLTHR] = useState<number | ''>('');
     const [vo2max, setVo2max] = useState<number | ''>('');
@@ -29,14 +29,14 @@ export default function ZoneCalculator() {
             return Number(knownMaxHR);
         switch (method) {
             case 'traditional':
-                return 220 - age;
+                return 220 - (Number(age) || 0);
             case 'tanaka':
             case 'karvonen':
-                return Math.round(208 - (0.7 * age));
+                return Math.round(208 - (0.7 * (Number(age) || 0)));
             case 'lthr':
-                return lthr ? Number(lthr) : Math.round(208 - (0.7 * age));
+                return lthr ? Number(lthr) : Math.round(208 - (0.7 * (Number(age) || 0)));
             default:
-                return 220 - age;
+                return 220 - (Number(age) || 0);
         }
     }, [
         age,
@@ -92,10 +92,10 @@ export default function ZoneCalculator() {
         let low;
         let high;
 
-        if (restingHR > 30 && restingHR < calculatedMaxHR && method === "karvonen") {
-            const reserve = calculatedMaxHR - restingHR;
-            low = Math.round(reserve * lowerPct + restingHR);
-            high = Math.round(reserve * upperPct + restingHR);
+        if (restingHR !== '' && Number(restingHR) > 30 && Number(restingHR) < calculatedMaxHR && method === "karvonen") {
+            const reserve = calculatedMaxHR - Number(restingHR);
+            low = Math.round(reserve * lowerPct + Number(restingHR));
+            high = Math.round(reserve * upperPct + Number(restingHR));
         } else {
             low = Math.round(calculatedMaxHR * lowerPct);
             high = Math.round(calculatedMaxHR * upperPct);
@@ -141,6 +141,8 @@ export default function ZoneCalculator() {
 
     };
 
+    const hasValidInput = age !== '' || knownMaxHR !== '';
+
     return (
 
         <main className="grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-gutter-mobile md:gap-gutter-desktop">
@@ -148,10 +150,6 @@ export default function ZoneCalculator() {
             <div className="md:col-span-9 flex flex-col gap-8 md:gap-12">
 
                 <ToolHero />
-
-                <AdPlaceholder
-                    format="leaderboard"
-                />
 
                 <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
@@ -182,33 +180,40 @@ export default function ZoneCalculator() {
 
                     />
 
-                    <ResultsDisplay
-                        minZ2={zones.z2[0]}
-                        maxZ2={zones.z2[1]}
-                        restingHR={restingHR}
-                        maxHR={calculatedMaxHR}
-                        calculationMethod={method}
-                    />
+                    {hasValidInput ? (
+                        <ResultsDisplay
+                            minZ2={zones.z2[0]}
+                            maxZ2={zones.z2[1]}
+                            restingHR={Number(restingHR) || 0}
+                            maxHR={calculatedMaxHR}
+                            calculationMethod={method}
+                        />
+                    ) : (
+                        <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col items-center justify-center text-center text-on-surface-variant min-h-[300px]">
+                            <div className="w-16 h-16 bg-surface-variant rounded-full flex items-center justify-center mb-4">
+                                <span className="text-2xl">❤️</span>
+                            </div>
+                            <h3 className="font-headline-sm text-headline-sm text-on-surface mb-2">Awaiting Input</h3>
+                            <p className="font-body-md text-body-md max-w-xs">Please enter your Age or a Known Max HR to calculate your training zones.</p>
+                        </div>
+                    )}
 
                 </section>
 
-                <AdPlaceholder
-                    format="native"
-                />
-
-                <ZoneTable
-                    zones={zones}
-                    intensityRanges={
-                        intensityRanges
-                    }
-                />
+                {hasValidInput && (
+                    <ZoneTable
+                        zones={zones}
+                        intensityRanges={
+                            intensityRanges
+                        }
+                    />
+                )}
 
                 <EducationalContent />
                 <FAQSection />
 
             </div>
 
-            <ToolSidebar />
 
         </main>
 

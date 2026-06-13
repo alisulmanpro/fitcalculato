@@ -13,7 +13,7 @@ export default function Footer() {
           >
             <Image
               src="/logo.svg"
-              alt="FitCalc Directory"
+              alt="FitCalculato logo"
               width={40}
               height={40}
               className="shrink-0"
@@ -21,7 +21,7 @@ export default function Footer() {
             FitCalculato
           </Link>
           <p className="font-body-md text-body-md text-on-surface-variant font-normal max-w-md text-center md:text-left mt-2">
-            We provide clinical-grade, accessible fitness and health calculation tools. Always consult a healthcare professional before making major changes to your routine.
+            We provide free, science-backed fitness and health calculators built on current research. Always consult a healthcare professional before making changes to your routine.
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export default function Footer() {
           </nav>
 
           <div className="font-label-sm text-label-sm text-on-surface-variant text-center md:text-right mt-2 md:mt-0">
-            © {new Date().getFullYear()} FitCalculato. Clinical precision for your fitness journey.
+            © {new Date().getFullYear()} FitCalculato. Science-backed precision for your fitness journey.
           </div>
         </div>
       </div>

@@ -133,7 +133,7 @@ export default function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-4">
-            <button 
+            <button
               className="hidden md:flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant hover:text-primary"
               onClick={() => setIsSearchOpen(true)}
             >
@@ -183,9 +183,9 @@ export default function Header() {
           </div>
         </div>
       </header>
-      <SearchModal 
-        isOpen={isSearchOpen} 
-        onClose={() => setIsSearchOpen(false)} 
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
       />
     </>
   );
