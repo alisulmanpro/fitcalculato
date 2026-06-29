@@ -14,7 +14,7 @@ export default function Vo2MaxCalculator() {
             <span className="font-label-sm text-label-sm uppercase tracking-wider text-primary">Fitness Calculators</span>
           </div>
           <h1 className="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-background">
-            Free VO2 Max & Fitness Age Calculator
+            Free VO2 Max Calculator: Find Out How Fit You Really Are
           </h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant text-justify">
             Discover the true biological age of your cardiovascular system and see how it compares to your chronological age. Use our calculator below to benchmark your fitness level and unlock actionable insights to improve your overall health and longevity.
@@ -26,26 +26,112 @@ export default function Vo2MaxCalculator() {
         {/* Article Content */}
         <article className="flex flex-col gap-8 text-on-surface-variant font-body-md text-body-md mt-4">
 
+          {/* Section 0 - Introduction */}
           <div className="flex flex-col gap-4">
-            <h2 className="font-headline-lg text-headline-lg text-on-background">What is VO2 Max and Why Does It Matter?</h2>
-            <p className="font-bold text-on-background text-justify">
-              VO2 max (maximal oxygen uptake) is the maximum amount of oxygen your body can absorb, transport, and use during intense exercise. It is widely considered the ultimate indicator of cardiovascular fitness and aerobic endurance.
+            <h2 className="font-headline-lg text-headline-lg text-on-background">Introduction:</h2>
+            <p className="text-justify">
+              You just finished a run. Your heart is pounding. Legs are burning. And your smartwatch flashes a number: VO2 Max 38.
             </p>
-            <p className='text-justify'>
-              Your VO2 max reflects how efficiently your heart, lungs, and muscles work together. When you breathe in, your lungs transfer oxygen to your bloodstream. Your heart then pumps this oxygen-rich blood to your working muscles, which extract the oxygen to produce energy. A higher VO2 max means your body is exceptionally good at this process, allowing you to sustain physical effort longer and at a higher intensity.
+            <p className="text-justify">
+              Is that good? Should you panic? Should you celebrate?
             </p>
-            <p className='text-justify'>
-              But why does it matter for the average person, not just elite athletes? Cardiovascular endurance is closely tied to your overall health and longevity. Numerous studies have shown that a high maximal oxygen uptake is associated with a lower risk of chronic conditions, including heart disease, type 2 diabetes, and certain cancers. In fact, improving your VO2 max is one of the most effective ways to increase your lifespan and healthspan—the number of years you live in good health, free from chronic disease and disability.
+            <p className="text-justify">
+              Most people stare at that number and have no idea what to do with it. This guide fixes that.
+            </p>
+            <p className="text-justify">
+              We break down exactly what VO2 max means, how to calculate VO2 max accurately, what a good VO2 max score looks like for your age and gender, and most importantly, how to actually improve it.
             </p>
           </div>
 
+          {/* Section 1 — What Is VO2 Max */}
           <div className="flex flex-col gap-4">
-            <h2 className="font-headline-lg text-headline-lg text-on-background">VO2 Max Average Value Tables for Men and Women</h2>
-            <p className='text-justify'>
-              Understanding where you stand requires comparing your score to established norms. VO2 max naturally declines with age, dropping by roughly 10% per decade after the age of 30, though regular cardiovascular exercise can significantly slow this decline. Below are the standard reference values measured in milliliters of oxygen per kilogram of body weight per minute (mL/kg/min).
+            <h2 className="font-headline-lg text-headline-lg text-on-background">What Is VO2 Max?</h2>
+            <p className="font-bold text-on-background text-justify">
+              VO2 max, short for <em>maximal oxygen uptake</em>, is the maximum amount of oxygen your body can use per minute during intense exercise. It is measured in milliliters of oxygen per kilogram of body weight per minute (ml/kg/min).
+            </p>
+            <p className="text-justify">
+              Think of it as the size of your aerobic engine. A bigger engine means more fuel burned, more power produced, and better endurance across any sport or physical activity.
+            </p>
+            <p className="text-justify">
+              VO2 max is not just for athletes. According to a landmark 2018 study published in <em>JAMA Network Open</em>, researchers at the Cleveland Clinic followed over 120,000 patients and found that cardiorespiratory fitness, measured directly by VO2 max, was one of the strongest predictors of all-cause mortality across all fitness levels. In plain English: the higher your VO2 max, the lower your risk of dying early from almost any cause.
+            </p>
+            <p className="text-justify">
+              The American Heart Association went so far as to call cardiorespiratory fitness a <em>clinical vital sign</em> in 2016. That puts it right up there with blood pressure, cholesterol, and blood sugar. Your fitness number is that important.
+            </p>
+          </div>
+
+          {/* Section 2 — How to Calculate VO2 Max */}
+          <div className="flex flex-col gap-4">
+            <h2 className="font-headline-lg text-headline-lg text-on-background">How to Calculate VO2 Max?</h2>
+            <p className="text-justify">
+              The gold standard is a graded exercise test in a sports science lab, where you run on a treadmill at increasing speeds while wearing a metabolic mask that directly measures oxygen and carbon dioxide exchange. Accurate? Yes. Affordable? Absolutely not.
+            </p>
+            <p className="text-justify">
+              For most people, a <strong>VO2 max calculator</strong> using validated field tests is the practical option. Here are the four most commonly used methods:
             </p>
 
-            <h3 className="font-headline-md text-headline-md text-on-background mt-4">VO2 Max Norms for Men (mL/kg/min)</h3>
+            <h3 className="font-headline-md text-headline-md text-on-background mt-4">1. The Cooper 12-Minute Run Test</h3>
+            <p className="text-justify">
+              Developed by Dr. Kenneth Cooper for the U.S. military, this is one of the most widely used aerobic fitness calculators worldwide. Run as far as you can in exactly 12 minutes on a flat surface.
+            </p>
+            <p className="text-justify">
+              <strong>Formula:</strong> VO2 Max = (Distance in meters &minus; 504.9) &divide; 44.73
+            </p>
+            <p className="text-justify">
+              Example: If you cover 2,400 meters, your estimated VO2 max is approximately 42.8 ml/kg/min.
+            </p>
+
+            <h3 className="font-headline-md text-headline-md text-on-background mt-4">2. The Rockport 1-Mile Walk Test</h3>
+            <p className="text-justify">
+              Walk one mile as fast as you can, and record your time and heart rate immediately after. This VO2 max walking calculator works well for beginners, older adults, and anyone who cannot safely run.
+            </p>
+
+            <h3 className="font-headline-md text-headline-md text-on-background mt-4">3. Heart Rate Method</h3>
+            <p className="text-justify">
+              No running required. This method uses the ratio between your maximum and resting heart rates. Measure your resting heart rate first thing in the morning before getting out of bed, for three consecutive days, then average the results.
+            </p>
+            <p className="text-justify">
+              <strong>Formula (Uth et al., 2004):</strong> VO2 Max = 15 &times; (HRmax &divide; HRrest)
+            </p>
+            <p className="text-justify">
+              If your max heart rate is 185 and resting is 55, your estimated VO2 max is roughly 50.5 ml/kg/min.
+            </p>
+
+            <h3 className="font-headline-md text-headline-md text-on-background mt-4">4. Race Result Method (Most Accurate for Runners)</h3>
+            <p className="text-justify">
+              If you have a recent race time from the past 4&ndash;6 weeks, this is the most accurate non-lab approach. It uses Dr. Jack Daniels&apos; VDOT formula, the same system used by competitive runners worldwide. A 10K finishing time gives you a very reliable VO2 max estimate.
+            </p>
+          </div>
+
+          {/* Section 3 — How Accurate Is a VO2 Max Calculator */}
+          <div className="flex flex-col gap-4">
+            <h2 className="font-headline-lg text-headline-lg text-on-background">How Accurate Is a VO2 Max Calculator?</h2>
+            <p className="text-justify">
+              A race-based VO2 max running calculator is significantly more accurate than wearable devices, because it is based on actual maximal-effort data.
+            </p>
+            <p className="text-justify">
+              Smartwatches? The data is less flattering. A 2025 validation study published in <em>PLOS One</em> compared Apple Watch VO2 max estimates to laboratory treadmill testing in 30 participants. The Apple Watch underestimated VO2 max by an average of 6 ml/kg/min, with a mean absolute percentage error of 13&ndash;16%. A 2024 study in <em>JMIR Biomedical Engineering</em> found Apple Watch Series 7 had poor reliability (ICC = 0.47) with 15.8% error versus lab measurements.
+            </p>
+            <p className="text-justify">
+              Garmin devices tend to run slightly higher than the Apple Watch for the same individual, but show similar variability at the extremes.
+            </p>
+            <p className="text-justify">
+              The takeaway: <strong>use your wearable to track trends over time, not as an absolute benchmark.</strong> If your VO2 max estimator shows steady improvement over three months, that matters more than whether the specific number is exactly right.
+            </p>
+          </div>
+
+          {/* Section 4 — VO2 Max Score Chart */}
+          <div className="flex flex-col gap-4">
+            <h2 className="font-headline-lg text-headline-lg text-on-background">VO2 Max Score Chart: What Is a Good VO2 Max?</h2>
+            <p className="text-justify">
+              This is the question everyone actually wants answered. And the correct answer requires knowing your age and sex, because both heavily influence your VO2 max score.
+            </p>
+            <p className="text-justify">
+              VO2 max declines by roughly 10% per decade after age 30 in sedentary adults. Women&apos;s values are typically 10&ndash;15% lower than men&apos;s due to physiological differences in hemoglobin concentration, heart size, and body composition, all of which affect oxygen delivery to muscles. That is not a fitness gap; it is basic biology.
+            </p>
+
+            <h3 className="font-headline-md text-headline-md text-on-background mt-4">VO2 Max by Age &mdash; Men (ml/kg/min)</h3>
+            <p className="text-justify text-sm text-on-surface-variant">Based on ACSM fitness classifications and Cooper Institute norms:</p>
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
@@ -61,49 +147,41 @@ export default function Vo2MaxCalculator() {
                 <tbody>
                   <tr className="border-b border-outline-variant">
                     <td className="p-3">20&ndash;29</td>
-                    <td className="p-3">&lt; 38</td>
-                    <td className="p-3">38&ndash;43</td>
-                    <td className="p-3">44&ndash;51</td>
-                    <td className="p-3">52&ndash;56</td>
-                    <td className="p-3">&gt; 56</td>
+                    <td className="p-3">&lt; 33</td>
+                    <td className="p-3">33&ndash;36</td>
+                    <td className="p-3">37&ndash;41</td>
+                    <td className="p-3">42&ndash;46</td>
+                    <td className="p-3">&gt; 46</td>
                   </tr>
                   <tr className="border-b border-outline-variant">
                     <td className="p-3">30&ndash;39</td>
-                    <td className="p-3">&lt; 34</td>
-                    <td className="p-3">34&ndash;39</td>
-                    <td className="p-3">40&ndash;47</td>
-                    <td className="p-3">48&ndash;51</td>
-                    <td className="p-3">&gt; 51</td>
+                    <td className="p-3">&lt; 31</td>
+                    <td className="p-3">31&ndash;35</td>
+                    <td className="p-3">36&ndash;40</td>
+                    <td className="p-3">41&ndash;44</td>
+                    <td className="p-3">&gt; 44</td>
                   </tr>
                   <tr className="border-b border-outline-variant">
                     <td className="p-3">40&ndash;49</td>
-                    <td className="p-3">&lt; 30</td>
-                    <td className="p-3">30&ndash;35</td>
-                    <td className="p-3">36&ndash;43</td>
-                    <td className="p-3">44&ndash;47</td>
-                    <td className="p-3">&gt; 47</td>
+                    <td className="p-3">&lt; 28</td>
+                    <td className="p-3">28&ndash;32</td>
+                    <td className="p-3">33&ndash;36</td>
+                    <td className="p-3">37&ndash;41</td>
+                    <td className="p-3">&gt; 41</td>
                   </tr>
                   <tr className="border-b border-outline-variant">
                     <td className="p-3">50&ndash;59</td>
                     <td className="p-3">&lt; 25</td>
-                    <td className="p-3">25&ndash;31</td>
-                    <td className="p-3">32&ndash;39</td>
-                    <td className="p-3">40&ndash;43</td>
-                    <td className="p-3">&gt; 43</td>
+                    <td className="p-3">25&ndash;28</td>
+                    <td className="p-3">29&ndash;33</td>
+                    <td className="p-3">34&ndash;38</td>
+                    <td className="p-3">&gt; 38</td>
                   </tr>
                   <tr className="border-b border-outline-variant">
                     <td className="p-3">60&ndash;69</td>
-                    <td className="p-3">&lt; 21</td>
-                    <td className="p-3">21&ndash;26</td>
-                    <td className="p-3">27&ndash;35</td>
-                    <td className="p-3">36&ndash;39</td>
-                    <td className="p-3">&gt; 39</td>
-                  </tr>
-                  <tr className="border-b border-outline-variant">
-                    <td className="p-3">70+</td>
-                    <td className="p-3">&lt; 18</td>
-                    <td className="p-3">18&ndash;22</td>
-                    <td className="p-3">23&ndash;30</td>
+                    <td className="p-3">&lt; 22</td>
+                    <td className="p-3">22&ndash;25</td>
+                    <td className="p-3">26&ndash;30</td>
                     <td className="p-3">31&ndash;35</td>
                     <td className="p-3">&gt; 35</td>
                   </tr>
@@ -111,7 +189,7 @@ export default function Vo2MaxCalculator() {
               </table>
             </div>
 
-            <h3 className="font-headline-md text-headline-md text-on-background mt-6">VO2 Max Norms for Women (mL/kg/min)</h3>
+            <h3 className="font-headline-md text-headline-md text-on-background mt-6">VO2 Max by Age &mdash; Women (ml/kg/min)</h3>
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
@@ -127,46 +205,38 @@ export default function Vo2MaxCalculator() {
                 <tbody>
                   <tr className="border-b border-outline-variant">
                     <td className="p-3">20&ndash;29</td>
-                    <td className="p-3">&lt; 32</td>
+                    <td className="p-3">&lt; 27</td>
+                    <td className="p-3">27&ndash;31</td>
                     <td className="p-3">32&ndash;36</td>
-                    <td className="p-3">37&ndash;43</td>
-                    <td className="p-3">44&ndash;48</td>
-                    <td className="p-3">&gt; 48</td>
-                  </tr>
-                  <tr className="border-b border-outline-variant">
-                    <td className="p-3">30&ndash;39</td>
-                    <td className="p-3">&lt; 30</td>
-                    <td className="p-3">30&ndash;33</td>
-                    <td className="p-3">34&ndash;39</td>
-                    <td className="p-3">40&ndash;44</td>
-                    <td className="p-3">&gt; 44</td>
-                  </tr>
-                  <tr className="border-b border-outline-variant">
-                    <td className="p-3">40&ndash;49</td>
-                    <td className="p-3">&lt; 26</td>
-                    <td className="p-3">26&ndash;30</td>
-                    <td className="p-3">31&ndash;36</td>
                     <td className="p-3">37&ndash;41</td>
                     <td className="p-3">&gt; 41</td>
                   </tr>
                   <tr className="border-b border-outline-variant">
-                    <td className="p-3">50&ndash;59</td>
-                    <td className="p-3">&lt; 22</td>
-                    <td className="p-3">22&ndash;26</td>
-                    <td className="p-3">27&ndash;31</td>
-                    <td className="p-3">32&ndash;36</td>
+                    <td className="p-3">30&ndash;39</td>
+                    <td className="p-3">&lt; 25</td>
+                    <td className="p-3">25&ndash;28</td>
+                    <td className="p-3">29&ndash;32</td>
+                    <td className="p-3">33&ndash;36</td>
                     <td className="p-3">&gt; 36</td>
                   </tr>
                   <tr className="border-b border-outline-variant">
-                    <td className="p-3">60&ndash;69</td>
+                    <td className="p-3">40&ndash;49</td>
+                    <td className="p-3">&lt; 22</td>
+                    <td className="p-3">22&ndash;25</td>
+                    <td className="p-3">26&ndash;29</td>
+                    <td className="p-3">30&ndash;34</td>
+                    <td className="p-3">&gt; 34</td>
+                  </tr>
+                  <tr className="border-b border-outline-variant">
+                    <td className="p-3">50&ndash;59</td>
                     <td className="p-3">&lt; 20</td>
                     <td className="p-3">20&ndash;23</td>
-                    <td className="p-3">24&ndash;28</td>
-                    <td className="p-3">29&ndash;32</td>
+                    <td className="p-3">24&ndash;27</td>
+                    <td className="p-3">28&ndash;32</td>
                     <td className="p-3">&gt; 32</td>
                   </tr>
                   <tr className="border-b border-outline-variant">
-                    <td className="p-3">70+</td>
+                    <td className="p-3">60&ndash;69</td>
                     <td className="p-3">&lt; 18</td>
                     <td className="p-3">18&ndash;21</td>
                     <td className="p-3">22&ndash;25</td>
@@ -177,53 +247,134 @@ export default function Vo2MaxCalculator() {
               </table>
             </div>
             <p className="text-sm mt-2 text-on-surface-variant border-l-5 border-blue-700 p-3 bg-blue-200">
-              <b>Note:</b> Women typically have naturally lower VO2 max scores than men due to differences in body composition, lung size, and blood volume.
+              <b>Note:</b> Women&apos;s VO2 max values are typically 10&ndash;15% lower than men&apos;s due to physiological differences in hemoglobin concentration, heart size, and body composition &mdash; not a fitness gap, but basic biology.
+            </p>
+            <p className="text-justify">
+              So if you are a 35-year-old woman and your VO2 max calculator shows 33, you are in the Excellent category for your age group. That is genuinely impressive, top 25% of your demographic. If it shows 24, you are in Fair territory, with real room to grow.
+            </p>
+            <p className="text-justify">
+              For context on the elite end: elite male endurance athletes typically score 70&ndash;85 ml/kg/min. The highest VO2 max ever recorded was <strong>97.5 ml/kg/min</strong>, set by Norwegian cross-country skier Oskar Svendsen at age 18. Recreational fitness and professional sport operate in entirely different leagues.
             </p>
           </div>
 
+          {/* Section 5 — Men vs Women */}
           <div className="flex flex-col gap-4">
-            <h2 className="font-headline-lg text-headline-lg text-on-background">What is Fitness Age and How is it Calculated?</h2>
+            <h2 className="font-headline-lg text-headline-lg text-on-background">VO2 Max for Men vs. Women: Why the Numbers Differ</h2>
             <p className="font-bold text-on-background text-justify">
-              Fitness Age is a biological age estimate based entirely on your cardiovascular health. It compares your VO2 max to average values across different age brackets, revealing whether your heart and lungs are functionally younger or older than your actual chronological age.
+              Women asking <em>&quot;What is a good VO2 max for women?&quot;</em> often see the numbers and feel discouraged. Please do not be.
             </p>
-            <p className='text-justify'>
-              Imagine you are a 45-year-old male with a measured VO2 max of 49 mL/kg/min. Looking at the normative data, a score of 49 places you in the "Excellent" category for 30 to 39-year-olds. Consequently, your estimated fitness age would be around 35. You have effectively shaved a decade off your biological age simply by maintaining superb aerobic capacity. Conversely, a sedentary 30-year-old with poor cardiovascular health might have a fitness age of 50.
+            <p className="text-justify">
+              The gap between male and female VO2 max norms, typically 15&ndash;25%, is driven by three physiological factors:
             </p>
-            <p className='text-justify'>
-              While precise measurement requires a laboratory treadmill test with an oxygen mask, sports scientists have developed reliable estimation methods for everyday use. Two of the most accessible and popular models include:
+            <p className="text-justify">
+              <strong>Hemoglobin.</strong> Women have roughly 12&ndash;16% lower hemoglobin levels than men, which means less oxygen-carrying capacity per unit of blood reaching the muscles.
+            </p>
+            <p className="text-justify">
+              <strong>Heart size.</strong> Women&apos;s hearts are, on average, smaller, resulting in lower stroke volume. The heart must beat faster to achieve the same cardiac output, which is less efficient at high intensities.
+            </p>
+            <p className="text-justify">
+              <strong>Body composition.</strong> Women naturally carry a higher percentage of essential body fat. Since VO2 max is expressed relative to total body weight, a higher proportion of metabolically inactive tissue lowers the number mathematically, not physiologically.
+            </p>
+            <p className="text-justify">
+              None of these factors changes the health benefits. A 2024 study published in <em>Mayo Clinic Proceedings</em> found that females with higher estimated cardiorespiratory fitness showed a lower risk of myocardial infarction, and the protective effect was actually stronger for women than for men at comparable fitness levels.
+            </p>
+          </div>
+
+          {/* Section 6 — Garmin and Apple Watch */}
+          <div className="flex flex-col gap-4">
+            <h2 className="font-headline-lg text-headline-lg text-on-background">How Garmin and Apple Watch Calculate VO2 Max</h2>
+            <p className="text-justify">
+              You have probably seen a VO2 max number pop up on your Garmin or Apple Watch after a run and wondered: how did it get there?
+            </p>
+            <p className="text-justify">
+              Both devices use a submaximal estimation approach. They do not directly measure oxygen; instead, they use the relationship between your heart rate and your pace or power output during exercise to predict your aerobic capacity.
+            </p>
+            <p className="text-justify">
+              Garmin uses GPS speed, heart rate data, and its proprietary FirstBeat algorithm to generate its estimate. The more outdoor runs you log with consistent heart rate data, the more stable the estimate becomes.
+            </p>
+            <p className="text-justify">
+              Apple Watch uses outdoor walks, runs, and hikes with GPS and heart rate together. It will not update your cardio fitness estimate from indoor treadmill runs or cycling sessions, only GPS-tracked outdoor movement counts.
+            </p>
+            <p className="text-justify">
+              Both are useful for tracking your trend over weeks and months. One spike or dip means nothing. A consistent upward trend over three months? That means your training is working.
+            </p>
+          </div>
+
+          {/* Section 7 — How to Improve VO2 Max */}
+          <div className="flex flex-col gap-4 bg-surface-container rounded-xl p-6 border border-outline-variant">
+            <h2 className="font-headline-lg text-[24px] text-on-background">How to Improve Your VO2 Max?</h2>
+            <p className="text-justify">
+              Here is where most articles give you a generic &quot;do HIIT&quot; answer. We will be more specific, because the science on this is actually nuanced and interesting.
+            </p>
+
+            <h3 className="font-headline-md text-headline-md text-on-background mt-2">Zone 2 Training &mdash; The Foundation</h3>
+            <p className="text-justify">
+              Zone 2 training means working at roughly 60&ndash;70% of your maximum heart rate, a pace where you can hold a conversation but are clearly working. This is the aerobic base.
+            </p>
+            <p className="text-justify">
+              Research on elite endurance athletes consistently shows that 75&ndash;80% of training volume at this intensity is what drives long-term cardiovascular fitness. It builds mitochondrial density, the actual cellular machinery that processes oxygen, which forms the foundation of a high VO2 max.
+            </p>
+            <p className="text-justify">
+              Aim for 150&ndash;180 minutes of Zone 2 per week to see meaningful change within 8&ndash;12 weeks.
+            </p>
+
+            <h3 className="font-headline-md text-headline-md text-on-background mt-2">VO2 Max Intervals</h3>
+            <p className="text-justify">
+              These are efforts at roughly 90&ndash;100% of your maximum heart rate, lasting 3&ndash;8 minutes each. Research from NTNU (Norwegian University of Science and Technology) and other institutions shows untrained individuals can improve their VO2 max by 15&ndash;20% within a 20-week structured training program.
+            </p>
+            <p className="text-justify">
+              A simple protocol: 4 &times; 4-minute hard efforts at a pace that genuinely challenges you, with 3&ndash;4 minutes of easy jogging between each interval. Twice a week is enough. More is not always better.
+            </p>
+
+            <h3 className="font-headline-md text-headline-md text-on-background mt-2">Consistency Over Intensity</h3>
+            <p className="text-justify">
+              Both matter. But consistency wins in the long term. The biggest predictor of VO2 max improvement over six months is how many weeks in a row you train, not how hard any single session was.
+            </p>
+
+            <h3 className="font-headline-md text-headline-md text-on-background mt-2">What Not to Do</h3>
+            <p className="text-justify">
+              Stop chasing your smartwatch number on a daily basis. Heat, poor sleep, dehydration, and even a noisy GPS signal can drop your wearable&apos;s estimate by 3&ndash;5 points in a single day. Trust the 90-day trend, not the Tuesday morning reading.
+            </p>
+          </div>
+
+          {/* Section 8 — Using the Calculator Step-by-Step */}
+          <div className="flex flex-col gap-4">
+            <h2 className="font-headline-lg text-headline-lg text-on-background">Using a VO2 Max Calculator: Step-by-Step</h2>
+            <p className="text-justify">
+              Our cardiovascular fitness calculator gives you an estimated VO2 max score using the method that best matches what you have available:
             </p>
             <ul className="list-disc pl-5 flex flex-col gap-3 mt-2 text-justify">
-              <li>
-                <strong>The Uth-Sørensen-Overgaard-Pedersen Estimation:</strong> This straightforward mathematical formula calculates your VO2 max using your resting heart rate (the lowest your heart rate drops while at complete rest) and your maximum heart rate. The formula is: <em>VO2 Max = 15.3 × (Maximum Heart Rate ÷ Resting Heart Rate)</em>. By dividing your max effort by your resting baseline, it accurately gauges your cardiovascular efficiency.
-              </li>
-              <li>
-                <strong>The 1.5-Mile Run Test:</strong> Popularized by the Cooper Institute, this field test requires you to run 1.5 miles as fast as you safely can. The time it takes to complete the distance is then plugged into a standard formula to estimate your maximal oxygen uptake. Faster times indicate better cardiovascular delivery and, consequently, a younger fitness age.
-              </li>
+              <li><strong>Recent race result</strong> &rarr; use the VDOT / Jack Daniels race time method.</li>
+              <li><strong>Heart rate data only</strong> &rarr; use the resting / max heart rate formula.</li>
+              <li><strong>Walking test</strong> &rarr; use the Rockport 1-Mile Walk approach.</li>
+              <li><strong>12-minute run</strong> &rarr; use the Cooper Test formula.</li>
             </ul>
+            <p className="text-justify">
+              After you get your score, compare it to the VO2 max chart above for your age and gender. Use that number as your baseline. Test again in 8&ndash;12 weeks. Watch the trend.
+            </p>
+            <p className="text-justify">
+              That is the entire system. Simple, honest, and backed by exercise physiology research validated over decades.
+            </p>
           </div>
 
-          <div className="flex flex-col gap-4 bg-surface-container rounded-xl p-6 border border-outline-variant">
-            <h2 className="font-headline-lg text-[24px] text-on-background">Actionable Ways to Improve Your VO2 Max</h2>
-            <p className='text-justify'>
-              If your calculated fitness age is higher than you would like, do not worry. Your aerobic capacity is highly adaptable. With targeted training, you can significantly lower your fitness age over time. Here are five scientifically backed methods to improve your cardiovascular endurance:
+          {/* Section 9 — The Bottom Line */}
+          <div className="flex flex-col gap-4">
+            <h2 className="font-headline-lg text-headline-lg text-on-background">The Bottom Line</h2>
+            <p className="font-bold text-on-background text-justify">
+              Your VO2 max is one of the most useful numbers in health and fitness &mdash; and one of the most misunderstood.
             </p>
-            <ul className="list-disc pl-5 flex flex-col gap-4 mt-2 text-justify">
-              <li>
-                <strong>Incorporate High-Intensity Interval Training (HIIT):</strong> Pushing your heart rate near its maximum limit is one of the most effective ways to force your body to adapt. Try intervals of 1 to 4 minutes of intense effort (around 90% of your max heart rate) followed by an equal amount of active recovery.
-              </li>
-              <li>
-                <strong>Build Your Aerobic Base with Zone 2 Training:</strong> You cannot sprint all the time. Spending 80% of your workout time in Zone 2—a steady, conversational pace—builds mitochondrial density and capillary networks in your muscles, creating the foundation necessary for intense efforts.
-              </li>
-              <li>
-                <strong>Increase Your Total Training Volume:</strong> Frequency and duration matter. Gradually increasing the total amount of time you spend doing cardiovascular exercises like running, cycling, or swimming will naturally force your heart and lungs to become more efficient.
-              </li>
-              <li>
-                <strong>Lose Excess Body Fat:</strong> Because VO2 max is measured relative to your body weight (mL per kilogram), simply losing excess fat mass will automatically increase your score, even if your absolute oxygen consumption remains exactly the same.
-              </li>
-              <li>
-                <strong>Maintain Unshakable Consistency:</strong> Cardiovascular adaptations take time. You will see the most significant reductions in your fitness age after several months of consistent, well-structured training rather than sporadic bursts of intense exercise.
-              </li>
-            </ul>
+            <p className="text-justify">
+              It is not just a metric for serious athletes. It predicts how long you live, how well your heart functions, and how much energy you have on an ordinary Tuesday. Getting it above average for your age is one of the highest-leverage health decisions available to you.
+            </p>
+            <p className="text-justify">
+              Use our VO2 max calculator to find your baseline. Compare it against the VO2 max chart for your age and sex. Then train consistently with the methods above, and measure again in 10 weeks.
+            </p>
+            <p className="text-justify">
+              The number will go up. Your body will feel the difference long before the calculator confirms it.
+            </p>
+            <p className="text-sm mt-2 text-on-surface-variant border-l-5 border-blue-700 p-3 bg-blue-200">
+              <b>Disclaimer:</b> This article is for educational purposes only and does not constitute medical advice. Consult a healthcare professional before starting a new exercise program, particularly if you have existing cardiovascular conditions.
+            </p>
           </div>
 
           <FAQAccordion />

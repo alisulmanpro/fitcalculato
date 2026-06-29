@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Dynamic calculator tool pages
   const toolRoutes = [
-    '/zone-two-heart-rate-calculator',
+    '/zone-2-heart-rate-calculator',
     '/vo2-max-calculator',
   ].map((route) => ({
     url: `${baseUrl}${route}`,

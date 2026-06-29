@@ -14,14 +14,14 @@ export const calculators: Calculator[] = [
     icon: 'zone', 
     title: 'Zone 2 Heart Rate Calculator', 
     desc: 'Find your precise aerobic training zone for maximum endurance benefits.', 
-    path: "/zone-two-heart-rate-calculator",
+    path: "calculators/zone-2-heart-rate-calculator",
     cta: "Find My Zone 2 Range →"
   },
   {
     icon: 'vo2max',
-    title: 'VO2 Max & Fitness Age',
+    title: 'VO2 Max Calculator',
     desc: 'Calculate your VO2 max and discover your true biological fitness age.',
-    path: '/vo2-max-calculator',
+    path: 'calculators/vo2-max-calculator',
     cta: "Calculate My VO2 Max →"
   }
 ];
