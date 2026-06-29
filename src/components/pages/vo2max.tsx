@@ -2,6 +2,8 @@ import React from 'react';
 import Vo2MaxCalculatorForm from '@/components/ui/tool/Vo2MaxCalculatorForm';
 import FAQAccordion from '@/components/ui/tool/FAQAccordion';
 import ContactForm from '@/components/ui/tool/ContactForm';
+import Image from "next/image";
+import Link from 'next/link';
 
 export default function Vo2MaxCalculator() {
   return (
@@ -16,6 +18,11 @@ export default function Vo2MaxCalculator() {
           <h1 className="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-background">
             Free VO2 Max Calculator: Find Out How Fit You Really Are
           </h1>
+          <Image
+            src="/Running.jpg"
+            alt="VO2 Max Calculator for running"
+            width={1200}
+            height={600} />
           <p className="font-body-lg text-body-lg text-on-surface-variant text-justify">
             Discover the true biological age of your cardiovascular system and see how it compares to your chronological age. Use our calculator below to benchmark your fitness level and unlock actionable insights to improve your overall health and longevity.
           </p>
@@ -46,17 +53,21 @@ export default function Vo2MaxCalculator() {
           {/* Section 1 — What Is VO2 Max */}
           <div className="flex flex-col gap-4">
             <h2 className="font-headline-lg text-headline-lg text-on-background">What Is VO2 Max?</h2>
-            <p className="font-bold text-on-background text-justify">
-              VO2 max, short for <em>maximal oxygen uptake</em>, is the maximum amount of oxygen your body can use per minute during intense exercise. It is measured in milliliters of oxygen per kilogram of body weight per minute (ml/kg/min).
+            <p className=" text-on-background text-justify">
+              VO2 max, short for <em>maximal oxygen uptake</em>, is <strong>the maximum amount of oxygen your body can use per minute during intense exercise. It is measured in milliliters of oxygen per kilogram of body weight per minute (ml/kg/min).</strong>
             </p>
             <p className="text-justify">
               Think of it as the size of your aerobic engine. A bigger engine means more fuel burned, more power produced, and better endurance across any sport or physical activity.
             </p>
             <p className="text-justify">
-              VO2 max is not just for athletes. According to a landmark 2018 study published in <em>JAMA Network Open</em>, researchers at the Cleveland Clinic followed over 120,000 patients and found that cardiorespiratory fitness, measured directly by VO2 max, was one of the strongest predictors of all-cause mortality across all fitness levels. In plain English: the higher your VO2 max, the lower your risk of dying early from almost any cause.
+              VO2 max is not just for athletes. According to a <Link href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2716993" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+            <strong>landmark 2018 study published in <em>JAMA Network Open</em>,</strong>
+          </Link> researchers at the Cleveland Clinic followed over <strong>120,000 patients</strong> and found that cardiorespiratory fitness, measured directly by VO2 max, was one of the strongest predictors of all-cause mortality across all fitness levels. In plain English: the higher your VO2 max, the lower your risk of dying early from almost any cause.
             </p>
             <p className="text-justify">
-              The American Heart Association went so far as to call cardiorespiratory fitness a <em>clinical vital sign</em> in 2016. That puts it right up there with blood pressure, cholesterol, and blood sugar. Your fitness number is that important.
+              The <Link href="https://www.heart.org/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+            <strong>American Heart Association</strong>
+          </Link> went so far as to call cardiorespiratory fitness a <em>clinical vital sign</em> in 2016. That puts it right up there with blood pressure, cholesterol, and blood sugar. Your fitness number is that important.
             </p>
           </div>
 
@@ -110,13 +121,17 @@ export default function Vo2MaxCalculator() {
               A race-based VO2 max running calculator is significantly more accurate than wearable devices, because it is based on actual maximal-effort data.
             </p>
             <p className="text-justify">
-              Smartwatches? The data is less flattering. A 2025 validation study published in <em>PLOS One</em> compared Apple Watch VO2 max estimates to laboratory treadmill testing in 30 participants. The Apple Watch underestimated VO2 max by an average of 6 ml/kg/min, with a mean absolute percentage error of 13&ndash;16%. A 2024 study in <em>JMIR Biomedical Engineering</em> found Apple Watch Series 7 had poor reliability (ICC = 0.47) with 15.8% error versus lab measurements.
+              Smartwatches? The data is less flattering. <Link href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0322104" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+            A 2025 validation study published in <em>PLOS One</em>
+          </Link> compared Apple Watch VO2 max estimates to laboratory treadmill testing in 30 participants. The Apple Watch underestimated VO2 max by an average of 6 ml/kg/min, with a mean absolute percentage error of 13&ndash;16%. <Link href="https://biomedeng.jmir.org/2024" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+            A 2024 study in <em>JMIR Biomedical Engineering</em>
+          </Link> found Apple Watch Series 7 had poor reliability (ICC = 0.47) with 15.8% error versus lab measurements.
             </p>
             <p className="text-justify">
               Garmin devices tend to run slightly higher than the Apple Watch for the same individual, but show similar variability at the extremes.
             </p>
             <p className="text-justify">
-              The takeaway: <strong>use your wearable to track trends over time, not as an absolute benchmark.</strong> If your VO2 max estimator shows steady improvement over three months, that matters more than whether the specific number is exactly right.
+              <strong>Use your wearable to track trends over time, not as an absolute benchmark.</strong> If your VO2 max estimator shows steady improvement over three months, that matters more than whether the specific number is exactly right.
             </p>
           </div>
 
@@ -275,8 +290,15 @@ export default function Vo2MaxCalculator() {
             <p className="text-justify">
               <strong>Body composition.</strong> Women naturally carry a higher percentage of essential body fat. Since VO2 max is expressed relative to total body weight, a higher proportion of metabolically inactive tissue lowers the number mathematically, not physiologically.
             </p>
+            <Image
+              src="/morningyoga.jpg"
+              alt="Zone 2 Heart Rate Calculator"
+              width={1200}
+              height={600} />
             <p className="text-justify">
-              None of these factors changes the health benefits. A 2024 study published in <em>Mayo Clinic Proceedings</em> found that females with higher estimated cardiorespiratory fitness showed a lower risk of myocardial infarction, and the protective effect was actually stronger for women than for men at comparable fitness levels.
+              None of these factors changes the health benefits. <Link href="https://www.mayoclinicproceedings.org/issue/S0025-6196(24)X0009-9" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+            A 2024 study published in <em>Mayo Clinic Proceedings</em>
+          </Link> found that females with higher estimated cardiorespiratory fitness showed a lower risk of myocardial infarction, and the protective effect was actually stronger for women than for men at comparable fitness levels.
             </p>
           </div>
 
@@ -309,7 +331,9 @@ export default function Vo2MaxCalculator() {
 
             <h3 className="font-headline-md text-headline-md text-on-background mt-2">Zone 2 Training &mdash; The Foundation</h3>
             <p className="text-justify">
-              Zone 2 training means working at roughly 60&ndash;70% of your maximum heart rate, a pace where you can hold a conversation but are clearly working. This is the aerobic base.
+              <Link href="https://fitcalculato.com/calculators/zone-2-heart-rate-calculator" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+            Zone 2 training means working at roughly 60&ndash;70% of your maximum heart rate
+          </Link>, a pace where you can hold a conversation but are clearly working. This is the aerobic base.
             </p>
             <p className="text-justify">
               Research on elite endurance athletes consistently shows that 75&ndash;80% of training volume at this intensity is what drives long-term cardiovascular fitness. It builds mitochondrial density, the actual cellular machinery that processes oxygen, which forms the foundation of a high VO2 max.
@@ -320,7 +344,9 @@ export default function Vo2MaxCalculator() {
 
             <h3 className="font-headline-md text-headline-md text-on-background mt-2">VO2 Max Intervals</h3>
             <p className="text-justify">
-              These are efforts at roughly 90&ndash;100% of your maximum heart rate, lasting 3&ndash;8 minutes each. Research from NTNU (Norwegian University of Science and Technology) and other institutions shows untrained individuals can improve their VO2 max by 15&ndash;20% within a 20-week structured training program.
+              These are efforts at roughly 90&ndash;100% of your maximum heart rate, lasting 3&ndash;8 minutes each. <Link href="https://www.ntnu.edu/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+            Research from NTNU (Norwegian University of Science and Technology)
+          </Link> and other institutions shows untrained individuals can improve their VO2 max by 15&ndash;20% within a 20-week structured training program.
             </p>
             <p className="text-justify">
               A simple protocol: 4 &times; 4-minute hard efforts at a pace that genuinely challenges you, with 3&ndash;4 minutes of easy jogging between each interval. Twice a week is enough. More is not always better.
