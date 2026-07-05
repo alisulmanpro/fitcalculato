@@ -62,7 +62,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   const dynamicRoutes = calculators.map((item) => ({
-    url: `${baseUrl}/calculator/${item.slug}`, // Ensure URL structure 
+    url: `${baseUrl}/calculators/${item.slug}`, // Ensure URL structure 
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.9,
