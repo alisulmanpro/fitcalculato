@@ -1,4 +1,3 @@
-import AdPlaceholder from '../ads/AdPlaceholder';
 import Link from 'next/link';
 import { MdMedicalServices, MdArrowRight } from "react-icons/md";
 
@@ -20,9 +19,6 @@ export default function ToolSidebar() {
       </div>
       
       {/* AdSense Placement 3: Sidebar Skyscraper */}
-      <AdPlaceholder format="skyscraper" className='hidden md:flex'/>
-      <AdPlaceholder format="inFeed" className='md:hidden' />
-
       
       {/* Mini List Widget */}
       <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm flex flex-col gap-4">

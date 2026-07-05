@@ -57,7 +57,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-on-background">
+      <body className="min-h-full flex flex-col bg-background text-on-background user-none">
         <Header />
         {children}
         <Footer />

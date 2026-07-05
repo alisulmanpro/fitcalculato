@@ -102,9 +102,11 @@ export default function Header() {
             <Image
               src="/logo.svg"
               alt="FitCalc Directory"
-              width={40}
+              width={160}
               height={40}
+              loading="eager"
               className="shrink-0"
+              style={{ width: "auto", height: "40px" }}
             />
             FitCalculato
           </Link>

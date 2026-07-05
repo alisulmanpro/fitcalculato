@@ -1,11 +1,16 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react";
-import { MdSearch, MdClose, MdNavigateNext } from "react-icons/md";
+import { MdSearch, MdClose, MdNavigateNext, MdMonitorHeart, MdDirectionsRun } from "react-icons/md";
 import { useRouter } from "next/navigation";
-import { calculators, iconMap } from "@/data/calculators";
+import { useCalculatorStore } from "@/store/useCalculatorStore";
 import { FaScaleBalanced } from "react-icons/fa6";
 import clsx from "clsx";
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  zone: MdMonitorHeart,
+  vo2max: MdDirectionsRun,
+};
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -19,10 +24,12 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
+  const calculators = useCalculatorStore((state) => state.calculators);
+
   // Filter calculators based on search query
   const filteredCalculators = calculators.filter((calc) =>
     calc.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    calc.desc.toLowerCase().includes(searchQuery.toLowerCase())
+    calc.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   // Reset search query and selected index when modal closes
@@ -61,7 +68,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           e.preventDefault();
           if (selectedIndex >= 0 && filteredCalculators[selectedIndex]) {
             const calc = filteredCalculators[selectedIndex];
-            router.push(calc.path);
+            router.push(`/calculators/${calc.slug}`);
             onClose();
           }
           break;
@@ -131,7 +138,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         : "hover:bg-surface-container-low"
                     )}
                     onClick={() => {
-                      router.push(calc.path);
+                      router.push(`/calculators/${calc.slug}`);
                       onClose();
                     }}
                   >
@@ -140,7 +147,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     </div>
                     <div className="flex-1">
                       <h3 className="font-medium text-on-background">{calc.title}</h3>
-                      <p className="text-sm text-on-surface-variant">{calc.desc}</p>
+                      <p className="text-sm text-on-surface-variant">{calc.description}</p>
                     </div>
                     <MdNavigateNext className="text-on-surface-variant" />
                   </li>
