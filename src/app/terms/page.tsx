@@ -2,15 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | FitCalculato",
+  title: "Terms of Service",
   description:
     "Terms of service for using FitCalculato's free fitness and health calculators.",
+
+  alternates: {
+    canonical: "/terms",
+  },
   openGraph: {
-    title: "Terms of Service | FitCalculato",
+    title: "Terms of Service",
     description:
       "Terms of service for using FitCalculato's free fitness and health calculators.",
     url: "https://fitcalculato.com/terms",
-    siteName: "FitCalculato",
+    siteName: "Fitness Calculator",
     type: "website",
   },
 };

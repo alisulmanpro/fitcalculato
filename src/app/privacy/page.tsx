@@ -2,15 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | FitCalculato",
+  title: "Privacy Policy",
   description:
     "FitCalculato's privacy policy. Learn how we handle your data — we don't collect personal health data or require accounts.",
+
+  alternates: {
+    canonical: "/faqs",
+  },
   openGraph: {
-    title: "Privacy Policy | FitCalculato",
+    title: "Privacy Policy",
     description:
       "FitCalculato's privacy policy. Learn how we handle your data — we don't collect personal health data or require accounts.",
     url: "https://fitcalculato.com/privacy",
-    siteName: "FitCalculato",
+    siteName: "Fitness Calculator",
     type: "website",
   },
 };

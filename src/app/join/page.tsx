@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description:
       "Sign up to be notified when new fitness and health calculators launch on FitCalculato. Free, no spam.",
     url: "https://fitcalculato.com/join",
-    siteName: "FitCalculato",
+    siteName: "Fitness Calculator",
     type: "website",
   },
 };

@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us | FitCalculato",
+  title: "Contact Us",
   description:
     "Get in touch with the FitCalculato team for questions, feedback, or partnership inquiries.",
   openGraph: {
-    title: "Contact Us | FitCalculato",
+    title: "Contact Us",
     description:
       "Get in touch with the FitCalculato team for questions, feedback, or partnership inquiries.",
     url: "https://fitcalculato.com/contact",
-    siteName: "FitCalculato",
+    siteName: "Fitness Calculator",
     type: "website",
   },
 };

@@ -10,12 +10,12 @@ const tools: Record<string, {
 }> = {
   "zone-2-heart-rate-calculator": {
     component: ZoneCalculator,
-    title: "Free Zone 2 Heart Rate Calculator | FitCalculato",
+    title: "Free Zone 2 Heart Rate Calculator",
     description: "Use our free Zone 2 Heart Rate Calculator to find your exact training range by age. Backed by 2025 research. Burn fat, build endurance, and train smarter today",
   },
   "vo2-max-calculator": {
     component: Vo2MaxCalculator,
-    title: "Free VO2 Max & Fitness Age Calculator | FitCalculato",
+    title: "Free VO2 Max & Fitness Age Calculator",
     description: "Calculate your VO2 max score in seconds. Our free aerobic fitness calculator covers men and women by age with expert guidance on what your number means and how to improve it.",
   },
 };
@@ -30,7 +30,7 @@ export async function generateMetadata({
 
   if (!tool) {
     return {
-      title: "Page Not Found | FitCalculato",
+      title: "Page Not Found",
     };
   }
 

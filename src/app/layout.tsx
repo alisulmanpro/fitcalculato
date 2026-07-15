@@ -11,26 +11,30 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fitcalculato.com"),
-  title: "Free Fitness & Health Calculators | FitCalculato",
-  description: "Explore 20+ science-backed fitness calculators — Zone 2 heart rate, VO2 Max, BMI, and more. Free tools backed by current research to optimize your health.",
-  openGraph: {
-    title: "Free Fitness & Health Calculators | FitCalculato",
-    description: "Explore 20+ science-backed fitness calculators — Zone 2 heart rate, VO2 Max, BMI, and more. Free tools backed by current research to optimize your health.",
-    url: "https://fitcalculato.com",
-    siteName: "FitCalculato",
-    type: "website",
+
+  alternates: {
+    canonical: "/",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Free Fitness & Health Calculators | FitCalculato",
-    description: "Explore 20+ science-backed fitness calculators — Zone 2 heart rate, VO2 Max, BMI, and more. Free tools backed by current research to optimize your health.",
+
+  title: "Free Fitness & Health Calculators",
+
+  description:
+    "Explore 20+ science-backed fitness calculators — Zone 2 heart rate, VO2 Max, BMI, and more.",
+
+  openGraph: {
+    title: "Free Fitness & Health Calculators",
+    description:
+      "Explore 20+ science-backed fitness calculators — Zone 2 heart rate, VO2 Max, BMI, and more.",
+    url: "https://fitcalculato.com",
+    siteName: "Fitness Calculator",
+    type: "website",
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "FitCalculato",
+  "name": "Fitness Calculator",
   "url": "https://fitcalculato.com",
   "applicationCategory": "HealthApplication",
   "operatingSystem": "All",

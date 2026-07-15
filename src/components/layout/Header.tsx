@@ -26,11 +26,6 @@ export default function Header() {
       type: "links",
     },
     {
-      href: "/providers",
-      text: "Providers",
-      type: "links",
-    },
-    {
       href: "/about",
       text: "About",
       type: "links",

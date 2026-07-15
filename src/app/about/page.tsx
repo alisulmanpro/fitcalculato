@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description:
       "Learn about FitCalculato's mission to provide free, science-backed fitness and health calculators built on current research for real-world use.",
     url: "https://fitcalculato.com/about",
-    siteName: "FitCalculato",
+    siteName: "Fitness Calculator",
     type: "website",
   },
 };

@@ -2,15 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "FAQs — Frequently Asked Questions | FitCalculato",
+  title: "FAQs — Frequently Asked Questions",
   description:
     "Answers to common questions about FitCalculato's fitness calculators, methodology, accuracy, and data privacy.",
+
+  alternates: {
+    canonical: "/faqs",
+  },
   openGraph: {
-    title: "FAQs — Frequently Asked Questions | FitCalculato",
+    title: "FAQs — Frequently Asked Questions",
     description:
       "Answers to common questions about FitCalculato's fitness calculators, methodology, accuracy, and data privacy.",
     url: "https://fitcalculato.com/faqs",
-    siteName: "FitCalculato",
+    siteName: "Fitness Calculator",
     type: "website",
   },
 };

@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Medical Disclaimer | FitCalculato",
+  title: "Medical Disclaimer",
   description:
     "Important medical disclaimer for FitCalculato's fitness and health calculators. Our tools are for informational purposes only.",
   openGraph: {
-    title: "Medical Disclaimer | FitCalculato",
+    title: "Medical Disclaimer",
     description:
       "Important medical disclaimer for FitCalculato's fitness and health calculators. Our tools are for informational purposes only.",
     url: "https://fitcalculato.com/disclaimer",
-    siteName: "FitCalculato",
+    siteName: "Fitness Calculator",
     type: "website",
   },
 };
