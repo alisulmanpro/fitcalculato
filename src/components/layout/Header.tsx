@@ -2,184 +2,182 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MdSearch, MdMenu } from "react-icons/md";
+import { RiMenu2Line } from "react-icons/ri";
 import clsx from "clsx"
-import { useState, useRef, useEffect } from "react";
+import { useState, Fragment } from "react";
 import SearchModal from "../ui/SearchModal";
 
 interface NavLinks {
   href: string;
   text: string;
-  type: string
+  submenu?: NavLinks[]
 }
 export default function Header() {
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false)
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false)
-  const mobileNavRef = useRef<HTMLDivElement>(null)
 
   const pathname = usePathname()
 
   const navlinks: NavLinks[] = [
     {
       href: "/",
+      text: "Home",
+    },
+    {
+      href: "#",
       text: "Calculators",
-      type: "links",
+      submenu: [
+        {
+          href: "/calculators/fitness",
+          text: "Fitness",
+        },
+        {
+          href: "/calculators/weight-management",
+          text: "Weight Management",
+        },
+        {
+          href: "/calculators/nutrition",
+          text: "Nutrition",
+        },
+        {
+          href: "/calculators/health",
+          text: "Health",
+        },
+        {
+          href: "/calculators/life-style",
+          text: "Life Style",
+        },
+      ]
+    },
+    {
+      href: "/blogs",
+      text: "Blogs",
     },
     {
       href: "/about",
       text: "About",
-      type: "links",
+    },
+    {
+      href: "/faqs",
+      text: "FAQs",
     },
     {
       href: "/contact",
       text: "Contact",
-      type: "links",
-    },
-    {
-      href: "/faqs",
-      text: "FAQ",
-      type: "links",
-    },
-    {
-      href: "/join",
-      text: "Join Now",
-      type: "button",
     },
   ]
 
-  const handleMobileNavClick = () => {
-    setIsMobileNavOpen(!isMobileNavOpen)
-  }
-
-  const closeMobileNav = () => {
-    setIsMobileNavOpen(false)
-  }
-
-  // Close when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        mobileNavRef.current &&
-        !mobileNavRef.current.contains(event.target as Node)
-      ) {
-        closeMobileNav()
-      }
-    }
-
-    // Close when pressing escape key
-    const handleEscapeKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeMobileNav()
-      }
-    }
-
-    if (isMobileNavOpen) {
-      document.addEventListener("mousedown", handleClickOutside)
-      document.addEventListener("keydown", handleEscapeKey)
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-      document.removeEventListener("keydown", handleEscapeKey)
-    }
-  }, [isMobileNavOpen])
-
-
   return (
     <>
-      <header className="bg-surface border-b border-outline-variant shadow-sm sticky top-0 w-full z-50">
-        <div className="px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto flex justify-between items-center">
-          {/* Brand */}
-          <Link
-            href="/"
-            className="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2"
-          >
-            <Image
-              src="/logo.svg"
-              alt="FitCalc Directory"
-              width={160}
-              height={40}
-              loading="eager"
-              className="shrink-0"
-              style={{ width: "auto", height: "40px" }}
-            />
-            FitCalculato
-          </Link>
-
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
-            {navlinks.map((nav, index) => (
-              <Link
-                key={index}
-                href={nav.href}
-                className={clsx(
-                  "font-label-md text-label-md  transition-colors duration-200",
-                  {
-                    "active": pathname === nav.href,
-                    "text-on-surface-variant hover:text-primary": pathname !== nav.href,
-                    "hidden": nav.type === "button",
-                  }
-                )}
-              >
-                {nav.text}
-              </Link>
-            ))}
-          </nav>
-
-
-
-          {/* Actions */}
-          <div className="flex items-center gap-4">
-            <button
-              className="hidden md:flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant hover:text-primary"
-              onClick={() => setIsSearchOpen(true)}
-            >
-              <MdSearch className="text-xl" />
-            </button>
-            <Link
-              href="/join"
-              className="hidden md:inline-flex items-center justify-center bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg hover:opacity-90 hover:bg-primary-container transition-colors font-semibold"
-            >
-              Join Now
-            </Link>
-            <div className="relative" ref={mobileNavRef}>
-              <button className="md:hidden flex items-center justify-center text-on-surface-variant cursor-pointer hover:bg-black/30 rounded-full p-3" onClick={handleMobileNavClick}>
-                <MdMenu className="text-2xl" />
-              </button>
-              {/* mobile Nav */}
-              <div
-                className={clsx(
-                  "absolute right-0 bg-white max-w-lg p-3 rounded-lg shadow z-50",
-                  {
-                    "block": isMobileNavOpen,
-                    hidden: !isMobileNavOpen
-                  }
-                )}
-              >
-                <div className="flex flex-col items-center gap-2 w-full">
-                  {navlinks.map((nav, index) => (
-                    <Link
-                      key={index}
-                      href={nav.href}
-                      onClick={closeMobileNav}
-                      className={clsx(
-                        "font-label-md text-label-md  transition-colors duration-200 w-full py-1 px-5 rounded",
-                        {
-                          "active-mobile": pathname === nav.href,
-                          "text-on-surface-variant hover:text-white hover:bg-primary/50": pathname !== nav.href,
-                          "inline-flex items-center justify-center bg-primary text-white font-label-md text-label-md px-4 py-2 rounded-lg hover:opacity-90 hover:bg-primary-container transition-colors font-semibold": nav.type === "button",
-                        }
-                      )}
-                    >
-                      {nav.text}
-                    </Link>
-                  ))}
-                </div>
+      <header className="sticky top-0 w-full z-50">
+        <nav className="navbar bg-base-100 shadow-sm">
+          <div className="navbar-start">
+            <div className="dropdown">
+              <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                <RiMenu2Line />
               </div>
+              {/* Mobile Menu - Now dynamically mapped */}
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              >
+                {navlinks.map((navlink, index) => (
+                  <li key={index}>
+                    {navlink.submenu ? (
+                      <>
+                        <span className={clsx({ "active": pathname === navlink.href })}>
+                          {navlink.text}
+                        </span>
+                        <ul className="p-2">
+                          {navlink.submenu.map((nav, subIndex) => (
+                            <li key={subIndex}>
+                              <Link href={nav.href} className={clsx({ "active": pathname === nav.href })}>
+                                {nav.text}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : (
+                      <Link href={navlink.href} className={clsx({ "active": pathname === navlink.href })}>
+                        {navlink.text}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
+            <Link href="/" className="btn btn-ghost">
+              <Image
+                src="/logo.svg"
+                alt="FitCalculato Logo"
+                width={320}
+                height={80}
+                priority
+                className="h-10 w-auto md:h-12 shrink-0 object-contain"
+              />
+            </Link>
           </div>
-        </div>
-      </header>
+
+          {/* Desktop Menu */}
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">
+              {navlinks.map((navlink, index) => (
+                <Fragment key={index}>
+                  {/* Conditional Rendering: Submenu hai to Details tag warna simple Link */}
+                  {navlink.submenu ? (
+                    <li>
+                      <details>
+                        <summary
+                          className={clsx(
+                            "font-label-md text-label-md transition-colors duration-200",
+                            {
+                              "active": pathname === navlink.href,
+                              "text-on-surface-variant hover:text-primary": pathname !== navlink.href,
+                            }
+                          )}
+                        >
+                          {navlink.text}
+                        </summary>
+                        <ul className="p-2 bg-base-100 w-fit z-1 shadow rounded-box">
+                          {navlink.submenu.map((nav, subIndex) => (
+                            <li key={subIndex}>
+                              <Link
+                                href={nav.href}
+                                className="font-label-md text-label-md transition-colors duration-200"
+                              >
+                                {nav.text}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </details>
+                    </li>
+                  ) : (
+                    <li>
+                      <Link
+                        href={navlink.href}
+                        className={clsx(
+                          "font-label-md text-label-md transition-colors duration-200",
+                          {
+                            "active": pathname === navlink.href,
+                            "text-on-surface-variant hover:text-primary": pathname !== navlink.href,
+                          }
+                        )}
+                      >
+                        {navlink.text}
+                      </Link>
+                    </li>
+                  )}
+                </Fragment>
+              ))}
+            </ul>
+          </div>
+
+          <div className="navbar-end">
+            <Link href="/explore" className="btn btn-primary">Explore Tools</Link>
+          </div>
+        </nav>
+      </header >
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}

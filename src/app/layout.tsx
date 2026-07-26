@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-const inter = Inter({
-  variable: "--font-inter",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
@@ -59,9 +59,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} h-full antialiased`}
+      data-theme="fitcalculato"
+      className={`${manrope.className} antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-on-background user-none">
+      <body className="min-h-full flex flex-col user-none">
         <Header />
         {children}
         <Footer />
