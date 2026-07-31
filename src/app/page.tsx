@@ -1,10 +1,11 @@
-import { IoIosSearch, IoIosBody, IoMdArrowForward, IoMdStarOutline } from "react-icons/io";
+import { IoIosSearch, IoIosBody, IoMdArrowForward, IoMdStarOutline, IoIosArrowRoundForward } from "react-icons/io";
 import { RiVerifiedBadgeLine } from "react-icons/ri";
 import { MdOutlineScale, MdOutlinePieChart } from "react-icons/md";
-import { LuFlame, LuMail } from "react-icons/lu";
+import { LuFlame } from "react-icons/lu";
 import { BiDumbbell } from "react-icons/bi";
 import Link from "next/link";
 import { FaPersonRunning } from "react-icons/fa6";
+import PreFooter from "@/components/layout/PreFooter";
 
 
 export default function Home() {
@@ -281,6 +282,20 @@ export default function Home() {
           </a>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="card bg-base-100 w-full rounded-2xl shadow-sm">
+            <figure>
+              <img
+                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                alt="Shoes" />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">Card Title</h2>
+              <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+              <div className="card-actions justify-start">
+                <a href={`/calculators/`} className="flex items-center text-lime-600 font-semibold link link-hover">Calculate Now <IoIosArrowRoundForward className="size-6" /></a>
+              </div>
+            </div>
+          </div>
           <Link className="group flex flex-col" href="#">
             <div className="h-56 w-full rounded-[20px] bg-cover bg-center overflow-hidden mb-6 shadow-sm"
               data-alt="Close up of a wooden bowl filled with high protein quinoa salad, bright clean natural lighting, minimalist editorial culinary aesthetic, fresh green herbs, soft muted background."
@@ -347,31 +362,7 @@ export default function Home() {
       </section>
 
       {/* ==== Pre-Footer CTA ================================================ */}
-      <section className="w-full pb-24 max-w-12xl mx-auto px-4 lg:px-10">
-        <div
-          className="bg-base-200 rounded-[20px] p-12 md:p-20 text-center flex flex-col items-center justify-center shadow-sm relative overflow-hidden">
-          <div
-            className="absolute -top-32 -right-32 w-64 h-64 bg-primary/20 rounded-full blur-[80px]">
-          </div>
-          <div
-            className="absolute -bottom-32 -left-32 w-64 h-64 bg-primary/20 rounded-full blur-[80px]">
-          </div>
-          <div className="relative z-10 flex flex-col items-center max-w-2xl">
-            <h2
-              className="text-2xl text-[#1C2333] mb-4 tracking-tight">
-              Have a Question or Need a Custom Tool?</h2>
-            <p className="text-slate-600 mb-8">
-              Our team of clinical experts and data scientists is here to help you
-              navigate your fitness journey with absolute precision.
-            </p>
-            <button
-              className="bg-[#1C2333] text-base-100 h-12 px-8 rounded-full hover:bg-slate-500 transition-colors shadow-md flex items-center gap-2">
-              Contact Us
-                <LuMail className="text-[20px]" />
-            </button>
-          </div>
-        </div>
-      </section>
+      <PreFooter />
 
     </main >
   );

@@ -4,67 +4,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { RiMenu2Line } from "react-icons/ri";
 import clsx from "clsx"
-import { useState, Fragment } from "react";
+import { useEffect, useState, Fragment } from "react";
 import SearchModal from "../ui/SearchModal";
-
-interface NavLinks {
-  href: string;
-  text: string;
-  submenu?: NavLinks[]
-}
+import { useWebStore } from "@/store/useWebStore";
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false)
 
   const pathname = usePathname()
+  const navlinks = useWebStore((state) => state.navLinks)
+  const setCurrentPathname = useWebStore((state) => state.setCurrentPathname)
 
-  const navlinks: NavLinks[] = [
-    {
-      href: "/",
-      text: "Home",
-    },
-    {
-      href: "#",
-      text: "Calculators",
-      submenu: [
-        {
-          href: "/calculators/fitness",
-          text: "Fitness",
-        },
-        {
-          href: "/calculators/weight-management",
-          text: "Weight Management",
-        },
-        {
-          href: "/calculators/nutrition",
-          text: "Nutrition",
-        },
-        {
-          href: "/calculators/health",
-          text: "Health",
-        },
-        {
-          href: "/calculators/life-style",
-          text: "Life Style",
-        },
-      ]
-    },
-    {
-      href: "/blogs",
-      text: "Blogs",
-    },
-    {
-      href: "/about",
-      text: "About",
-    },
-    {
-      href: "/faqs",
-      text: "FAQs",
-    },
-    {
-      href: "/contact",
-      text: "Contact",
-    },
-  ]
+  useEffect(() => {
+    setCurrentPathname(pathname)
+  }, [pathname, setCurrentPathname])
 
   return (
     <>
@@ -84,13 +36,13 @@ export default function Header() {
                   <li key={index}>
                     {navlink.submenu ? (
                       <>
-                        <span className={clsx({ "active": pathname === navlink.href })}>
+                        <span className={clsx({ "active": navlink.active })}>
                           {navlink.text}
                         </span>
                         <ul className="p-2">
                           {navlink.submenu.map((nav, subIndex) => (
                             <li key={subIndex}>
-                              <Link href={nav.href} className={clsx({ "active": pathname === nav.href })}>
+                              <Link href={nav.href} className={clsx({ "active": nav.active })}>
                                 {nav.text}
                               </Link>
                             </li>
@@ -98,7 +50,7 @@ export default function Header() {
                         </ul>
                       </>
                     ) : (
-                      <Link href={navlink.href} className={clsx({ "active": pathname === navlink.href })}>
+                      <Link href={navlink.href} className={clsx({ "active": navlink.active })}>
                         {navlink.text}
                       </Link>
                     )}
@@ -131,8 +83,8 @@ export default function Header() {
                           className={clsx(
                             "font-label-md text-label-md transition-colors duration-200",
                             {
-                              "active": pathname === navlink.href,
-                              "text-on-surface-variant hover:text-primary": pathname !== navlink.href,
+                              "active": navlink.active,
+                              "text-on-surface-variant hover:text-primary": !navlink.active,
                             }
                           )}
                         >
@@ -143,7 +95,13 @@ export default function Header() {
                             <li key={subIndex}>
                               <Link
                                 href={nav.href}
-                                className="font-label-md text-label-md transition-colors duration-200"
+                                className={clsx(
+                                  "font-label-md text-label-md transition-colors duration-200",
+                                  {
+                                    "active": nav.active,
+                                    "text-on-surface-variant hover:text-primary": !nav.active,
+                                  }
+                                )}
                               >
                                 {nav.text}
                               </Link>
@@ -159,8 +117,8 @@ export default function Header() {
                         className={clsx(
                           "font-label-md text-label-md transition-colors duration-200",
                           {
-                            "active": pathname === navlink.href,
-                            "text-on-surface-variant hover:text-primary": pathname !== navlink.href,
+                            "active": navlink.active,
+                            "text-on-surface-variant hover:text-primary": !navlink.active,
                           }
                         )}
                       >

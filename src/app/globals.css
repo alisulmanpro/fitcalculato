@@ -57,6 +57,7 @@
     --font-sans: "Inter", sans-serif;
     --font-manrope: "Manrope", sans-serif;
     --font-inter: "Inter", sans-serif;
+    --font-times: "Times New Roman", Times, serif;
 }
 
 body {
@@ -77,13 +78,17 @@ body {
         font-weight: 700;
         color: var(--color-base-content);
     }
-    
+
     .active {
         @apply text-primary-content border-b-2 border-primary-content rounded-none!;
     }
 
     .active-mobile {
         @apply text-white bg-primary;
+    }
+
+    .tab-active{
+        @apply bg-lime-600 rounded-full w-30;
     }
 
 }
