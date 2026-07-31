@@ -127,7 +127,6 @@ export default function ZoneCalculatorInteractive() {
 
     const hasValidInput = age !== '' || knownMaxHR !== '' || usingLTHR;
 
-    const z2Def = zoneDefs.find((z) => z.key === 'z2')!;
     const [minZ2, maxZ2] = zones.z2 || [0, 0];
     const recommendedTarget = Math.round(
         minZ2 + (maxZ2 - minZ2) * EXPERIENCE_TIPS[experience].targetFactor

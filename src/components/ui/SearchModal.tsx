@@ -24,6 +24,12 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
+  const handleClose = () => {
+    setSearchQuery("");
+    setSelectedIndex(-1);
+    onClose();
+  };
+
   const calculators = useCalculatorStore((state) => state.calculators);
 
   // Filter calculators based on search query
@@ -32,13 +38,8 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     calc.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Reset search query and selected index when modal closes
   useEffect(() => {
-    if (!isOpen) {
-      setSearchQuery("");
-      setSelectedIndex(-1);
-    } else {
-      // Focus the input when modal opens
+    if (isOpen) {
       setTimeout(() => searchInputRef.current?.focus(), 100);
     }
   }, [isOpen]);
@@ -50,7 +51,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
       switch (e.key) {
         case "Escape":
-          onClose();
+          handleClose();
           break;
         case "ArrowDown":
           e.preventDefault();
@@ -69,7 +70,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           if (selectedIndex >= 0 && filteredCalculators[selectedIndex]) {
             const calc = filteredCalculators[selectedIndex];
             router.push(`/calculators/${calc.slug}`);
-            onClose();
+            handleClose();
           }
           break;
       }
@@ -83,7 +84,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-        onClose();
+        handleClose();
       }
     };
 
@@ -99,7 +100,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-20">
       {/* Backdrop */}
-      <div className="fixed inset-0 bg-black/40" onClick={onClose} />
+      <div className="fixed inset-0 bg-black/40" onClick={handleClose} />
 
       {/* Modal content */}
       <div
@@ -117,7 +118,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button onClick={onClose} className="p-1 hover:bg-surface-container-low rounded-full">
+          <button onClick={handleClose} className="p-1 hover:bg-surface-container-low rounded-full">
             <MdClose className="text-on-surface-variant text-xl" />
           </button>
         </div>
@@ -139,7 +140,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     )}
                     onClick={() => {
                       router.push(`/calculators/${calc.slug}`);
-                      onClose();
+                      handleClose();
                     }}
                   >
                     <div className="w-10 h-10 bg-surface-container-low rounded flex items-center justify-center shrink-0">

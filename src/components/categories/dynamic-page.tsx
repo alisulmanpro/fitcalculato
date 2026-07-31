@@ -1,5 +1,4 @@
 import Image from "next/image"
-import Link from "next/link"
 import { IconType } from "react-icons"
 import { IoIosArrowRoundForward } from "react-icons/io"
 import { LuFlaskConical } from "react-icons/lu"

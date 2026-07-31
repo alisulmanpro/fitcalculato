@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { LuHeart, LuTimer, LuInfo, LuCopy, LuCheck } from 'react-icons/lu';
 
 type Gender = 'Male' | 'Female';
@@ -21,7 +21,7 @@ export default function Vo2MaxCalculatorForm() {
   const [weight, setWeight] = useState<number | ''>('');
   const [weightUnit, setWeightUnit] = useState<WeightUnit>('lbs');
   const [method, setMethod] = useState<Method>('hr');
-  
+
   const [restingHR, setRestingHR] = useState<number | ''>('');
   const [runMinutes, setRunMinutes] = useState<number | ''>('');
   const [runSeconds, setRunSeconds] = useState<number | ''>('');
@@ -63,7 +63,7 @@ export default function Vo2MaxCalculatorForm() {
   const getClassification = (score: number, userGender: Gender, userAge: number) => {
     const bracket = ageBrackets.find(b => userAge >= b.min && userAge <= b.max) || ageBrackets[ageBrackets.length - 1];
     const norm = userGender === 'Male' ? bracket.male : bracket.female;
-    
+
     // Rough estimation based on the 50th percentile (norm)
     if (score < norm - 5) return { label: 'Poor', color: 'bg-rose-500 text-white' };
     if (score >= norm - 5 && score < norm) return { label: 'Fair', color: 'bg-amber-500 text-white' };
@@ -79,7 +79,7 @@ export default function Vo2MaxCalculatorForm() {
     if (!fitnessAge || typeof age !== 'number') return '';
     if (fitnessAge === '60+' && age >= 60) return 'Your fitness age matches your chronological age.';
     if (fitnessAge === '20-29' && age < 30) return 'Your fitness age matches your chronological age.';
-    
+
     // Parse numeric value from fitness age label for comparison
     const fitAgeNum = parseInt(fitnessAge.split('-')[0].replace('+', ''));
     if (fitAgeNum < age) return `Your fitness age is younger than your actual age.`;
@@ -97,7 +97,7 @@ export default function Vo2MaxCalculatorForm() {
 
   return (
     <div className="bg-surface-container rounded-2xl p-6 md:p-8 border border-outline-variant shadow-sm flex flex-col gap-8 w-full max-w-4xl">
-      
+
       {/* Tabs */}
       <div className="flex bg-surface-variant p-1 rounded-xl">
         <button
@@ -121,7 +121,7 @@ export default function Vo2MaxCalculatorForm() {
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-4">
             <h3 className="font-headline-sm text-on-background">Personal Details</h3>
-            
+
             {/* Gender */}
             <div className="flex flex-col gap-2">
               <label className="font-label-sm text-on-surface-variant">Gender</label>
@@ -141,9 +141,9 @@ export default function Vo2MaxCalculatorForm() {
               {/* Age */}
               <div className="flex flex-col gap-2">
                 <label className="font-label-sm text-on-surface-variant">Age (Years)</label>
-                <input 
-                  type="number" 
-                  value={age} 
+                <input
+                  type="number"
+                  value={age}
                   onChange={(e) => setAge(e.target.value ? Number(e.target.value) : '')}
                   className="bg-surface border border-outline px-4 py-2 rounded-lg text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/50"
                   placeholder="e.g. 35"
@@ -154,7 +154,7 @@ export default function Vo2MaxCalculatorForm() {
               <div className="flex flex-col gap-2">
                 <div className="flex justify-between items-center">
                   <label className="font-label-sm text-on-surface-variant">Weight</label>
-                  <button 
+                  <button
                     onClick={() => setWeightUnit(weightUnit === 'lbs' ? 'kg' : 'lbs')}
                     className="text-xs text-primary hover:underline"
                   >
@@ -162,9 +162,9 @@ export default function Vo2MaxCalculatorForm() {
                   </button>
                 </div>
                 <div className="relative">
-                  <input 
-                    type="number" 
-                    value={weight} 
+                  <input
+                    type="number"
+                    value={weight}
                     onChange={(e) => setWeight(e.target.value ? Number(e.target.value) : '')}
                     className="bg-surface border border-outline px-4 py-2 rounded-lg text-on-surface w-full focus:outline-none focus:ring-2 focus:ring-primary/50"
                     placeholder="e.g. 160"
@@ -192,9 +192,9 @@ export default function Vo2MaxCalculatorForm() {
             {method === 'hr' ? (
               <div className="flex flex-col gap-2">
                 <label className="font-label-sm text-on-surface-variant">Resting Heart Rate (BPM)</label>
-                <input 
-                  type="number" 
-                  value={restingHR} 
+                <input
+                  type="number"
+                  value={restingHR}
                   onChange={(e) => setRestingHR(e.target.value ? Number(e.target.value) : '')}
                   className="bg-surface border border-outline px-4 py-2 rounded-lg text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/50"
                   placeholder="e.g. 60"
@@ -204,9 +204,9 @@ export default function Vo2MaxCalculatorForm() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col gap-2">
                   <label className="font-label-sm text-on-surface-variant">Minutes</label>
-                  <input 
-                    type="number" 
-                    value={runMinutes} 
+                  <input
+                    type="number"
+                    value={runMinutes}
                     onChange={(e) => setRunMinutes(e.target.value ? Number(e.target.value) : '')}
                     className="bg-surface border border-outline px-4 py-2 rounded-lg text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/50"
                     placeholder="e.g. 12"
@@ -214,9 +214,9 @@ export default function Vo2MaxCalculatorForm() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="font-label-sm text-on-surface-variant">Seconds</label>
-                  <input 
-                    type="number" 
-                    value={runSeconds} 
+                  <input
+                    type="number"
+                    value={runSeconds}
                     onChange={(e) => setRunSeconds(e.target.value ? Number(e.target.value) : '')}
                     className="bg-surface border border-outline px-4 py-2 rounded-lg text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/50"
                     placeholder="e.g. 30"
@@ -231,7 +231,7 @@ export default function Vo2MaxCalculatorForm() {
         <div className="bg-surface rounded-xl border border-outline-variant p-6 flex flex-col justify-between">
           <div className="flex flex-col gap-6">
             <h3 className="font-headline-sm text-on-surface-variant uppercase tracking-wider text-sm">Your Results</h3>
-            
+
             {vo2Max !== null ? (
               <>
                 <div className="flex flex-col gap-2">
@@ -269,7 +269,7 @@ export default function Vo2MaxCalculatorForm() {
           </div>
 
           {vo2Max !== null && (
-            <button 
+            <button
               onClick={handleCopy}
               className="mt-8 flex items-center justify-center gap-2 w-full py-3 rounded-lg border border-outline hover:bg-surface-variant transition-colors text-on-surface font-label-md"
             >
