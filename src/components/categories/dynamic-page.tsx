@@ -1,26 +1,31 @@
+import { AppIcons } from "@/lib/icons"
 import Image from "next/image"
+import Link from "next/link"
 import { IconType } from "react-icons"
-import { IoIosArrowRoundForward } from "react-icons/io"
+import { IoIosArrowRoundForward, IoMdArrowForward } from "react-icons/io"
 import { LuFlaskConical } from "react-icons/lu"
 import { MdOutlineFactCheck } from "react-icons/md"
 import { TbActivityHeartbeat, TbLungs } from "react-icons/tb"
 import { VscVerified } from "react-icons/vsc"
 import { titleCase } from "title-case"
 
-const DynamicHero = ({ title, description }: { title: string, description: string }) => {
+const DynamicHero = ({ title, description, image }: { title: string, description: string, image: string }) => {
     return (
-        <section className="relative hero bg-base-200 min-h-[50vh]">
+        <section className="relative hero bg-base-200 min-h-[50vh]" style={{
+            backgroundImage:
+                `url(${image})`,
+        }}>
             <div className="hero-content text-center">
                 <div className="max-w-3xl w-full space-y-5">
                     <div className="badge text-lime-800 bg-lime-50 font-bold shadow">
                         <LuFlaskConical />
                         Evidence-Based Methodology
                     </div>
-                    <h1 className="text-5xl font-bold font-times">{titleCase(title.split("-").join(" "))}</h1>
-                    <p className="text-slate-600">
+                    <h1 className="text-5xl text-white font-bold font-times">{titleCase(title.split("-").join(" "))}</h1>
+                    <p className="text-white">
                         {description}
                     </p>
-                    <div className="absolute bottom-5 left-0 right-0 flex items-center justify-center gap-5 text-slate-400 ">
+                    <div className="absolute bottom-5 left-0 right-0 flex items-center justify-center gap-5 text-slate-300 ">
                         <div className="flex items-center gap-1">
                             <VscVerified />
                             <span className="tracking-widest text-xs font-medium">NIH GUIDLINES</span>
@@ -38,31 +43,34 @@ const DynamicHero = ({ title, description }: { title: string, description: strin
 }
 
 const DynamicCalculatorHub = ({ calculators }: { calculators: Calculator[] }) => {
-    const icons: Record<string, IconType> = {
-        TbActivityHeartbeat,
-        TbLungs,
-    }
     return (
         <section className="bg-base-100 p-10">
             <div className="mx-auto">
-                <div className="flex flex-col mb-stack-lg">
-                    <h2 className="text-2xl text-base-content mb-px" >Precision Calculators</h2>
-                    <p className="text-sm text-slate-600">Clinical-grade tools to quantify your baseline metrics.</p>
+                <div className="flex items-center gap-3">
+                    <span className="w-2 h-14 bg-primary rounded-full block"></span>
+                    <div className="space-y-2">
+                        <h2 className="text-2xl text-base-content mb-px" > Precision Calculators</h2>
+                        <p className="text-sm text-slate-600">Clinical-grade tools to quantify your baseline metrics.</p>
+                    </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-5">
-                    {calculators?.map((calculator) => {
-                        const Icon = icons[calculator.icon] ?? TbActivityHeartbeat
+                    {calculators.slice(-3).map(calc => {
+                        const Icon = AppIcons[calc.icon];
                         return (
-                            <div key={calculator.id} className="card border-2 border-base-300 bg-base-200 w-full">
-                                <div className="card-body gap-3">
-                                    <Icon className="size-14 rounded-2xl bg-base-100 p-1" />
-                                    <h2 className="card-title font-bold">{calculator.title}</h2>
-                                    <p>{calculator.description}</p>
-                                    <div className="card-actions justify-start">
-                                        <a href={`/calculators/${calculator.slug}`} className="flex items-center text-lime-600 font-semibold link link-hover">Calculate Now <IoIosArrowRoundForward className="size-6" /></a>
-                                    </div>
+                            <Link className="bg-base-200 rounded-[20px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
+                                href={calc.slug} key={calc.id}>
+                                <div
+                                    className="w-12 h-12 rounded-xl bg-base-100 flex items-center justify-center mb-4 shadow-sm p-3.5">
+                                    <Icon className="size-full" />
                                 </div>
-                            </div>
+                                <h4 className="text-xl text-[#1C2333] mb-2">{calc.title}</h4>
+                                <p className="text-sm text-slate-500 mb-6 grow">{calc.description}</p>
+                                <div
+                                    className="flex items-center font-bold group-hover:text-primary transition-colors">
+                                    Calculate Now
+                                    <IoMdArrowForward className="ml-1 text-lg group-hover:translate-x-1 transition-transform" />
+                                </div>
+                            </Link>
                         )
                     })}
                 </div>

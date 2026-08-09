@@ -1,14 +1,16 @@
-import { IoIosSearch, IoIosBody, IoMdArrowForward, IoMdStarOutline, IoIosArrowRoundForward } from "react-icons/io";
+import { IoIosSearch, IoMdArrowForward, IoMdStarOutline, IoIosArrowRoundForward } from "react-icons/io";
 import { RiVerifiedBadgeLine } from "react-icons/ri";
-import { MdOutlineScale, MdOutlinePieChart } from "react-icons/md";
-import { LuFlame } from "react-icons/lu";
-import { BiDumbbell } from "react-icons/bi";
 import Link from "next/link";
-import { FaPersonRunning } from "react-icons/fa6";
 import PreFooter from "@/components/layout/PreFooter";
+import { getAllCategories } from "@/lib/categoryData";
+import { AppIcons } from "@/lib/icons";
+import TestimonialsCarousel from "@/components/ui/TestimonialsCarousel";
 
 
 export default function Home() {
+
+  const data = getAllCategories()
+  console.log(data)
   return (
     <main className="pt-18 space-y-20">
       {/* ==== Hero section ================================================ */}
@@ -85,129 +87,36 @@ export default function Home() {
           <p className="text-md text-slate-500">Precision tools built for
             performance athletes and health-conscious individuals.</p>
         </div>
-        <div className="mb-16">
-          <h3
-            className="text-[#1C2333] mb-4 flex items-center gap-2">
-            <span className="w-2 h-6 bg-primary rounded-full block"></span> Weight
-            Management
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link className="bg-base-200 rounded-[20px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
-              href="#">
-              <div
-                className="w-12 h-12 rounded-xl bg-base-100 flex items-center justify-center mb-4 shadow-sm p-3.5">
-                <MdOutlineScale className="size-full" />
-              </div>
-              <h4 className="text-xl text-[#1C2333] mb-2">BMI
-                Calculator</h4>
-              <p className="text-sm text-slate-500 mb-6 grow">
-                Calculate your Body Mass Index to assess if you're in a healthy
-                weight range based on WHO data.</p>
-              <div
-                className="flex items-center font-bold group-hover:text-primary transition-colors">
-                Calculate Now
-                <IoMdArrowForward className="ml-1 text-lg group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
-            <Link className="bg-base-200 rounded-[20px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
-              href="#">
-              <div
-                className="w-12 h-12 rounded-xl bg-base-100 flex items-center justify-center mb-4 shadow-sm p-3.5">
-                <LuFlame className="size-full" />
-              </div>
-              <h4 className="text-xl text-[#1C2333] mb-2">
-                TDEE Calculator</h4>
-              <p className="text-sm text-slate-500 mb-6 grow">
-                Find your Total Daily Energy Expenditure to precisely calibrate
-                your caloric deficit or surplus.</p>
-              <div
-                className="flex items-center font-bold group-hover:text-primary transition-colors">
-                Calculate Now
-                <IoMdArrowForward className="ml-1 text-lg group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
-            <Link className="bg-base-200 rounded-[20px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
-              href="#">
-              <div
-                className="w-12 h-12 rounded-xl bg-base-100 flex items-center justify-center mb-4 shadow-sm p-3.5">
-                <MdOutlinePieChart className="size-full" />
-              </div>
-              <h4 className="text-xl text-[#1C2333] mb-2">
-                Macro Nutrients</h4>
-              <p className="text-sm text-slate-500 mb-6 grow">
-                Optimize your protein, fat, and carbohydrate ratios for muscle
-                gain, fat loss, or endurance.</p>
-              <div
-                className="flex items-center font-bold group-hover:text-primary transition-colors">
-                Calculate Now
-                <IoMdArrowForward className="ml-1 text-lg group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
+        {data?.map(item => (
+          <div className="mb-16" key={item.id}>
+            <h3
+              className="text-[#1C2333] mb-4 flex items-center gap-2">
+              <span className="w-2 h-6 bg-primary rounded-full block"></span> {item.heroTitle}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {item.calculators.slice(-3).map(calc => {
+                const Icon = AppIcons[calc.icon];
+                return (
+                  <Link className="bg-base-200 rounded-[20px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
+                    href={calc.slug} key={calc.id}>
+                    <div
+                      className="w-12 h-12 rounded-xl bg-base-100 flex items-center justify-center mb-4 shadow-sm p-3.5">
+                      <Icon className="size-full" />
+                    </div>
+                    <h4 className="text-xl text-[#1C2333] mb-2">{calc.title}</h4>
+                    <p className="text-sm text-slate-500 mb-6 grow">{calc.description}</p>
+                    <div
+                      className="flex items-center font-bold group-hover:text-primary transition-colors">
+                      Calculate Now
+                      <IoMdArrowForward className="ml-1 text-lg group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+                )
+              })}
+            </div>
           </div>
-        </div>
-        <div>
-          <h3
-            className="text-[#1C2333] mb-4 flex items-center gap-2">
-            <span className="w-2 h-6 bg-primary rounded-full block"></span> Fitness
-            Performance
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link className="bg-base-200 rounded-[20px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
-              href="#">
-              <div
-                className="w-12 h-12 rounded-xl bg-base-100 flex items-center justify-center mb-4 shadow-sm p-3.5">
-                <BiDumbbell className="size-full rotate-45" />
-              </div>
-              <h4 className="text-xl text-[#1C2333] mb-2">1RM
-                Strength</h4>
-              <p className="text-sm text-slate-500 mb-6 grow">
-                Accurately project your One Rep Max for major compound lifts
-                safely and effectively.</p>
-              <div
-                className="flex items-center font-bold group-hover:text-primary transition-colors">
-                Calculate Now
-                <IoMdArrowForward className="ml-1 text-lg group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
-            <Link className="bg-base-200 rounded-[20px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
-              href="#">
-              <div
-                className="w-12 h-12 rounded-xl bg-base-100 flex items-center justify-center mb-4 shadow-sm p-3.5">
-                <FaPersonRunning className="size-full" />
-              </div>
-              <h4 className="text-xl text-[#1C2333] mb-2">
-                Calories Burned</h4>
-              <p className="text-sm text-slate-500 mb-6 grow">
-                Estimate energy expenditure across 50+ different sports,
-                exercises, and daily activities.</p>
-              <div
-                className="flex items-center font-bold group-hover:text-primary transition-colors">
-                Calculate Now
-                <IoMdArrowForward className="ml-1 text-lg group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
-            <Link className="bg-base-200 rounded-[20px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
-              href="#">
-              <div
-                className="w-12 h-12 rounded-xl bg-base-100 flex items-center justify-center mb-4 shadow-sm p-3.5">
-                <IoIosBody className="size-full" />
-              </div>
-              <h4 className="text-xl text-[#1C2333] mb-2">
-                Body Fat %</h4>
-              <p className="text-sm text-slate-500 mb-6 grow">
-                Use U.S. Navy or skinfold methods to reliably estimate your
-                current body composition.</p>
-              <div
-                className="flex items-center font-bold group-hover:text-primary transition-colors">
-                Calculate Now
-                <IoMdArrowForward className="ml-1 text-lg group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
-          </div>
-        </div>
-        <div className="flex justify-center mt-14">
-          <button type="button" className="btn btn-primary btn-wide">Browse all calculators</button>
-        </div>
+
+        ))}
       </section>
 
       {/* ==== Testimonials ================================================ */}
@@ -215,53 +124,7 @@ export default function Home() {
         <div className="max-w-12xl mx-auto px-4 lg:px-10">
           <h2 className="text-3xl text-[#1C2333] text-center mb-12">
             Trusted by High Performers</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-            <div className="bg-base-100 rounded-[20px] p-8 shadow-sm flex flex-col">
-              <div className="flex gap-1 text-lime-400 mb-6">
-                <IoMdStarOutline className="text-xl" />
-                <IoMdStarOutline className="text-xl" />
-                <IoMdStarOutline className="text-xl" />
-                <IoMdStarOutline className="text-xl" />
-                <IoMdStarOutline className="text-xl" />
-              </div>
-              <p
-                className="text-md text-slate-500 italic mb-8 grow">
-                "The TDEE precision here is unmatched. I use these tools
-                exclusively to map out nutrition plans for my elite athletes."</p>
-              <p className="font-bold text-[#1C2333]">— Dr. Sarah
-                M., Performance Coach</p>
-            </div >
-            <div className="bg-base-100 rounded-[20px] p-8 shadow-sm flex flex-col">
-              <div className="flex gap-1 text-lime-400 mb-6">
-                <IoMdStarOutline className="text-xl" />
-                <IoMdStarOutline className="text-xl" />
-                <IoMdStarOutline className="text-xl" />
-                <IoMdStarOutline className="text-xl" />
-                <IoMdStarOutline className="text-xl" />
-              </div >
-              <p
-                className="text-md text-slate-500 italic mb-8 grow">
-                "Finally, a site that ditches the fluff and focuses entirely on
-                accurate, clinically-backed mathematical models for fitness."</p>
-              <p className="font-bold text-[#1C2333]">— Marcus
-                T., Registered Dietitian</p>
-            </div >
-            <div className="bg-base-100 rounded-[20px] p-8 shadow-sm flex flex-col">
-              <div className="flex gap-1 text-lime-400 mb-6">
-                <IoMdStarOutline className="text-xl" />
-                <IoMdStarOutline className="text-xl" />
-                <IoMdStarOutline className="text-xl" />
-                <IoMdStarOutline className="text-xl" />
-                <IoMdStarOutline className="text-xl" />
-              </div >
-              <p
-                className="text-md text-slate-500 italic mb-8 grow">
-                "I broke through a 6-month plateau using the macro calculator. The
-                algorithms are spot on for my specific body type."</p>
-              <p className="font-bold text-[#1C2333]">— Elena J.,
-                Powerlifter</p>
-            </div >
-          </div >
+          <TestimonialsCarousel />
         </div >
       </section >
 
@@ -275,13 +138,13 @@ export default function Home() {
             <p className="text-slate-500">Science-backed
               insights on metabolic health and training methodology.</p>
           </div>
-          <a className="text-[#466800] hover:text-primary transition-colors flex items-center space-x-1"
-            href="#">
+          <Link className="text-[#466800] hover:text-primary transition-colors flex items-center space-x-1"
+            href="/blogs">
             <span>View All Articles</span>
             <IoMdArrowForward className="text-sm" />
-          </a>
+          </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="card bg-base-100 w-full rounded-2xl shadow-sm">
             <figure>
               <img
@@ -292,73 +155,12 @@ export default function Home() {
               <h2 className="card-title">Card Title</h2>
               <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
               <div className="card-actions justify-start">
-                <a href={`/calculators/`} className="flex items-center text-lime-600 font-semibold link link-hover">Calculate Now <IoIosArrowRoundForward className="size-6" /></a>
+                <Link href={`/blogs`} className="flex items-center text-lime-600 font-semibold link link-hover">Read More <IoIosArrowRoundForward className="size-6" /></Link>
               </div>
             </div>
           </div>
-          <Link className="group flex flex-col" href="#">
-            <div className="h-56 w-full rounded-[20px] bg-cover bg-center overflow-hidden mb-6 shadow-sm"
-              data-alt="Close up of a wooden bowl filled with high protein quinoa salad, bright clean natural lighting, minimalist editorial culinary aesthetic, fresh green herbs, soft muted background."
-              style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCsfe2M6j86Hc3Fpgyjm16NdaykutffUtvibalSFRHFMA7WpryiNGXQaK8mWXk7_8zN0LbXj7AwADErESfdQxNYyKTMeaBrJFFOnraH0ug3LvyeVJ_t3jnJlU9-S7vm96sqKfRl2G_Z4leIbwRgzhJq94NmV2cwGYxiv8DVHAqtlx-XH5XSb2w4ytc-sfu_cY4OzmYGMaUX7hp19W9LWUL_lUI5zWY4uEQjcEu6BSw7tp-Kr2YlTvL7JHmCBcG6Hr8zdapz_6iVreY')" }}>
-              <div
-                className="w-full h-full bg-text-primary/10 group-hover:bg-transparent transition-colors duration-300">
-              </div>
-            </div>
-            <span
-              className="bg-[#F4FBE9] text-[#1C2333] font-bold px-3 py-1.5 rounded-full w-fit mb-3">Nutrition</span>
-            <h3 className="text-lg text-[#1C2333] mb-2 group-hover:text-primary transition-colors">The Truth About Protein Synthesis</h3>
-            <p className="text-sm text-slate-500 mb-4 grow">Discover how timing and amino acid profiles actually impact muscle hypertrophy according to recent clinical studies.</p>
-            <span
-              className="font-bold text-[#1C2333] flex items-center group-hover:text-primary transition-colors">Read
-              More
-              <IoMdArrowForward className="text-sm" />
-            </span>
-          </Link>
-          <Link className="group flex flex-col" href="#">
-            <div className="h-56 w-full rounded-[20px] bg-cover bg-center overflow-hidden mb-6 shadow-sm"
-              data-alt="Detail shot of heavy Olympic barbell plates loaded onto a bar in a bright, modern, minimalist gym with stark white walls and clean lines. Highly professional fitness environment."
-              style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcYP-tbrOY7ANulIAJU5UmvQRcR-SKtSUTjzXCEy-123-VMlqdt56xkAMyxsYNw-i5f4aD3D_pl8dwKiTecSslp3gU1gOGp0xavwImyKMHeRN4DYWqF-AyDzjmxsm8gIF4t9NlGr4yt6ZpsIKD9jIEDxlfM-426bE-6jywZWWsP69_UEEp4v5qohpVlkc5rPUhiX7Y42M3IarcyD76MMXh9aNOzmvClxCBCUTt3HGJHmeAL5qliH4sRnvTuNc2zEqLpO8cOX6LjN8')" }}>
-              <div
-                className="w-full h-full bg-text-primary/10 group-hover:bg-transparent transition-colors duration-300">
-              </div>
-            </div>
-            <span
-              className="bg-[#F4FBE9] text-[#1C2333] font-bold px-3 py-1.5 rounded-full w-fit mb-3">Strength</span>
-            <h3
-              className="text-lg text-[#1C2333] mb-2 group-hover:text-primary transition-colors">
-              Optimizing Your 1RM Testing Protocol</h3>
-            <p className="text-sm text-slate-500 mb-4 grow">A
-              step-by-step guide to safely preparing your central nervous system for
-              maximum output during strength testing.</p>
-            <span
-              className="font-bold text-[#1C2333] flex items-center group-hover:text-primary transition-colors">Read
-              More
-              <IoMdArrowForward className="text-sm" />
-            </span>
-          </Link>
-          <Link className="group flex flex-col" href="#">
-            <div className="h-56 w-full rounded-[20px] bg-cover bg-center overflow-hidden mb-6 shadow-sm"
-              data-alt="Close up on a smartwatch displaying metabolic rate and heart data on a wrist, sharp focus, medical grade lighting, professional fitness tracking aesthetic in soft focus surroundings."
-              style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDERkCuYWKedrg-7M0g9G26655xEL4CLkuOJ5sNLIEWBUOT-SOC4lafqtKZs49RmtAKg6krfMKqEmSGbRa_1cD4pngPfUf40K--TPngQR5VdN82_z1Ix5olgZXihQfm6CLNzzMarfgUi-kpV4mgz806K-LQq5HBV6h_15GrefhWia7Oiu79OdkGu3ljNYUYIt9nQLsk3hhmm-RARckEeuP0iWH1BW36e2tfeJCFy82eIs-1A-Ki3RSHIBIwHix4JqHB0lxHhykR3j4')" }}>
-              <div
-                className="w-full h-full bg-text-primary/10 group-hover:bg-transparent transition-colors duration-300">
-              </div>
-            </div>
-            <span
-              className="bg-[#F4FBE9] text-[#1C2333] font-bold px-3 py-1.5 rounded-full w-fit mb-3">Metabolism</span>
-            <h3
-              className="text-lg text-[#1C2333] mb-2 group-hover:text-primary transition-colors">
-              Understanding Adaptive Thermogenesis</h3>
-            <p className="text-sm text-slate-500 mb-4 grow">Why
-              your metabolic rate slows during a diet and how to adjust your macros to
-              sustainably break through plateaus.</p>
-            <span
-              className="font-bold text-[#1C2333] flex items-center group-hover:text-primary transition-colors">Read
-              More
-              <IoMdArrowForward className="text-sm" />
-            </span>
-          </Link>
-        </div>
+        </div> */}
+        <p className="text-center">No Blog here</p>
       </section>
 
       {/* ==== Pre-Footer CTA ================================================ */}

@@ -9,6 +9,7 @@ declare global {
         icon: string;
         slug: string;
         category: CalculatorCategory;
+        top: boolean
     }
 
     interface BlogPost {
@@ -20,13 +21,21 @@ declare global {
     }
 
     interface CategoryData {
+        id: string;
         slug: string;
         heroTitle: string;
         heroDescription: string;
+        heroImage: string;
         seoSections: string[];
         calculators: Calculator[];
         mainArticleHtml: string;
         relatedBlogs: BlogPost[];
+    }
+
+    interface TopCalculatorResult {
+        id: string
+        title: string;
+        slug: string;
     }
 
 }

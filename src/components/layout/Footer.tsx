@@ -2,8 +2,10 @@ import Image from "next/image";
 import { CiShare2 } from "react-icons/ci";
 import { RiGlobalLine } from "react-icons/ri";
 import { FaChartColumn } from "react-icons/fa6";
+import { getTopCalculators } from "@/lib/categoryData";
 
 export default function Footer() {
+  const data = getTopCalculators();
   return (
     <>
       <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
@@ -20,10 +22,9 @@ export default function Footer() {
         </aside>
         <nav>
           <h6 className="footer-title">Top Calculators</h6>
-          <a className="link link-hover">BMI Calculator</a>
-          <a className="link link-hover">TDEE Calculator</a>
-          <a className="link link-hover">Macro Nutrient</a>
-          <a className="link link-hover">Body Fat Percentage</a>
+          {data.map(calc => (
+            <a key={calc.id} className="link link-hover" href={`/calculators/${calc.slug}`}>{calc.title}</a>
+          ))}
         </nav>
         <nav>
           <h6 className="footer-title">Education</h6>
@@ -36,7 +37,6 @@ export default function Footer() {
           <h6 className="footer-title">Support</h6>
           <a className="link link-hover">Terms and Condition</a>
           <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
         </nav>
       </footer>
       <footer className="footer sm:footer-horizontal bg-black text-neutral-content items-center p-4">

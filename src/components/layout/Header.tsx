@@ -16,7 +16,30 @@ export default function Header() {
 
   useEffect(() => {
     setCurrentPathname(pathname)
+    // Close dropdowns on route change
+    const detailsElements = document.querySelectorAll("details");
+    detailsElements.forEach((details) => {
+      details.removeAttribute("open");
+    });
   }, [pathname, setCurrentPathname])
+
+  // Close dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      const detailsElements = document.querySelectorAll("details");
+      detailsElements.forEach((details) => {
+        if (!details.contains(target)) {
+          details.removeAttribute("open");
+        }
+      });
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>

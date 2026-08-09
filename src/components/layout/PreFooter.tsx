@@ -1,6 +1,9 @@
+"use client"
+import { useRouter } from "next/navigation"
 import { LuMail } from "react-icons/lu"
 
 const PreFooter = () => {
+    const router = useRouter()
     return (
         <section className="w-full pb-24 max-w-12xl mx-auto px-4 lg:px-10">
             <div
@@ -20,7 +23,8 @@ const PreFooter = () => {
                         navigate your fitness journey with absolute precision.
                     </p>
                     <button
-                        className="bg-[#1C2333] text-base-100 h-12 px-8 rounded-full hover:bg-slate-500 transition-colors shadow-md flex items-center gap-2">
+                        className="bg-[#1C2333] text-base-100 h-12 px-8 rounded-full hover:bg-slate-500 transition-colors shadow-md flex items-center gap-2 cursor-pointer"
+                        onClick={() => router.push('/contact')}>
                         Contact Us
                         <LuMail className="text-[20px]" />
                     </button>
