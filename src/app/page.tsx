@@ -1,4 +1,4 @@
-import { IoIosSearch, IoMdArrowForward, IoMdStarOutline, IoIosArrowRoundForward } from "react-icons/io";
+import { IoIosSearch, IoMdArrowForward } from "react-icons/io";
 import { RiVerifiedBadgeLine } from "react-icons/ri";
 import Link from "next/link";
 import PreFooter from "@/components/layout/PreFooter";
@@ -10,7 +10,7 @@ import TestimonialsCarousel from "@/components/ui/TestimonialsCarousel";
 export default function Home() {
 
   const data = getAllCategories()
-  console.log(data)
+  
   return (
     <main className="pt-18 space-y-20">
       {/* ==== Hero section ================================================ */}
@@ -98,7 +98,7 @@ export default function Home() {
                 const Icon = AppIcons[calc.icon];
                 return (
                   <Link className="bg-base-200 rounded-[20px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
-                    href={calc.slug} key={calc.id}>
+                    href={`calculators/${calc.slug}`} key={calc.id}>
                     <div
                       className="w-12 h-12 rounded-xl bg-base-100 flex items-center justify-center mb-4 shadow-sm p-3.5">
                       <Icon className="size-full" />

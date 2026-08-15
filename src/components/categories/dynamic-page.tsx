@@ -1,11 +1,9 @@
 import { AppIcons } from "@/lib/icons"
 import Image from "next/image"
 import Link from "next/link"
-import { IconType } from "react-icons"
-import { IoIosArrowRoundForward, IoMdArrowForward } from "react-icons/io"
+import { IoMdArrowForward } from "react-icons/io"
 import { LuFlaskConical } from "react-icons/lu"
 import { MdOutlineFactCheck } from "react-icons/md"
-import { TbActivityHeartbeat, TbLungs } from "react-icons/tb"
 import { VscVerified } from "react-icons/vsc"
 import { titleCase } from "title-case"
 
@@ -58,7 +56,7 @@ const DynamicCalculatorHub = ({ calculators }: { calculators: Calculator[] }) =>
                         const Icon = AppIcons[calc.icon];
                         return (
                             <Link className="bg-base-200 rounded-[20px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
-                                href={calc.slug} key={calc.id}>
+                                href={`/calculators/${calc.slug}`} key={calc.id}>
                                 <div
                                     className="w-12 h-12 rounded-xl bg-base-100 flex items-center justify-center mb-4 shadow-sm p-3.5">
                                     <Icon className="size-full" />

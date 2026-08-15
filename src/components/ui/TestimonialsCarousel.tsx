@@ -57,13 +57,20 @@ export default function TestimonialsCarousel() {
 
   // Handle client-side logic to avoid hydration mismatch and setup resize listener
   useEffect(() => {
-    setIsClient(true);
     const handleResize = () => {
       setItemsPerSlide(window.innerWidth < 768 ? 1 : 3);
     };
     handleResize(); // Initial check
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    const timer = setTimeout(() => {
+      setIsClient(true);
+    }, 0);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timer);
+    };
   }, []);
 
   const totalSlides = Math.ceil(reviews.length / itemsPerSlide);

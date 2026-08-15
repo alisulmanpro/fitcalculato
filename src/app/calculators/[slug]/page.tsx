@@ -4,7 +4,7 @@ import ZoneCalculator from '@/components/pages/zone';
 import Vo2MaxCalculator from '@/components/pages/vo2max';
 
 const tools: Record<string, {
-  component: React.ComponentType;
+  component: React.ComponentType<{ slug: string }>;
   title: string;
   description: string;
 }> = {
@@ -87,7 +87,7 @@ export default async function ToolPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ToolComponent />
+      <ToolComponent slug={slug} />
     </>
   );
 }

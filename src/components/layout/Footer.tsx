@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { CiShare2 } from "react-icons/ci";
 import { RiGlobalLine } from "react-icons/ri";
 import { FaChartColumn } from "react-icons/fa6";
@@ -23,20 +24,20 @@ export default function Footer() {
         <nav>
           <h6 className="footer-title">Top Calculators</h6>
           {data.map(calc => (
-            <a key={calc.id} className="link link-hover" href={`/calculators/${calc.slug}`}>{calc.title}</a>
+            <Link key={calc.id} className="link link-hover" href={`/calculators/${calc.slug}`}>{calc.title}</Link>
           ))}
         </nav>
         <nav>
           <h6 className="footer-title">Education</h6>
-          <a className="link link-hover">Fitness Basics</a>
-          <a className="link link-hover">Nutrition Science</a>
-          <a className="link link-hover">Health Markers</a>
-          <a className="link link-hover">Research Library</a>
+          <a className="link link-hover">Guide</a>
+          <Link href="/blogs" className="link link-hover">Blogs</Link>
+          <Link href="/categories/cardio-and-endurance" className="link link-hover">Cardio & Endurance</Link>
         </nav>
         <nav>
           <h6 className="footer-title">Support</h6>
-          <a className="link link-hover">Terms and Condition</a>
-          <a className="link link-hover">Privacy policy</a>
+          <Link className="link link-hover" href="/terms">Terms &amp; Conditions</Link>
+          <Link className="link link-hover" href="/privacy">Privacy Policy</Link>
+          <Link className="link link-hover" href="/author">About the Author</Link>
         </nav>
       </footer>
       <footer className="footer sm:footer-horizontal bg-black text-neutral-content items-center p-4">

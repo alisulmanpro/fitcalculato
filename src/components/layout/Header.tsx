@@ -1,27 +1,29 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { RiMenu2Line } from "react-icons/ri";
-import clsx from "clsx"
-import { useEffect, useState, Fragment } from "react";
+import clsx from "clsx";
+import { useEffect, useState, useMemo, Fragment } from "react";
 import SearchModal from "../ui/SearchModal";
-import { useWebStore } from "@/store/useWebStore";
-export default function Header() {
-  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false)
+import { useWebStore, getNavLinksWithActive } from "@/store/useWebStore";
 
-  const pathname = usePathname()
-  const navlinks = useWebStore((state) => state.navLinks)
-  const setCurrentPathname = useWebStore((state) => state.setCurrentPathname)
+export default function Header() {
+  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+  const pathname = usePathname();
+  const customNavLinks = useWebStore((state) => state.navLinks);
+
+  const navlinks = useMemo(() => {
+    return getNavLinksWithActive(customNavLinks, pathname);
+  }, [customNavLinks, pathname]);
 
   useEffect(() => {
-    setCurrentPathname(pathname)
     // Close dropdowns on route change
     const detailsElements = document.querySelectorAll("details");
     detailsElements.forEach((details) => {
       details.removeAttribute("open");
     });
-  }, [pathname, setCurrentPathname])
+  }, [pathname]);
 
   // Close dropdown on click outside
   useEffect(() => {
@@ -50,7 +52,7 @@ export default function Header() {
               <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                 <RiMenu2Line />
               </div>
-              {/* Mobile Menu - Now dynamically mapped */}
+              {/* Mobile Menu */}
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
@@ -59,13 +61,13 @@ export default function Header() {
                   <li key={index}>
                     {navlink.submenu ? (
                       <>
-                        <span className={clsx({ "active": navlink.active })}>
+                        <span className={clsx({ active: navlink.active })}>
                           {navlink.text}
                         </span>
                         <ul className="p-2">
                           {navlink.submenu.map((nav, subIndex) => (
                             <li key={subIndex}>
-                              <Link href={nav.href} className={clsx({ "active": nav.active })}>
+                              <Link href={nav.href} className={clsx({ active: nav.active })}>
                                 {nav.text}
                               </Link>
                             </li>
@@ -73,7 +75,7 @@ export default function Header() {
                         </ul>
                       </>
                     ) : (
-                      <Link href={navlink.href} className={clsx({ "active": navlink.active })}>
+                      <Link href={navlink.href} className={clsx({ active: navlink.active })}>
                         {navlink.text}
                       </Link>
                     )}
@@ -98,7 +100,6 @@ export default function Header() {
             <ul className="menu menu-horizontal px-1">
               {navlinks.map((navlink, index) => (
                 <Fragment key={index}>
-                  {/* Conditional Rendering: Submenu hai to Details tag warna simple Link */}
                   {navlink.submenu ? (
                     <li>
                       <details>
@@ -106,7 +107,7 @@ export default function Header() {
                           className={clsx(
                             "font-label-md text-label-md transition-colors duration-200",
                             {
-                              "active": navlink.active,
+                              active: navlink.active,
                               "text-on-surface-variant hover:text-primary": !navlink.active,
                             }
                           )}
@@ -121,7 +122,7 @@ export default function Header() {
                                 className={clsx(
                                   "font-label-md text-label-md transition-colors duration-200",
                                   {
-                                    "active": nav.active,
+                                    active: nav.active,
                                     "text-on-surface-variant hover:text-primary": !nav.active,
                                   }
                                 )}
@@ -140,7 +141,7 @@ export default function Header() {
                         className={clsx(
                           "font-label-md text-label-md transition-colors duration-200",
                           {
-                            "active": navlink.active,
+                            active: navlink.active,
                             "text-on-surface-variant hover:text-primary": !navlink.active,
                           }
                         )}
@@ -158,7 +159,7 @@ export default function Header() {
             <Link href="/explore" className="btn btn-primary">Explore Tools</Link>
           </div>
         </nav>
-      </header >
+      </header>
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}

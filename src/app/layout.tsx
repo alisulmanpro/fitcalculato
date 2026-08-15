@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
 });
 
@@ -60,9 +60,10 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="fitcalculato"
-      className={`${manrope.className} antialiased`}
+      className={`${montserrat.className} antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col user-none">
+      <body className="min-h-full flex flex-col user-none" suppressHydrationWarning>
         <Header />
         {children}
         <Footer />

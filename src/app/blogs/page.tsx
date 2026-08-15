@@ -2,6 +2,7 @@
 
 import PreFooter from "@/components/layout/PreFooter";
 import { IoIosArrowRoundForward } from "react-icons/io";
+import Image from "next/image";
 
 const Page = () => {
     const categories = ["All", "Fitness", "Metabolism", "Nutrition", "Health", "Performance"];
@@ -57,11 +58,14 @@ const Page = () => {
             <section className="w-full">
                 <div className="w-full p-4">
                     <article className="card bg-base-100 overflow-hidden lg:card-side border border-accent/10">
-                        <figure className="lg:w-1/2">
-                            <img
+                        <figure className="lg:w-1/2 relative h-80 lg:h-auto min-h-[320px]">
+                            <Image
                                 alt="The Science of Hypertrophy"
-                                className="h-80 lg:h-full w-full object-cover"
+                                className="object-cover"
                                 src="https://lh3.googleusercontent.com/aida/AP1WRLtlwM885MnwrgU_-dTvLGCjr1z0i8BYj2JwhnrgADRlr3t9m0xGfoJWGqJR0UT3Cehk4JQQhV9O97R4fnm1txJdweRgFVVVYUv3Hz5NjdPYNJEddUuuHIy2djTPKFXJpYLStpF4Eg5yrATyY0w5xDgEI64oVHJktYT2j2E6jnV1qReREWpZwY9SGUJrXzEREyR--yq84g9xwfV0bOvDCHgSILAPK4MGPV5nJUBFxJE2DHnnB1zif9Toh-Q"
+                                fill
+                                sizes="(max-width: 1024px) 100vw, 50vw"
+                                priority
                             />
                         </figure>
                         <div className="card-body lg:w-1/2">
@@ -109,8 +113,14 @@ const Page = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {posts.map((post) => (
                             <article key={post.title} className="card bg-base-100 border border-accent/10 overflow-hidden">
-                                <figure>
-                                    <img alt={post.imageAlt} className="h-48 w-full object-cover" src={post.image} />
+                                <figure className="relative h-48 w-full">
+                                    <Image
+                                        alt={post.imageAlt}
+                                        className="object-cover"
+                                        src={post.image}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    />
                                 </figure>
                                 <div className="card-body">
                                     <div className="flex items-center justify-between gap-3">

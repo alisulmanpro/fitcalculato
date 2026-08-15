@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { MdSearch, MdClose, MdNavigateNext, MdMonitorHeart, MdDirectionsRun } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { useCalculatorStore } from "@/store/useCalculatorStore";
@@ -24,11 +24,11 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setSearchQuery("");
     setSelectedIndex(-1);
     onClose();
-  };
+  }, [onClose]);
 
   const calculators = useCalculatorStore((state) => state.calculators);
 
@@ -78,7 +78,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, selectedIndex, filteredCalculators, router, onClose]);
+  }, [isOpen, selectedIndex, filteredCalculators, router, handleClose]);
 
   // Close modal when clicking outside
   useEffect(() => {
@@ -93,7 +93,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     }
 
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpen, onClose]);
+  }, [isOpen, handleClose]);
 
   if (!isOpen) return null;
 
