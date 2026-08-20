@@ -9,8 +9,8 @@ import {
     MdFunctions,
     MdCheckCircle,
     MdLightbulb,
-    MdMenuBook,
-    MdDirectionsRun,
+    // MdMenuBook,
+    // MdDirectionsRun,
     MdInfoOutline,
     MdArrowForward
 } from 'react-icons/md';
@@ -25,13 +25,13 @@ const components: Components = {
     // H2 Headings
     h2: ({ children, ...props }) => {
         const text = String(children);
-        const isFAQ = text.toLowerCase().includes('faq') || text.toLowerCase().includes('question');
-        const isRef = text.toLowerCase().includes('reference');
+        // const isFAQ = text.toLowerCase().includes('faq') || text.toLowerCase().includes('question');
+        // const isRef = text.toLowerCase().includes('reference');
 
         return (
-            <div className="pt-8 pb-3 mt-6 border-b border-base-300 first:mt-0 first:pt-0">
+            <div className="pt-8 pb-3 mt-6 first:mt-0 first:pt-0">
                 <div className="flex items-center gap-3">
-                    <span className="p-2 rounded-lg bg-primary/15 text-primary">
+                    {/* <span className="p-2 rounded-lg bg-primary/15 text-primary">
                         {isFAQ ? (
                             <MdHelpOutline className="text-2xl" />
                         ) : isRef ? (
@@ -39,7 +39,7 @@ const components: Components = {
                         ) : (
                             <MdDirectionsRun className="text-2xl" />
                         )}
-                    </span>
+                    </span> */}
                     <h2
                         className="text-2xl md:text-3xl font-extrabold text-base-content tracking-tight"
                         {...props}
@@ -187,7 +187,7 @@ const components: Components = {
     ),
 
     // Horizontal Rule
-    hr: () => <hr className="my-8 border-base-300" />,
+    hr: () => <hr className="hidden" />,
 
     // Tables
     table: ({ children }) => (
@@ -264,7 +264,7 @@ export default function MarkdownViewer({ filePath }: Props) {
 
                 {/* Interactive DaisyUI FAQ Section */}
                 {faqItems.length > 0 && (
-                    <div className="pt-8 border-t border-base-300 space-y-4">
+                    <div className="pt-8 space-y-4">
                         <div className="flex items-center gap-3 mb-4">
                             <span className="p-2 rounded-lg bg-primary/15 text-primary">
                                 <MdHelpOutline className="text-2xl" />

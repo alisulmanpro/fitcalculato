@@ -2,6 +2,11 @@ import ZoneCalculatorForm from '@/components/ui/tool/ZoneCalculatorForm';
 import ToolSidebar from '@/components/ui/tool/ToolSidebar';
 import CalculatorHero from '../calculators-hero';
 import MarkdownViewer from '@/lib/MarkdownViewer';
+import AuthorProfile from '../AuthorProfile';
+import Image from 'next/image';
+import Link from 'next/link';
+import { IoMdArrowForward } from 'react-icons/io';
+import { LuBookOpen } from 'react-icons/lu';
 
 export default function ZoneCalculator({ slug = 'zone-2-heart-rate-calculator' }: { slug?: string }) {
     return (
@@ -18,7 +23,48 @@ export default function ZoneCalculator({ slug = 'zone-2-heart-rate-calculator' }
                     </div>
 
                     <ZoneCalculatorForm />
+
+                    {/* Guide Card Section */}
+                    <div className="flex flex-col gap-3">
+                        {/* Section Heading */}
+                        <div className="flex items-center gap-2">
+                            <LuBookOpen className="text-primary text-xl" />
+                            <h2 className="text-lg font-bold text-base-content tracking-wide uppercase">Guide</h2>
+                        </div>
+
+                        {/* Guide Card */}
+                        <Link
+                            href={`/calculators/${slug}/guide`}
+                            className="group flex gap-4 bg-base-100 border border-base-300 rounded-xl p-4 hover:shadow-md hover:border-primary/40 transition-all duration-300"
+                        >
+                            {/* Thumbnail */}
+                            <div className="relative w-24 h-24 md:w-28 md:h-28 shrink-0 rounded-lg overflow-hidden">
+                                <Image
+                                    src="/guidance.jpg"
+                                    alt="Zone 2 Heart Rate Guide"
+                                    fill
+                                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
+
+                            {/* Text Content */}
+                            <div className="flex flex-col justify-center gap-1.5 flex-1 min-w-0">
+                                <h3 className="font-bold text-base md:text-lg text-base-content leading-snug group-hover:text-primary transition-colors duration-200">
+                                    Zone 2 Heart Rate Guide
+                                </h3>
+                                <p className="text-sm text-base-content/60 leading-relaxed line-clamp-2">
+                                    Within a few years, Zone 2 training evolved from a niche exercise physiology lab term into a fixture on fitness podcasts. Discover the real science behind training smart.
+                                </p>
+                                <div className="flex items-center gap-1 text-primary text-sm font-semibold mt-1">
+                                    Read Guide
+                                    <IoMdArrowForward className="text-base group-hover:translate-x-1 transition-transform duration-200" />
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+
                     <MarkdownViewer filePath={`/public/markdown/${slug}/docs.md`} />
+                    <AuthorProfile />
                 </div>
 
                 <div className="col-span-1 md:col-span-2">

@@ -20,7 +20,7 @@ const CalculatorHero: FC<CalculatorHeroProps> = ({ title, image }) => {
                         {title}
                     </h1>
                     <p className="text-slate-300 text-sm sm:text-lg font-bold">
-                            By FitCalculato
+                        By FitCalculato
                     </p>
                 </div>
             </div>
