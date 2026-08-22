@@ -10,6 +10,9 @@ declare global {
         slug: string;
         category: CalculatorCategory;
         top: boolean
+        SEO_tilte: string;
+        SEO_description: string;
+        SEO_canonical: string;
     }
 
     interface BlogPost {
@@ -18,6 +21,9 @@ declare global {
         excerpt: string;
         image: string;
         link: string;
+        SEO_title: string;
+        SEO_description: string;
+        SEO_canonical: string;
     }
 
     interface CategoryData {

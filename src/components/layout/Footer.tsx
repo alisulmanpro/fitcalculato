@@ -35,6 +35,7 @@ export default function Footer() {
         </nav>
         <nav>
           <h6 className="footer-title">Support</h6>
+          <Link className="link link-hover" href="/disclaimer">Disclaimer</Link>
           <Link className="link link-hover" href="/terms">Terms &amp; Conditions</Link>
           <Link className="link link-hover" href="/privacy">Privacy Policy</Link>
           <Link className="link link-hover" href="/author">About the Author</Link>

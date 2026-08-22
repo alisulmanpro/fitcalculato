@@ -2,21 +2,25 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import ZoneCalculator from '@/components/pages/zone';
 import Vo2MaxCalculator from '@/components/pages/vo2max';
+import {  getCalculatorBySlug } from '@/lib/categoryData';
 
 const tools: Record<string, {
   component: React.ComponentType<{ slug: string }>;
   title: string;
   description: string;
+  canonical: string;
 }> = {
   "zone-2-heart-rate-calculator": {
     component: ZoneCalculator,
-    title: "Free Zone 2 Heart Rate Calculator",
-    description: "Use our free Zone 2 Heart Rate Calculator to find your exact training range by age. Backed by 2025 research. Burn fat, build endurance, and train smarter today",
+    title:  getCalculatorBySlug("zone-2-heart-rate-calculator")?.SEO_tilte as string,
+    description: getCalculatorBySlug("zone-2-heart-rate-calculator")?.SEO_description as string,
+    canonical: getCalculatorBySlug("zone-2-heart-rate-calculator")?.SEO_canonical as string
   },
   "vo2-max-calculator": {
     component: Vo2MaxCalculator,
-    title: "Free VO2 Max & Fitness Age Calculator",
-    description: "Calculate your VO2 max score in seconds. Our free aerobic fitness calculator covers men and women by age with expert guidance on what your number means and how to improve it.",
+    title:  getCalculatorBySlug("vo2-max-calculator")?.SEO_tilte as string,
+    description: getCalculatorBySlug("vo2-max-calculator")?.SEO_description as string,
+    canonical: getCalculatorBySlug("vo2-max-calculator")?.SEO_canonical as string
   },
 };
 

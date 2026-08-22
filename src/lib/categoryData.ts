@@ -15,6 +15,9 @@ const categoriesStore: Record<string, CategoryData> = {
                 category: 'cardio-and-endurance',
                 icon: 'TbActivityHeartbeat',
                 top: true,
+                SEO_tilte: "Zone 2 Heart Rate Calculator: Unlock Your Ideal Training Zone",
+                SEO_description: "Calculate your Zone 2 heart rate by age using the Tanaka and Karvonen formulas. See your exact range, learn how to interpret it, and train smarter.",
+                SEO_canonical: "/calculators/zone-2-heart-rate-calculator",
             },
             {
                 id: 'vo2-max',
@@ -24,6 +27,9 @@ const categoriesStore: Record<string, CategoryData> = {
                 category: 'cardio-and-endurance',
                 icon: 'TbLungs',
                 top: true,
+                SEO_tilte: "VO2 Max Calculator",
+                SEO_description: "Calculate your VO2 max and discover your true biological fitness age.",
+                SEO_canonical: "/calculators/vo2-max-calculator",
             },
         ],
         mainArticleHtml: "",
@@ -34,6 +40,9 @@ const categoriesStore: Record<string, CategoryData> = {
                 excerpt: 'Search "how to calculate Zone 2 heart rate," and you will find four different formulas, each claiming to be the right one. None of them are lying to you. They are just measuring the same target from slightly different angles',
                 image: '/how-to-calculate-zone-2-heart-rate.jpg',
                 link: '/public/markdown/blogs/how-to-calculate-zone-2-heart-rate.md',
+                SEO_canonical: "/blogs/how-to-calculate-zone-2-heart-rate",
+                SEO_description: "Learn how to calculate Zone 2 heart rate using the Tanaka, Fox, Karvonen, and Maffetone formulas, with worked examples and the mistakes that throw the number off.",
+                SEO_title: "How to Calculate Zone 2 Heart Rate: 4 Simple Ways to Get It Righ",
             },
             {
                 id: 'what-Is-zone-2-training',
@@ -41,6 +50,9 @@ const categoriesStore: Record<string, CategoryData> = {
                 excerpt: 'Ask five people what Zone 2 training means and you will likely get five different answers. One mentions fat burning. Another brings up mitochondria. Someone says "easy cardio" and walks away.',
                 image: '/what-Is-zone-2-training.jpg',
                 link: '/public/markdown/blogs/what-Is-zone-2-training.md',
+                SEO_canonical: "/blogs/what-Is-zone-2-training",
+                SEO_description: "What is Zone 2 training, really? Learn the definition, how it differs from Zone 1 and Zone 3, real examples for running, cycling, and walking, and whether it's worth your time.",
+                SEO_title: "What Is Zone 2 Training? A Clear, No-Hype Explanation",
             },
             {
                 id: 'zone-2-heart-rate-by-age',
@@ -48,6 +60,9 @@ const categoriesStore: Record<string, CategoryData> = {
                 excerpt: "A 25-year-old and a 65-year-old can both be working just as hard in Zone 2, breathing just as easily, sweating just as much, yet their heart rate numbers can differ by almost 20 beats per minute. Neither one is doing it wrong. Their hearts are just built on different clocks.",
                 image: '/zone-2-heart-rate-by-age.jpg',
                 link: '/public/markdown/blogs/zone-2-heart-rate-by-age.md',
+                SEO_canonical: "/blogs/zone-2-heart-rate-by-age",
+                SEO_description: "See your Zone 2 heart rate range by age from 20 to 80, why the number shifts as you get older, and what actually stays the same no matter your age.",
+                SEO_title: "Zone 2 Heart Rate by Age: Full Chart and What Actually Changes",
             },
             {
                 id: 'zone-2-heart-rate-chart',
@@ -55,6 +70,9 @@ const categoriesStore: Record<string, CategoryData> = {
                 excerpt: 'To be effective during a workout, a heart rate chart must be clear and readable at a glance. This one is built for that. One table shows where Zone 2 sits among all five zones, and a second shows how the numbers shift depending on how you calculate them.',
                 image: '/zone-2-heart-rate-chart.jpg',
                 link: '/public/markdown/blogs/zone-2-heart-rate-chart.md',
+                SEO_canonical: "/blogs/zone-2-heart-rate-chart",
+                SEO_description: "A complete Zone 2 heart rate chart showing all five training zones, percentage ranges, and how to read your numbers whether you train by age or heart rate reserve.",
+                SEO_title: "Zone 2 Heart Rate Chart: All 5 Zones, Explained in One Place",
             },
             {
                 id: 'zone-2-heart-rate-zones-explained',
@@ -62,6 +80,9 @@ const categoriesStore: Record<string, CategoryData> = {
                 excerpt: "Five zones, one heart, and a lot of confusing labels on your fitness watch. If you've ever glanced down mid-run and wondered whether that orange bar means you're training smart or just training hard for no reason, this guide clears it up.",
                 image: '/zone-2-heart-rate-zones-explained.jpg',
                 link: '/public/markdown/blogs/zone-2-heart-rate-zones-explained.md',
+                SEO_canonical: "/blogs/zone-2-heart-rate-zones-explained",
+                SEO_description: "All 5 heart rate training zones explained clearly, with real percentages, what each one feels like, and where Zone 2 sits between easy recovery and hard racing effort.",
+                SEO_title: "Zone 2 Heart Rate Zones Explained: All 5 Zones Made Simple",
             },
         ]
     },
@@ -123,4 +144,17 @@ export function getTopCalculators(maxLimit: number = 5): TopCalculatorResult[] {
     }
 
     return result;
+}
+
+export function getCalculatorBySlug(slug: string): Calculator | null {
+  for (const categoryKey in categoriesStore) {
+    const category = categoriesStore[categoryKey];
+    const calculator = category.calculators.find((item) => item.slug === slug);
+    
+    if (calculator) {
+      return calculator;
+    }
+  }
+  
+  return null;
 }

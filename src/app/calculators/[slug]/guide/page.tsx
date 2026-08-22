@@ -1,6 +1,29 @@
 import MarkdownViewer from '@/lib/MarkdownViewer';
 import ToolSidebar from '@/components/ui/tool/ToolSidebar';
 import { DynamicHero } from '@/components/categories/dynamic-page';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    metadataBase: new URL("https://fitcalculato.com"),
+
+    alternates: {
+        canonical: "/calculators/zone-2-heart-rate-calculator/guide",
+    },
+
+    title: "Zone 2 Heart Rate Guide: Unlock Your Ideal Training Zone",
+
+    description:
+        " A complete Zone 2 heart rate guide covering the science, real benefits, common mistakes, and what recent 2026 research actually says about this training zone.",
+
+    openGraph: {
+        title: "Zone 2 Heart Rate Guide: Unlock Your Ideal Training Zone",
+        description:
+            " A complete Zone 2 heart rate guide covering the science, real benefits, common mistakes, and what recent 2026 research actually says about this training zone.",
+        url: "https://fitcalculato.com",
+        siteName: "Fitness Calculator",
+        type: "article",
+    },
+};
 
 export default async function Page({
     params,
@@ -11,7 +34,7 @@ export default async function Page({
 
     return (
         <main className="">
-            
+
             <DynamicHero title={"Zone 2 Heart Rate Guide"} description={"Within a few years, Zone 2 training evolved from a niche exercise physiology lab term into a fixture on fitness podcasts. This rapid surge in popularity brings a dual reality: while the public discovers a highly valuable tool, online misinformation frequently distorts the actual science."} image="/guidance.jpg" />
             <div className='grid grid-cols-1 md:grid-cols-7 gap-5 p-5 md:p-10 mx-auto'>
                 <div className="col-span-1 md:col-span-5 flex flex-col gap-6">
