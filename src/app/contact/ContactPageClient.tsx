@@ -74,7 +74,7 @@ export default function ContactPage() {
   return (
     <main className="grow w-full pt-8 pb-20">
       {/* ── HERO BANNER ── */}
-      <section className="relative w-full bg-gradient-to-br from-secondary via-slate-800 to-slate-900 py-20 px-4 overflow-hidden mb-16">
+      <section className="relative w-full bg-linear-to-br from-secondary via-slate-800 to-slate-900 py-20 px-4 overflow-hidden mb-16">
         {/* decorative blobs */}
         <div className="absolute top-0 left-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" />
@@ -142,10 +142,10 @@ export default function ContactPage() {
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wider text-neutral/60 mb-0.5">Email Us</p>
                   <a
-                    href="mailto:fypsolutionstech1470@gmail.com"
+                    href="mailto:info@fitcalculato.com"
                     className="text-sm font-semibold text-secondary hover:text-primary transition-colors break-all"
                   >
-                    fypsolutionstech1470@gmail.com
+                    info@fitcalculato.com
                   </a>
                 </div>
               </div>
@@ -162,7 +162,7 @@ export default function ContactPage() {
             </div>
 
             {/* FAQ prompt card */}
-            <div className="bg-gradient-to-br from-secondary to-slate-800 border border-slate-700 rounded-[20px] p-6 space-y-3">
+            <div className="bg-linear-to-br from-secondary to-slate-800 border border-slate-700 rounded-[20px] p-6 space-y-3">
               <TbMessageQuestion className="size-8 text-primary" />
               <h3 className="text-base font-bold text-white">Looking for quick answers?</h3>
               <p className="text-sm text-slate-300 leading-relaxed">
@@ -194,12 +194,12 @@ export default function ContactPage() {
           <div className="lg:col-span-3">
             {/* Success State */}
             {status === "success" ? (
-              <div className="bg-base-200 border border-base-300 rounded-[24px] p-10 text-center space-y-5 shadow-sm">
+              <div className="bg-base-200 border border-base-300 rounded-3xl p-10 text-center space-y-5 shadow-sm">
                 <div className="mx-auto w-16 h-16 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center">
                   <TbCheck className="size-8 text-primary" />
                 </div>
                 <div className="space-y-2">
-                  <h2 className="text-2xl font-extrabold text-secondary">Message Sent! 🎉</h2>
+                  <h2 className="text-2xl font-extrabold text-secondary">Message Sent!</h2>
                   <p className="text-neutral text-sm max-w-xs mx-auto leading-relaxed">
                     Thanks for reaching out. We&apos;ve received your message and will reply within 48 hours.
                   </p>

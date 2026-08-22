@@ -75,6 +75,26 @@ export function getAllCategories(): CategoryData[] {
     return Object.values(categoriesStore);
 }
 
+export function getAllCalculators(): (Calculator & { categoryName: string; categorySlug: string })[] {
+    return getAllCategories().flatMap((category) =>
+        category.calculators.map((calc) => ({
+            ...calc,
+            categoryName: category.heroTitle.replace(/\s*Calculators\s*$/i, "").trim(),
+            categorySlug: category.slug,
+        }))
+    );
+}
+
+export function getAllBlogs(): (BlogPost & { categoryName: string; categorySlug: string })[] {
+    return getAllCategories().flatMap((category) =>
+        category.relatedBlogs.map((blog) => ({
+            ...blog,
+            categoryName: category.heroTitle.replace(/\s*Calculators\s*$/i, "").trim(),
+            categorySlug: category.slug,
+        }))
+    );
+}
+
 export function getTopCalculators(maxLimit: number = 5): TopCalculatorResult[] {
     const result: TopCalculatorResult[] = []
 

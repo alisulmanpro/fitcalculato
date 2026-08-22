@@ -2,7 +2,7 @@ import ZoneCalculatorForm from '@/components/ui/tool/ZoneCalculatorForm';
 import ToolSidebar from '@/components/ui/tool/ToolSidebar';
 import CalculatorHero from '../calculators-hero';
 import MarkdownViewer from '@/lib/MarkdownViewer';
-import AuthorProfile from '../AuthorProfile';
+import AuthorWidget from '../AuthorWidget';
 import Image from 'next/image';
 import Link from 'next/link';
 import { IoMdArrowForward } from 'react-icons/io';
@@ -64,7 +64,7 @@ export default function ZoneCalculator({ slug = 'zone-2-heart-rate-calculator' }
                     </div>
 
                     <MarkdownViewer filePath={`/public/markdown/${slug}/docs.md`} />
-                    <AuthorProfile />
+                    <AuthorWidget />
                 </div>
 
                 <div className="col-span-1 md:col-span-2">

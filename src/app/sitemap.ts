@@ -61,24 +61,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // 2. Dynamic pages (Calculators list)
-  const calculators = [
-    { slug: 'zone-2-heart-rate-calculator' },
-    { slug: 'vo2-max-calculator' },
-  ];
+  const categoriesStore = await import('@/lib/categoryData').then(m => m.getAllCategories());
+  const allCalculators = categoriesStore.flatMap((cat: any) => cat.calculators);
 
-  const categories = [
-    { slug: 'cardio-and-endurance' },
-  ];
-
-  const calculatorRoutes = calculators.map((item) => ({
+  const calculatorRoutes = allCalculators.map((item: any) => ({
     url: `${baseUrl}/calculators/${item.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.9,
   }));
 
-  const categoryRoutes = categories.map((item) => ({
+  const categoryRoutes = categoriesStore.map((item: any) => ({
     url: `${baseUrl}/categories/${item.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,

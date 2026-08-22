@@ -1,12 +1,69 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return null;
+  return new Resend(apiKey);
+}
 
-const RECIPIENT_EMAIL = "fypsolutionstech1470@gmail.com";
+/**
+ * Resend requires a verified domain to send to addresses other than your account email.
+ * Production (domain verified at resend.com/domains):
+ *   RESEND_FROM_EMAIL=FitCalculators Contact <info@fitcalculato.com>
+ *   CONTACT_RECIPIENT_EMAIL=info@fitcalculato.com
+ *
+ * Local testing before domain verification:
+ *   RESEND_SANDBOX=true
+ *   (uses onboarding@resend.dev → your Resend account email)
+ */
+function getEmailConfig() {
+  const isSandbox =
+    process.env.RESEND_SANDBOX === "true" ||
+    process.env.RESEND_API_KEY?.startsWith("re_test_");
+
+  if (isSandbox) {
+    return {
+      from:
+        process.env.RESEND_FROM_EMAIL ??
+        "FitCalculators Contact <onboarding@resend.dev>",
+      to:
+        process.env.CONTACT_RECIPIENT_EMAIL ??
+        process.env.RESEND_ACCOUNT_EMAIL ??
+        "fypsolutionstech1470@gmail.com",
+    };
+  }
+
+  return {
+    from:
+      process.env.RESEND_FROM_EMAIL ??
+      "FitCalculators Contact <info@fitcalculato.com>",
+    to: process.env.CONTACT_RECIPIENT_EMAIL ?? "info@fitcalculato.com",
+  };
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
 
 export async function POST(req: NextRequest) {
   try {
+    const resend = getResendClient();
+    if (!resend) {
+      console.error("RESEND_API_KEY is not configured.");
+      return NextResponse.json(
+        { error: "Email service is not configured." },
+        { status: 500 }
+      );
+    }
+
+    const { from, to } = getEmailConfig();
+
     const body = await req.json();
     const { name, email, subject, message } = body as {
       name: string;
@@ -30,6 +87,11 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeSubject = escapeHtml(subject);
+    const safeMessage = escapeHtml(message);
 
     const html = `
 <!DOCTYPE html>
@@ -62,38 +124,38 @@ export async function POST(req: NextRequest) {
   <div class="wrapper">
     <div class="header">
       <div class="header-logo">FitCalculators</div>
-      <h1>📬 New Contact Message</h1>
+      <h1>New Contact Message</h1>
       <p>Someone reached out via the contact form</p>
     </div>
 
     <div class="body">
       <div class="section-label">From</div>
       <div class="field-block">
-        <div class="field-value">👤 <strong>${name}</strong></div>
+        <div class="field-value"><strong>${safeName}</strong></div>
       </div>
 
       <div class="section-label">Email Address</div>
       <div class="field-block">
-        <div class="field-value">✉️ <a href="mailto:${email}" style="color:#466800; text-decoration:none;">${email}</a></div>
+        <div class="field-value"><a href="mailto:${safeEmail}" style="color:#466800; text-decoration:none;">${safeEmail}</a></div>
       </div>
 
       <div class="section-label">Subject</div>
       <div class="field-block">
-        <div class="field-value">📌 ${subject}</div>
+        <div class="field-value">${safeSubject}</div>
       </div>
 
       <div class="section-label">Message</div>
       <div class="message-box">
-        <div class="message-text">${message}</div>
+        <div class="message-text">${safeMessage}</div>
       </div>
 
       <div class="divider"></div>
 
       <p style="font-size:14px; color:#475569; margin:0 0 16px;">
-        Reply directly to this email to respond to <strong>${name}</strong>, or click below:
+        Reply directly to this email to respond to <strong>${safeName}</strong>, or click below:
       </p>
-      <a href="mailto:${email}?subject=Re: ${subject}" class="reply-cta">
-        Reply to ${name}
+      <a href="mailto:${safeEmail}?subject=Re: ${encodeURIComponent(subject)}" class="reply-cta">
+        Reply to ${safeName}
       </a>
     </div>
 
@@ -107,15 +169,31 @@ export async function POST(req: NextRequest) {
     `.trim();
 
     const { error } = await resend.emails.send({
-      from: "FitCalculators Contact <onboarding@resend.dev>",
-      to: [RECIPIENT_EMAIL],
+      from,
+      to: [to],
       replyTo: email,
       subject: `[FitCalc Contact] ${subject} — from ${name}`,
       html,
     });
 
     if (error) {
+      console.error("[Resend API Error]:", { status: 403, error, path: "/emails" });
       console.error("Resend error:", error);
+
+      const isDomainError =
+        error.name === "validation_error" &&
+        typeof error.message === "string" &&
+        (error.message.includes("verify a domain") ||
+          error.message.includes("not verified") ||
+          error.message.includes("testing emails"));
+
+      if (isDomainError) {
+        console.error(
+          "Resend domain not verified. Add fitcalculato.com at https://resend.com/domains " +
+            "and set RESEND_FROM_EMAIL to an address on that domain."
+        );
+      }
+
       return NextResponse.json(
         { error: "Failed to send email. Please try again later." },
         { status: 500 }

@@ -1,6 +1,7 @@
 import { IoIosSearch, IoMdArrowForward } from "react-icons/io";
 import { RiVerifiedBadgeLine } from "react-icons/ri";
 import Link from "next/link";
+import Image from "next/image";
 import PreFooter from "@/components/layout/PreFooter";
 import { getAllCategories } from "@/lib/categoryData";
 import { AppIcons } from "@/lib/icons";
@@ -9,8 +10,9 @@ import TestimonialsCarousel from "@/components/ui/TestimonialsCarousel";
 
 export default function Home() {
 
-  const data = getAllCategories()
-  
+  const data = getAllCategories();
+  const blogs = data.flatMap((cat) => cat.relatedBlogs).slice(0, 3);
+
   return (
     <main className="pt-18 space-y-20">
       {/* ==== Hero section ================================================ */}
@@ -40,14 +42,14 @@ export default function Home() {
             <span
               className="text-xs mr-2 uppercase tracking-wider">Trending
               Now:</span>
-            <a className="kbd rounded-full"
-              href="#">BMI</a>
-            <a className="kbd rounded-full"
-              href="#">TDEE</a>
-            <a className="kbd rounded-full"
-              href="#">Macros</a>
-            <a className="kbd rounded-full"
-              href="#">1RM</a>
+            <Link className="kbd rounded-full"
+              href="/calculators/bmi-calculator">BMI</Link>
+            <Link className="kbd rounded-full"
+              href="/calculators/tdee-calculator">TDEE</Link>
+            <Link className="kbd rounded-full"
+              href="/calculators/macro-calculator">Macros</Link>
+            <Link className="kbd rounded-full"
+              href="/calculators/1rm-calculator">1RM</Link>
           </div>
         </div>
       </section>
@@ -129,7 +131,6 @@ export default function Home() {
       </section >
 
       {/* ==== Blog Section ================================================ */}
-
       <section className="w-full py-24 max-w-12xl mx-auto px-4 lg:px-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
@@ -144,23 +145,40 @@ export default function Home() {
             <IoMdArrowForward className="text-sm" />
           </Link>
         </div>
-        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="card bg-base-100 w-full rounded-2xl shadow-sm">
-            <figure>
-              <img
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                alt="Shoes" />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Card Title</h2>
-              <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-              <div className="card-actions justify-start">
-                <Link href={`/blogs`} className="flex items-center text-lime-600 font-semibold link link-hover">Read More <IoIosArrowRoundForward className="size-6" /></Link>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {blogs.map((post) => (
+            <article
+              key={post.id}
+              className="bg-base-200 rounded-[20px] overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col"
+            >
+              <div className="relative h-48 w-full overflow-hidden">
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
               </div>
-            </div>
-          </div>
-        </div> */}
-        <p className="text-center">No Blog here</p>
+              <div className="p-6 flex flex-col grow">
+                <h3 className="text-lg font-bold text-[#1C2333] mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                  {post.title}
+                </h3>
+                <p className="text-sm text-slate-500 mb-4 grow line-clamp-3">
+                  {post.excerpt}
+                </p>
+                <Link
+                  href={`/blogs/${post.id}`}
+                  className="flex items-center text-primary font-semibold text-sm hover:gap-2 gap-1 transition-all"
+                >
+                  Read Article
+                  <IoMdArrowForward className="text-base group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
 
       {/* ==== Pre-Footer CTA ================================================ */}
@@ -169,3 +187,4 @@ export default function Home() {
     </main >
   );
 }
+

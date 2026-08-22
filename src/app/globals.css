@@ -87,8 +87,8 @@ body {
         @apply text-white bg-primary;
     }
 
-    .tab-active{
-        @apply bg-lime-600 rounded-full w-30;
+    .tab-active {
+        @apply bg-lime-600 flex text-white rounded-full inline-flex items-center justify-center gap-2 whitespace-nowrap px-4;
     }
 
 }

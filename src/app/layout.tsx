@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import CookieBanner from "@/components/ui/CookieBanner";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -67,6 +68,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <CookieBanner />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
