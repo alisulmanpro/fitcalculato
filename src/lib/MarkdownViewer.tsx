@@ -212,111 +212,114 @@ const components: Components = {
 };
 
 export default function MarkdownViewer({ filePath }: Props) {
-    const absolutePath = path.join(process.cwd(), filePath);
+    try {
 
-    if (!fs.existsSync(absolutePath)) {
+        const absolutePath = path.join(process.cwd(), filePath);
+
+        const markdownContent = fs.readFileSync(absolutePath, 'utf-8');
+
+        // Separate main content and FAQs if FAQs section exists
+        const faqMatch = markdownContent.split(/##\s+(?:Frequently Asked Questions|FAQs)/i);
+        const mainContent = faqMatch[0];
+        const faqAndRest = faqMatch[1] || '';
+
+        // Extract FAQs into distinct items if available
+        const referencesMatch = faqAndRest.split(/##\s+References/i);
+        const rawFaqSection = referencesMatch[0] || '';
+        const rawReferencesSection = referencesMatch[1] || '';
+
+        // Parse FAQ Question & Answer pairs (e.g. ### Question \n Answer)
+        const faqItems: { question: string; answer: string }[] = [];
+        if (rawFaqSection.trim()) {
+            const questionBlocks = rawFaqSection.split(/###\s+/);
+            questionBlocks.forEach((block) => {
+                const trimmed = block.trim();
+                if (!trimmed) return;
+                const lines = trimmed.split('\n');
+                const question = lines[0]?.trim();
+                const answer = lines.slice(1).join('\n').trim();
+                if (question && answer) {
+                    faqItems.push({ question, answer });
+                }
+            });
+        }
+
         return (
-            <div className="alert alert-warning my-4">
-                <span>Markdown file not found at: <code>{filePath}</code></span>
+            <div className="w-full flex flex-col gap-6">
+                {/* Main Article Body */}
+                <article className="card p-6 md:p-10 space-y-6">
+                    <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw]}
+                        components={components}
+                    >
+                        {mainContent}
+                    </ReactMarkdown>
+
+                    {/* Interactive DaisyUI FAQ Section */}
+                    {faqItems.length > 0 && (
+                        <div className="pt-8 space-y-4">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="p-2 rounded-lg bg-primary/15 text-primary">
+                                    <MdHelpOutline className="text-2xl" />
+                                </span>
+                                <div>
+                                    <h2 className="text-2xl md:text-3xl font-extrabold text-base-content tracking-tight">
+                                        Frequently Asked Questions
+                                    </h2>
+                                    <p className="text-xs md:text-sm text-base-content/70">
+                                        Everything you need to know about Zone 2 training, formulas, and safety
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="space-y-3">
+                                {faqItems.map((faq, index) => (
+                                    <details
+                                        key={index}
+                                        className="collapse collapse-arrow bg-base-200/50 border border-base-300 rounded-xl hover:border-primary/40 transition-colors shadow-xs group"
+                                    >
+                                        <summary className="collapse-title text-base font-bold text-base-content flex items-center gap-2 cursor-pointer py-4">
+                                            <span className="badge badge-primary badge-sm font-bold shrink-0">Q</span>
+                                            <span>{faq.question}</span>
+                                        </summary>
+                                        <div className="collapse-content text-sm md:text-base text-base-content/85 leading-relaxed border-t border-base-300/60 pt-3 pb-4">
+                                            <ReactMarkdown
+                                                remarkPlugins={[remarkGfm]}
+                                                rehypePlugins={[rehypeRaw]}
+                                                components={components}
+                                            >
+                                                {faq.answer}
+                                            </ReactMarkdown>
+                                        </div>
+                                    </details>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* References Section */}
+                    {rawReferencesSection.trim() && (
+                        <div className="pt-8 border-t border-base-300 space-y-4">
+                            <ReactMarkdown
+                                remarkPlugins={[remarkGfm]}
+                                rehypePlugins={[rehypeRaw]}
+                                components={components}
+                            >
+                                {`## References\n\n${rawReferencesSection}`}
+                            </ReactMarkdown>
+                        </div>
+                    )}
+                </article>
+            </div>
+        );
+    } catch (error) {
+        console.error("Error reading file at:", path.join(process.cwd(), filePath));
+
+        return (
+            <div className="bg-orange-500 text-white p-4 rounded-md">
+                Markdown file not found at: {filePath}
             </div>
         );
     }
-
-    const markdownContent = fs.readFileSync(absolutePath, 'utf-8');
-
-    // Separate main content and FAQs if FAQs section exists
-    const faqMatch = markdownContent.split(/##\s+(?:Frequently Asked Questions|FAQs)/i);
-    const mainContent = faqMatch[0];
-    const faqAndRest = faqMatch[1] || '';
-
-    // Extract FAQs into distinct items if available
-    const referencesMatch = faqAndRest.split(/##\s+References/i);
-    const rawFaqSection = referencesMatch[0] || '';
-    const rawReferencesSection = referencesMatch[1] || '';
-
-    // Parse FAQ Question & Answer pairs (e.g. ### Question \n Answer)
-    const faqItems: { question: string; answer: string }[] = [];
-    if (rawFaqSection.trim()) {
-        const questionBlocks = rawFaqSection.split(/###\s+/);
-        questionBlocks.forEach((block) => {
-            const trimmed = block.trim();
-            if (!trimmed) return;
-            const lines = trimmed.split('\n');
-            const question = lines[0]?.trim();
-            const answer = lines.slice(1).join('\n').trim();
-            if (question && answer) {
-                faqItems.push({ question, answer });
-            }
-        });
-    }
-
-    return (
-        <div className="w-full flex flex-col gap-6">
-            {/* Main Article Body */}
-            <article className="card p-6 md:p-10 space-y-6">
-                <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                    components={components}
-                >
-                    {mainContent}
-                </ReactMarkdown>
-
-                {/* Interactive DaisyUI FAQ Section */}
-                {faqItems.length > 0 && (
-                    <div className="pt-8 space-y-4">
-                        <div className="flex items-center gap-3 mb-4">
-                            <span className="p-2 rounded-lg bg-primary/15 text-primary">
-                                <MdHelpOutline className="text-2xl" />
-                            </span>
-                            <div>
-                                <h2 className="text-2xl md:text-3xl font-extrabold text-base-content tracking-tight">
-                                    Frequently Asked Questions
-                                </h2>
-                                <p className="text-xs md:text-sm text-base-content/70">
-                                    Everything you need to know about Zone 2 training, formulas, and safety
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="space-y-3">
-                            {faqItems.map((faq, index) => (
-                                <details
-                                    key={index}
-                                    className="collapse collapse-arrow bg-base-200/50 border border-base-300 rounded-xl hover:border-primary/40 transition-colors shadow-xs group"
-                                >
-                                    <summary className="collapse-title text-base font-bold text-base-content flex items-center gap-2 cursor-pointer py-4">
-                                        <span className="badge badge-primary badge-sm font-bold shrink-0">Q</span>
-                                        <span>{faq.question}</span>
-                                    </summary>
-                                    <div className="collapse-content text-sm md:text-base text-base-content/85 leading-relaxed border-t border-base-300/60 pt-3 pb-4">
-                                        <ReactMarkdown
-                                            remarkPlugins={[remarkGfm]}
-                                            rehypePlugins={[rehypeRaw]}
-                                            components={components}
-                                        >
-                                            {faq.answer}
-                                        </ReactMarkdown>
-                                    </div>
-                                </details>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                {/* References Section */}
-                {rawReferencesSection.trim() && (
-                    <div className="pt-8 border-t border-base-300 space-y-4">
-                        <ReactMarkdown
-                            remarkPlugins={[remarkGfm]}
-                            rehypePlugins={[rehypeRaw]}
-                            components={components}
-                        >
-                            {`## References\n\n${rawReferencesSection}`}
-                        </ReactMarkdown>
-                    </div>
-                )}
-            </article>
-        </div>
-    );
 }
