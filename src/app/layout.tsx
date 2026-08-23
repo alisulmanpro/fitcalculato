@@ -65,6 +65,13 @@ export default function RootLayout({
       className={`${montserrat.className} antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9795496420608967"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="min-h-full flex flex-col user-none" suppressHydrationWarning>
         <Header />
         {children}
@@ -73,11 +80,6 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9795496420608967"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
         />
       </body>
     </html>
