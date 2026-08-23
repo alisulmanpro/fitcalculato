@@ -8,7 +8,7 @@ import Link from 'next/link';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function Vo2MaxCalculator({ slug }: { slug: string }) {
   return (
-    <main className="grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-gutter-mobile md:gap-gutter-desktop">
+    <main className="grow w-full container mx-auto grid grid-cols-1 mt-5 md:grid-cols-12 gap-5">
       <div className="md:col-span-9 flex flex-col gap-8 md:gap-12">
 
         {/* Header & Hero Section */}
