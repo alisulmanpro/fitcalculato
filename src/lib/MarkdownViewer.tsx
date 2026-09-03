@@ -114,29 +114,6 @@ const components: Components = {
             );
         }
 
-        // Check if paragraph is a mathematical formula (contains $$ or formulas)
-        const rawString = childrenArray.map(c => (typeof c === 'string' ? c : '')).join(' ');
-        const isFormula =
-            rawString.includes('$$') ||
-            (rawString.includes('=') && (rawString.includes('Max HR') || rawString.includes('Heart Rate') || rawString.includes('HRR') || rawString.includes('×')));
-
-        if (isFormula) {
-            const cleanFormula = rawString.replace(/\$\$/g, '').replace(/\\text\{([^}]+)\}/g, '$1').replace(/\\times/g, '×').trim();
-            return (
-                <div className="bg-neutral text-neutral-content rounded-xl p-4 my-4 shadow-md border border-neutral-focus flex items-center justify-between gap-3 font-mono text-sm md:text-base font-semibold">
-                    <div className="flex items-center gap-3">
-                        <span className="p-1.5 rounded-md bg-primary text-primary-content">
-                            <MdFunctions className="text-xl" />
-                        </span>
-                        <span className="tracking-wide">{cleanFormula || children}</span>
-                    </div>
-                    <span className="badge badge-primary text-[10px] font-bold uppercase hidden sm:inline-flex">
-                        Formula
-                    </span>
-                </div>
-            );
-        }
-
         // Normal paragraph
         return (
             <p className="text-sm md:text-base text-base-content/85 leading-relaxed my-3">
@@ -178,7 +155,6 @@ const components: Components = {
     a: ({ href, children }) => (
         <a
             href={href}
-            target="_blank"
             rel="noopener noreferrer"
             className="text-primary font-semibold hover:underline decoration-primary/50 underline-offset-2 transition-colors"
         >
@@ -298,9 +274,6 @@ export default function MarkdownViewer({ filePath }: Props) {
                                 <h2 className="text-2xl md:text-3xl font-extrabold text-base-content tracking-tight">
                                     Frequently Asked Questions
                                 </h2>
-                                <p className="text-xs md:text-sm text-base-content/70">
-                                    Everything you need to know about Zone 2 training, formulas, and safety
-                                </p>
                             </div>
                         </div>
 

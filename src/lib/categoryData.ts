@@ -18,6 +18,14 @@ const categoriesStore: Record<string, CategoryData> = {
                 SEO_tilte: "Zone 2 Heart Rate Calculator: Unlock Your Ideal Training Zone",
                 SEO_description: "Calculate your Zone 2 heart rate by age using the Tanaka and Karvonen formulas. See your exact range, learn how to interpret it, and train smarter.",
                 SEO_canonical: "/calculators/zone-2-heart-rate-calculator",
+                guide: [
+                    {
+                        id: 'zone-2-heart-rate-guide',
+                        title: 'Zone 2 Heart Rate Guide',
+                        description: 'Learn the science behind training smart with Zone 2 heart rate guide.',
+                        type: 'main',
+                    }
+                ]
             },
             {
                 id: 'vo2-max',
@@ -30,6 +38,50 @@ const categoriesStore: Record<string, CategoryData> = {
                 SEO_tilte: "VO2 Max Calculator",
                 SEO_description: "Calculate your VO2 max and discover your true biological fitness age.",
                 SEO_canonical: "/calculators/vo2-max-calculator",
+                guide: [
+                    {
+                        id: 'vo2-max-guide',
+                        title: 'VO2 Max Guide: What It Is, Why It Matters, and How to Improve It',
+                        description: 'Ask doctors which single number best forecasts overall lifespan, and more now point to one metric: VO2 max. Not cholesterol. Not resting heart rate. Not even blood pressure. It reflects your peak aerobic capacity.',
+                        type: 'main',
+                    },
+                    {
+                        id: 'what-is-vo2-max',
+                        title: 'What Is VO2 Max? A Clear, No-Jargon Explanation',
+                        description: 'What is VO2 max? Learn what the number actually measures, why it matters more than most fitness stats, and what counts as a good score for your age.',
+                        type: 'related',
+                    },
+                    {
+                        id: 'vo2-max-chart',
+                        title: 'VO2 Max Chart: Average Scores by Age and Sex',
+                        description: ' VO2 max chart by age and sex, covering men and women from their 20s to 70s. See exactly where your score falls, from poor to superior.',
+                        type: 'related',
+                    },
+                    {
+                        id: 'vo2-max-by-age',
+                        title: 'VO2 Max by Age: What Changes Decade by Decade',
+                        description: 'VO2 max by age, decade by decade. See what changes in your 20s through 60s, why scores shift, and how to train at each stage of life.',
+                        type: 'related',
+                    },
+                    {
+                        id: 'how-to-measure-vo2-max',
+                        title: 'How to Measure VO2 Max: Every Method Compared',
+                        description: ' How to measure VO2 max, from lab tests to home methods. Compare the Cooper test, Rockport walk, heart rate formulas, and wearable estimates.',
+                        type: 'related',
+                    },
+                    {
+                        id: 'understanding-your-vo2-max-score',
+                        title: 'Understanding Your VO2 Max Score: What the Number Actually Means',
+                        description: 'Understanding your VO2 max score means more than checking a chart. Learn what your number really means for daily life, long-term health, and training.',
+                        type: 'related',
+                    },
+                    {
+                        id: 'how-to-improve-vo2-max',
+                        title: 'How to Improve VO2 Max: A Science-Based Training Plan',
+                        description: 'How to improve VO2 max with proven training methods, realistic timelines, and the mistakes that quietly stall progress. A science-based plan for every fitness level. ',
+                        type: 'related',
+                    },
+                ]
             },
         ],
         mainArticleHtml: "",
@@ -147,14 +199,14 @@ export function getTopCalculators(maxLimit: number = 5): TopCalculatorResult[] {
 }
 
 export function getCalculatorBySlug(slug: string): Calculator | null {
-  for (const categoryKey in categoriesStore) {
-    const category = categoriesStore[categoryKey];
-    const calculator = category.calculators.find((item) => item.slug === slug);
-    
-    if (calculator) {
-      return calculator;
+    for (const categoryKey in categoriesStore) {
+        const category = categoriesStore[categoryKey];
+        const calculator = category.calculators.find((item) => item.slug === slug);
+
+        if (calculator) {
+            return calculator;
+        }
     }
-  }
-  
-  return null;
+
+    return null;
 }

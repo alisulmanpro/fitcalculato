@@ -24,6 +24,8 @@ export default function ZoneCalculator({ slug = 'zone-2-heart-rate-calculator' }
 
                     <ZoneCalculatorForm />
 
+                    <MarkdownViewer filePath={`/public/markdown/${slug}/docs.md`} />
+
                     {/* Guide Card Section */}
                     <div className="flex flex-col gap-3">
                         {/* Section Heading */}
@@ -63,7 +65,6 @@ export default function ZoneCalculator({ slug = 'zone-2-heart-rate-calculator' }
                         </Link>
                     </div>
 
-                    <MarkdownViewer filePath={`/public/markdown/${slug}/docs.md`} />
                     <AuthorWidget />
                 </div>
 

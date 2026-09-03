@@ -1,29 +1,55 @@
 import MarkdownViewer from '@/lib/MarkdownViewer';
 import ToolSidebar from '@/components/ui/tool/ToolSidebar';
 import { DynamicHero } from '@/components/categories/dynamic-page';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
+import { getCalculatorBySlug } from '@/lib/categoryData';
 
-export const metadata: Metadata = {
-    metadataBase: new URL("https://fitcalculato.com"),
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    const data = getCalculatorBySlug(slug);
+    const guide = data?.guide?.find((item) => item.type === 'main');
 
-    alternates: {
-        canonical: "/calculators/zone-2-heart-rate-calculator/guide",
-    },
+    const defaultTitle = "Fitness Guide";
+    const defaultDescription = "Comprehensive fitness guide to help you achieve your health and training goals.";
 
-    title: "Zone 2 Heart Rate Guide: Unlock Your Ideal Training Zone",
+    const title = guide?.title
+        ? `${guide.title}`
+        : defaultTitle;
 
-    description:
-        " A complete Zone 2 heart rate guide covering the science, real benefits, common mistakes, and what recent 2026 research actually says about this training zone.",
+    const description = guide?.description || defaultDescription;
+    const canonical = data?.SEO_canonical
+        ? `${data.SEO_canonical}/guide`
+        : `/calculators/${slug}/guide`;
 
-    openGraph: {
-        title: "Zone 2 Heart Rate Guide: Unlock Your Ideal Training Zone",
-        description:
-            " A complete Zone 2 heart rate guide covering the science, real benefits, common mistakes, and what recent 2026 research actually says about this training zone.",
-        url: "https://fitcalculato.com",
-        siteName: "Fitness Calculator",
-        type: "article",
-    },
-};
+    return {
+        metadataBase: new URL("https://fitcalculato.com"),
+
+        alternates: {
+            canonical: canonical,
+        },
+
+        title: title,
+        description: description,
+
+        openGraph: {
+            title: title,
+            description: description,
+            url: `https://fitcalculato.com${canonical}`,
+            siteName: "FitCalculato",
+            type: "article",
+        },
+
+        twitter: {
+            card: "summary_large_image",
+            title: title,
+            description: description,
+        },
+    };
+}
 
 export default async function Page({
     params,
@@ -31,11 +57,12 @@ export default async function Page({
     params: Promise<{ slug: string }>;
 }) {
     const { slug } = await params;
+    const data = getCalculatorBySlug(slug);
+    const guide = data?.guide?.find((item) => item.type === 'main');
 
     return (
-        <main className="">
-
-            <DynamicHero title={"Zone 2 Heart Rate Guide"} description={"Within a few years, Zone 2 training evolved from a niche exercise physiology lab term into a fixture on fitness podcasts. This rapid surge in popularity brings a dual reality: while the public discovers a highly valuable tool, online misinformation frequently distorts the actual science."} image="/guidance.jpg" />
+        <main>
+            <DynamicHero title={guide?.title || ""} description={guide?.description || ""} image="/guidance.jpg" />
             <div className='grid grid-cols-1 md:grid-cols-7 gap-5 p-5 md:p-10 mx-auto'>
                 <div className="col-span-1 md:col-span-5 flex flex-col gap-6">
                     <MarkdownViewer filePath={`/public/markdown/${slug}/guide.md`} />

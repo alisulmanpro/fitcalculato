@@ -13,6 +13,8 @@ declare global {
         SEO_tilte: string;
         SEO_description: string;
         SEO_canonical: string;
+        guide: Guide[];
+
     }
 
     interface BlogPost {
@@ -36,6 +38,13 @@ declare global {
         calculators: Calculator[];
         mainArticleHtml: string;
         relatedBlogs: BlogPost[];
+    }
+
+    interface Guide {
+        id: string;
+        title: string;
+        description: string;
+        type: "main" | "related";
     }
 
     interface TopCalculatorResult {
