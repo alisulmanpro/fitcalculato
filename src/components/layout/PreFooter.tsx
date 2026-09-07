@@ -7,7 +7,7 @@ const PreFooter = () => {
     return (
         <section className="w-full pb-24 max-w-12xl mx-auto px-4 lg:px-10">
             <div
-                className="bg-base-200 rounded-[20px] p-12 md:p-20 text-center flex flex-col items-center justify-center shadow-sm relative overflow-hidden">
+                className="bg-primary rounded-[20px] p-12 md:p-20 text-center flex flex-col items-center justify-center shadow-sm relative overflow-hidden">
                 <div
                     className="absolute -top-32 -right-32 w-64 h-64 bg-primary/20 rounded-full blur-[80px]">
                 </div>

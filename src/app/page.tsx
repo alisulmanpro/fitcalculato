@@ -20,12 +20,10 @@ export default function Home() {
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-5">
           <h1
             className="text-5xl font-bold tracking-tight">
-            Scientifically Precise Health &amp; Fitness Tools
+            Free Scientific Cardio & Endurance Calculators
           </h1>
           <p className="max-w-2xl">
-            Join 1M+ users optimizing their transformation with data-backed calculators.
-            Uncover your precise metabolic requirements, strength potential, and body
-            composition.
+            Calculate your exact Zone 2 heart rate training zones, estimated VO2 max, and aerobic fitness age. Built using peer-reviewed physiological formulas to help fitness beginners optimize endurance safely without guesswork.
           </p>
           <div
             className="w-full max-w-2xl relative rounded-[14px] shadow-sm flex items-center focus-within:shadow-md transition-shadow group bg-[#f2f4f6] p-1">
@@ -42,7 +40,7 @@ export default function Home() {
       </section>
 
       {/* ==== Popular Calculators ================================================ */}
-      <section className="w-full max-w-12xl mx-auto px-4 lg:px-10 bg-base-200 py-14">
+      <section className="w-full max-w-12xl mx-auto px-4 lg:px-10 focus-within:shadow-md transition-shadow group bg-[#f2f4f6] py-14">
         <div className="text-center mb-16">
           <h2 className="text-3xl text-[#1C2333] mb-2">Explore
             Our Top Calculators</h2>
@@ -50,7 +48,7 @@ export default function Home() {
             performance athletes and health-conscious individuals.</p>
         </div>
         {data?.map(item => (
-          <div className="mb-16" key={item.id}>
+          <div className="mb-16 " key={item.id}>
             <h3
               className="text-[#1C2333] mb-4 flex items-center gap-2">
               <span className="w-2 h-6 bg-primary rounded-full block"></span> {item.heroTitle}
@@ -59,7 +57,7 @@ export default function Home() {
               {item.calculators.slice(-3).map(calc => {
                 const Icon = AppIcons[calc.icon];
                 return (
-                  <Link className="bg-base-100 rounded-[20px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
+                  <Link className="bg-primary rounded-[20px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
                     href={`calculators/${calc.slug}`} key={calc.id}>
                     <div
                       className="w-12 h-12 rounded-xl bg-base-200 flex items-center justify-center mb-4 shadow-sm p-3.5">
@@ -68,7 +66,7 @@ export default function Home() {
                     <h4 className="text-xl text-[#1C2333] mb-2">{calc.title}</h4>
                     <p className="text-sm text-slate-500 mb-6 grow">{calc.description}</p>
                     <div
-                      className="flex items-center font-bold group-hover:text-primary transition-colors">
+                      className="flex items-center font-bold group-hover:text-white transition-colors">
                       Calculate Now
                       <IoMdArrowForward className="ml-1 text-lg group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -137,7 +135,7 @@ export default function Home() {
       </section>
 
       {/* ==== Testimonials ================================================ */}
-      <section className="w-full bg-base-200 py-24">
+      <section className="w-full focus-within:shadow-md transition-shadow group bg-[#f2f4f6] py-24">
         <div className="max-w-12xl mx-auto px-4 lg:px-10">
           <h2 className="text-3xl text-[#1C2333] text-center mb-12">
             Trusted by High Performers</h2>

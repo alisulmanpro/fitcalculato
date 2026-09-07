@@ -17,10 +17,10 @@ export const metadata: Metadata = {
     canonical: "/",
   },
 
-  title: "Free Fitness & Health Calculators",
+  title: "Free Cardio & Endurance Calculators | Zone 2 & VO2 Max Tools",
 
   description:
-    "Explore 20+ science-backed fitness calculators — Zone 2 heart rate, VO2 Max, BMI, and more.",
+    "Accurately calculate your Zone 2 training heart rate and VO2 max with our free, science-backed fitness calculators. Designed for beginners with step-by-step guides.",
 
 
   openGraph: {
