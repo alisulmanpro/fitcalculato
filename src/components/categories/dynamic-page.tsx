@@ -17,7 +17,7 @@ const DynamicHero = ({ title, description, image }: { title: string, description
                 <div className="max-w-3xl w-full space-y-5">
                     <div className="badge text-lime-800 bg-lime-50 font-bold shadow">
                         <LuFlaskConical />
-                        Evidence-Based Methodology
+                        Clinically Backed & Physiology-Driven
                     </div>
                     <h1 className="text-5xl text-white font-bold font-times">{titleCase(title.split("-").join(" "))}</h1>
                     <p className="text-white">
@@ -26,7 +26,7 @@ const DynamicHero = ({ title, description, image }: { title: string, description
                     <div className="absolute bottom-5 left-0 right-0 flex items-center justify-center gap-5 text-slate-300 ">
                         <div className="flex items-center gap-1">
                             <VscVerified />
-                            <span className="tracking-widest text-xs font-medium">NIH GUIDLINES</span>
+                            <span className="tracking-widest text-xs font-medium">NIH GUIDELINES</span>
                         </div>
                         <span>•</span>
                         <div className="flex items-center gap-1">

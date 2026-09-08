@@ -158,8 +158,8 @@ export default function FAQsPage() {
 
       {/* ─── CTA ─── */}
       <section className="max-w-4xl mx-auto px-4 py-14">
-        <div className="bg-base-200 border border-base-300 rounded-3xl p-8 md:p-12 text-center space-y-5">
-          <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto text-3xl">
+        <div className="bg-primary border border-base-300 rounded-3xl p-8 md:p-12 text-center space-y-5">
+          <div className="w-14 h-14 rounded-full bg-lime-100 flex items-center justify-center mx-auto text-3xl">
             💬
           </div>
           <h2 className="text-2xl md:text-3xl font-extrabold text-base-content">
@@ -169,7 +169,7 @@ export default function FAQsPage() {
             We&apos;re happy to help. Reach out anytime and we&apos;ll get back to you within 24 hours.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 items-center justify-center pt-2">
-            <Link href="/contact" className="btn btn-primary rounded-xl px-8 font-bold">
+            <Link href="/contact" className="btn btn-white rounded-xl px-8 font-bold">
               Contact Us
             </Link>
             <Link href="/calculators/zone-2-heart-rate-calculator" className="btn btn-outline rounded-xl px-8 font-bold">
